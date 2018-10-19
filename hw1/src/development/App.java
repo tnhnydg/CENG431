@@ -6,6 +6,7 @@ public class App {
 		// TODO Auto-generated method stub
 		System.out.println("This project created to show hw1 project working environment");
 		System.out.println("Package name and class names has no meaning");
+		System.out.println("Test");
 
 	}
 
