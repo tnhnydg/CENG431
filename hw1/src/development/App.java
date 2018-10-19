@@ -7,6 +7,7 @@ public class App {
 		System.out.println("This project created to show hw1 project working environment");
 		System.out.println("Package name and class names has no meaning");
 		System.out.println("Test");
+		System.out.println("Test2");
 
 	}
 
