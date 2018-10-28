@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public interface IResource {
 	public void setId(int id);
 	public int getId();
