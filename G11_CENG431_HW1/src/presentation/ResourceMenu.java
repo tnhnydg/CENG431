@@ -72,16 +72,20 @@ public class ResourceMenu extends Menu {
 		}
 		else if(input.equals("2")) {
 			//add consultant
+			System.out.print("Consultant Name:");
+			String cName = takeInput();
+			
+			System.out.print("Consultant Description:");
+			String cDescription = takeInput();
+			
+			addConsultant(cName, cDescription);
 		}
 		else if(input.toLowerCase().equals("q")) {
-			// Quit is selected
+			System.out.println("Quit is selected");
 		}
 		else {
-			//Invalid
+			System.out.println("Invalid");
 		}
-		
-		
-		
 	}
 	
 	public void removeResource(String rId) {
@@ -125,4 +129,31 @@ public class ResourceMenu extends Menu {
 		}
 	}
 	
+	public void addConsultant(String cName, String cDescription) {
+		//signature not final
+		System.out.println("\t<<<Consultant Add Menu>>>");
+		
+		System.out.println("-Resource ID option:\n1-Auto\n2-Custom\nq:to quit");
+		String input = takeInput();
+		
+		if(input.equals("1")) {
+			System.out.println("Auto");
+			//generate Resource ID ???
+			//call Mediator ???
+		}
+		else if(input.equals("2")) {
+			System.out.println("Custom");
+			
+			System.out.print("Resource ID:");
+			String rId = takeInput();
+			
+			//call Mediator ???
+		}
+		else if(input.toLowerCase().equals("q")) {
+			System.out.println("Quit is selected");
+		}
+		else {
+			System.out.println("Invalid");
+		}
+	}
 }
