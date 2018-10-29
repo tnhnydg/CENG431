@@ -54,7 +54,34 @@ public class ResourceMenu extends Menu {
 	
 	public void addResource() {
 		//signature not final
-		System.out.println("Resource addResource");
+		System.out.println("\t<<<Resource Add Menu>>>");
+		
+		System.out.println("1-Employee(Interval?)\n2-Consultant(Interval?)\nq:to quit");
+		String input = takeInput();
+		
+		if(input.equals("1")) {
+			//add employee
+			//eName, eDescription
+			System.out.print("Employee Name:");
+			String eName = takeInput();
+			
+			System.out.print("Employee Description:");
+			String eDescription = takeInput();
+			
+			addEmployee(eName, eDescription);			
+		}
+		else if(input.equals("2")) {
+			//add consultant
+		}
+		else if(input.toLowerCase().equals("q")) {
+			// Quit is selected
+		}
+		else {
+			//Invalid
+		}
+		
+		
+		
 	}
 	
 	public void removeResource(String rId) {
@@ -65,6 +92,37 @@ public class ResourceMenu extends Menu {
 	public void updateResource(String rId) {
 		//signature not final
 		System.out.println("Resource updateResource");
+	}
+	
+	public void addEmployee(String eName, String eDescription) {
+		//signature not final
+		System.out.println("\t<<<Employee Add Menu>>>");
+		
+		System.out.println("-Resource ID option:\n1-Auto\n2-Custom\nq:to quit");
+		String input = takeInput();
+		
+		if(input.equals("1")) {
+			System.out.println("Auto");
+			
+			//Generate rId ???
+			//call mediator method ???
+		}
+		else if(input.equals("2")) {
+			System.out.println("Custom");
+			
+			System.out.print("Resource ID:");
+			String rId = takeInput();
+			
+			//call mediator method ???
+		}
+		else if(input.toLowerCase().equals("q")) {
+			//Quit is selected
+			System.out.println("Quit is selected");
+		}
+		else {
+			//Invalid
+			System.out.println("Invalid");
+		}
 	}
 	
 }
