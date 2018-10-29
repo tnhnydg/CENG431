@@ -1,9 +1,10 @@
 package presentation;
 
+import java.util.Scanner;
+
 import domain.IProjectPortfolioManager;
 
-public class MainMenu {
-	private IProjectPortfolioManager mediator;
+public class MainMenu extends Menu {
 	private ProjectMenu project;
 	private ResourceMenu resource;
 	
@@ -11,17 +12,11 @@ public class MainMenu {
 		System.out.println("Main Menu Constructor...");
 		
 		setMediator(mediator);
-		
+		setScanner(new Scanner(System.in));
+	
 		createProjectMenu(getProjectMenu());
 		createResourceMenu(getResourceMenu());
-	}
-	
-	public void setMediator(IProjectPortfolioManager mediator) {
-		this.mediator = mediator;
-	}
-	
-	private IProjectPortfolioManager getMediator() {
-		return this.mediator;
+		
 	}
 	
 	public void setProjectMenu(ProjectMenu project) {
@@ -33,11 +28,11 @@ public class MainMenu {
 	}
 	
 	public void createProjectMenu(ProjectMenu project) {
-		this.project = new ProjectMenu(getMediator());
+		this.project = new ProjectMenu(getMediator(), getScanner());
 	}
 	
 	public void createResourceMenu(ResourceMenu resource) {
-		this.resource = new ResourceMenu(getMediator());
+		this.resource = new ResourceMenu(getMediator(), getScanner());
 	}
 	
 	private ProjectMenu getProjectMenu() {
@@ -49,7 +44,14 @@ public class MainMenu {
 	}
 		
 	public void start() {
+		System.out.println(takeInput());
 		
+		project.startManage();
+		project.startDisplay();
+		resource.startManage();
+		resource.startDisplay();
+		
+		getScanner().close();
 	}
-
+	
 }

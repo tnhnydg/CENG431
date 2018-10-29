@@ -1,27 +1,30 @@
 package presentation;
 
+import java.util.Scanner;
+
 import domain.IProjectPortfolioManager;
 
-public class ProjectMenu {
-	private IProjectPortfolioManager mediator;
+public class ProjectMenu extends Menu {
 	
-	public ProjectMenu(IProjectPortfolioManager mediator) {
+	public ProjectMenu(IProjectPortfolioManager mediator, Scanner input) {
 		System.out.println("ProjectMenu constructor..");
-		setMediator(mediator);
 		
-	}
-	
-	public void setMediator(IProjectPortfolioManager mediator) {
-		this.mediator = mediator;
+		setMediator(mediator);
+		setScanner(input);
+		
 	}
 	
 	public void startManage() {
-		
+		System.out.println("Project startManange...");
+		System.out.println(takeInput());
 	}
 	
 	public void startDisplay() {
-		
+		System.out.println("Project displayManage");
+		System.out.println(takeInput());
 	}
+	
+
 
 
 }
