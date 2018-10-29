@@ -203,17 +203,40 @@ public class ProjectMenu extends Menu {
 		String input = takeInput();
 		
 		if(input.equals("1")) {
+			//add Resource to task
+			System.out.print("Project Name:");
+			String pName = takeInput();
 			
+			System.out.print("Activity Name:");
+			String aName = takeInput();
+			
+			System.out.print("Task Name:");
+			String tName = takeInput();
+			
+			System.out.print("Resource Id:");
+			String rId = takeInput();
+			
+			addResource(pName, aName, tName, rId);
 		}
 		else if(input.equals("2")) {
+			//remove Resource from task
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
+			System.out.print("Activity Name:");
+			String aName = takeInput();
+			
+			System.out.print("Task Name:");
+			String tName = takeInput();
+			
+			removeResource(pName, aName, tName);
 			
 		}
 		else if(input.toLowerCase().equals("q")) {
-			
+			System.out.println("q is selected");
 		}
 		else {
-			
-			
+			System.out.println("Invalid");
 		}
 	}
 	
@@ -221,6 +244,16 @@ public class ProjectMenu extends Menu {
 		//signature not final
 		//Mediator Task creation for latest project latest activity ???
 		System.out.println("Project addTask");
+	}
+	
+	public void addResource(String pName, String aName, String tName, String rId) {
+		//signature not final
+		System.out.println("Project addResource");
+	}
+	
+	public void removeResource(String pName, String aName, String tName) {
+		//signature not final
+		System.out.println("Project removeResource");
 	}
 	
 }
