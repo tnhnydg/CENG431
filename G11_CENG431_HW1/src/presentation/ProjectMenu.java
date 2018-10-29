@@ -43,23 +43,7 @@ public class ProjectMenu extends Menu {
 		else if(input.equals("3")) {
 			//update project
 			//updateProject();
-			System.out.println("\t<<<Project Update Menu>>>");
-			System.out.println("1-Activity\n2-Resource\nq:to quit");
-			
-			input = takeInput();
-			
-			if(input.equals("1")) {
-				updateActivity();
-			}
-			else if(input.equals("2")) {
-				updateResource();
-			}
-			else if(input.toLowerCase().equals("q")) {
-				System.out.println("q is selected");
-			}
-			else {
-				System.out.println("Invalid input");
-			}
+			updateProject();
 		}
 		else if(input.toLowerCase().equals("q")) {
 			System.out.println("Quit is selected");
@@ -91,10 +75,26 @@ public class ProjectMenu extends Menu {
 	}
 	
 	public void updateProject() {
-		System.out.println("Project updateProject");
 		//signature not final
 		//updateActivity();
 		//updateResource();
+		System.out.println("\t<<<Project Update Menu>>>");
+		System.out.println("1-Activity\n2-Resource\nq:to quit");
+		
+		String input = takeInput();
+		
+		if(input.equals("1")) {
+			updateActivity();
+		}
+		else if(input.equals("2")) {
+			updateResource();
+		}
+		else if(input.toLowerCase().equals("q")) {
+			System.out.println("q is selected");
+		}
+		else {
+			System.out.println("Invalid input");
+		}
 	}
 	
 	public void updateActivity() {
