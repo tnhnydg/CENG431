@@ -80,15 +80,18 @@ public class ProjectMenu extends Menu {
 	}
 	
 	public void addProject(String pName, String pDescription, String pDate) {
+		System.out.println("Project addProject");
 		//signature not final
 		//where we handle the date
 	}
 	
 	public void removeProject(String pName) {
+		System.out.println("Project removeProject");
 		//signature not final
 	}
 	
 	public void updateProject() {
+		System.out.println("Project updateProject");
 		//signature not final
 		//updateActivity();
 		//updateResource();
@@ -154,6 +157,7 @@ public class ProjectMenu extends Menu {
 	}
 	
 	public void addActivity(String aName, String aDescription) {
+		System.out.println("Project addActivity");
 		//signature not final
 		//Each activity should have at least one task.
 		System.out.print("Task Name:");
@@ -175,10 +179,12 @@ public class ProjectMenu extends Menu {
 	
 	public void removeActivity(String aName) {
 		//signature not final
+		System.out.println("Project removeActivity");
 	}
 	
 	public void removeTask(String aName, String tName) {
 		//signature not final
+		System.out.println("Project removeTask");
 	}
 	
 	public void updateResource() {
@@ -189,6 +195,7 @@ public class ProjectMenu extends Menu {
 	public void addTask(String tName, String tDescription, String tStartDate, String tHours) {
 		//signature not final
 		//Mediator Task creation for latest project latest activity ???
+		System.out.println("Project addTask");
 	}
 	
 }
