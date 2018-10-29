@@ -54,24 +54,35 @@ public class MainMenu extends Menu {
 		
 		String input = takeInput();
 		
-		if(input.equals("1") || input.equals("2")) {
+		if(input.equals("1")) {
 			System.out.println("\t<<<Manage Menu>>>");
-			System.out.println("1-Project\n2-Resource");
-			
-			String flag = input;
+			System.out.println("1-Project\n2-Resource\nq:to quit");
 			
 			input = takeInput();
 			
-			if(flag.equals("1") && input.equals("1")) {
+			if(input.equals("1")) {
 				project.startManage();
 			}
-			else if(flag.equals("1") && input.equals("2")) {
+			else if(input.equals("2")) {
 				resource.startManage();
 			}
-			else if(flag.equals("2") && input.equals("1")) {
+			else if(input.toLowerCase().equals("q")) {
+				System.out.println("Quit selected");
+			}
+			else {
+				System.out.println("Invalid option selected");
+			}
+		}
+		else if(input.equals("2")) {
+			System.out.println("\t<<<Display Menu>>>");
+			System.out.println("1-Project\n2-Resource\nq:to quit");
+			
+			input = takeInput();
+			
+			if(input.equals("1")) {
 				project.startDisplay();
 			}
-			else if(flag.equals("2") && input.equals("2")) {
+			else if(input.equals("2")) {
 				resource.startDisplay();
 			}
 			else if(input.toLowerCase().equals("q")) {

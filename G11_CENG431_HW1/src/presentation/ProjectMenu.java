@@ -54,8 +54,12 @@ public class ProjectMenu extends Menu {
 	}
 	
 	public void startDisplay() {
-		System.out.println("Project displayManage");
-		System.out.println(takeInput());
+		System.out.println("\t<<<Project Display Menu>>>");
+		
+		System.out.print("Project Name:");
+		String pName = takeInput();
+		
+		//Mediator display call ???
 	}
 	
 	public void startCalculate() {
