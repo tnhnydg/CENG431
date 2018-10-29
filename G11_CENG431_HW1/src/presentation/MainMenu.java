@@ -9,11 +9,19 @@ public class MainMenu {
 	
 	public MainMenu(IProjectPortfolioManager mediator) {
 		System.out.println("Main Menu Constructor...");
+		
 		setMediator(mediator);
+		
+		createProjectMenu(getProjectMenu());
+		createResourceMenu(getResourceMenu());
 	}
 	
 	public void setMediator(IProjectPortfolioManager mediator) {
 		this.mediator = mediator;
+	}
+	
+	private IProjectPortfolioManager getMediator() {
+		return this.mediator;
 	}
 	
 	public void setProjectMenu(ProjectMenu project) {
@@ -24,6 +32,22 @@ public class MainMenu {
 		this.resource = resource;
 	}
 	
+	public void createProjectMenu(ProjectMenu project) {
+		this.project = new ProjectMenu(getMediator());
+	}
+	
+	public void createResourceMenu(ResourceMenu resource) {
+		this.resource = new ResourceMenu(getMediator());
+	}
+	
+	private ProjectMenu getProjectMenu() {
+		return this.project;
+	}
+	
+	private ResourceMenu getResourceMenu() {
+		return this.resource;
+	}
+		
 	public void start() {
 		
 	}
