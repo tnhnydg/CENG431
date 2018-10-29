@@ -22,14 +22,45 @@ public class ProjectMenu extends Menu {
 		if(input.equals("1")) {
 			//add project
 			//addProject(pName, pDescription, pDate);
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
+			System.out.print("Project Description:");
+			String pDescription = takeInput();
+			
+			System.out.print("Project Date(DD:MM:YYYY):");
+			String pDate = takeInput();
+			
+			addProject(pName, pDescription, pDate);	
 		}
 		else if(input.equals("2")) {
 			//remove project
 			//removeProject(pName);
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
+			removeProject(pName);
 		}
 		else if(input.equals("3")) {
 			//update project
 			//updateProject();
+			System.out.println("<<<Project Update Menu>>>");
+			System.out.println("1-Activity\n2-Resource\nq:to quit");
+			
+			input = takeInput();
+			
+			if(input.equals("1")) {
+				updateActivity();
+			}
+			else if(input.equals("2")) {
+				updateResource();
+			}
+			else if(input.toLowerCase().equals("q")) {
+				System.out.println("q is selected");
+			}
+			else {
+				System.out.println("Invalid input");
+			}
 		}
 		else if(input.toLowerCase().equals("q")) {
 			System.out.println("Quit is selected");
@@ -69,6 +100,7 @@ public class ProjectMenu extends Menu {
 		//addActivity();
 		//removeActivity();
 		//??? I am not sure how to handle updating a activity option
+		System.out.println("Project updateActivity");
 	}
 	
 	public void addActivity(String aDescription) {
@@ -85,6 +117,7 @@ public class ProjectMenu extends Menu {
 	
 	public void updateResource() {
 		//signature not final
+		System.out.println("Project updateResource");
 	}
 	
 	public void addTask() {
