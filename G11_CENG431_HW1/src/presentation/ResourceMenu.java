@@ -96,6 +96,16 @@ public class ResourceMenu extends Menu {
 	public void updateResource(String rId) {
 		//signature not final
 		System.out.println("Resource updateResource");
+		//find rId with Mediator ???
+		//update Resource with Mediator ???
+		
+		System.out.print("Resource Name:");
+		String rName = takeInput();
+		
+		System.out.print("Resource Description:");
+		String rDescription = takeInput();
+		
+		//mediator update
 	}
 	
 	public void addEmployee(String eName, String eDescription) {
