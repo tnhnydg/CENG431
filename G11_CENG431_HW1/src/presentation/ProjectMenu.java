@@ -24,6 +24,9 @@ public class ProjectMenu extends Menu {
 		System.out.println(takeInput());
 	}
 	
+	public void startCalculate() {
+		System.out.println("Project startCalculate");
+	}
 
 
 

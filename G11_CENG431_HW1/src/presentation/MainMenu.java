@@ -42,14 +42,59 @@ public class MainMenu extends Menu {
 	private ResourceMenu getResourceMenu() {
 		return this.resource;
 	}
+	
+	private void startScreen() {
+		System.out.println("\t\t<<<Project Management System>>>");
+		System.out.println("- You can navigate between menus using option choices");
+	}
 		
 	public void start() {
-		System.out.println(takeInput());
+		startScreen();
+		System.out.println("1-Manage\n2-Display\n3-Calculate\n4-Find Resources(#ofRes)\nq-to quit");
 		
-		project.startManage();
-		project.startDisplay();
-		resource.startManage();
-		resource.startDisplay();
+		String input = takeInput();
+		
+		if(input.equals("1") || input.equals("2")) {
+			System.out.println("\t<<<Manage Menu>>>");
+			System.out.println("1-Project\n2-Resource");
+			
+			String flag = input;
+			
+			input = takeInput();
+			
+			if(flag.equals("1") && input.equals("1")) {
+				project.startManage();
+			}
+			else if(flag.equals("1") && input.equals("2")) {
+				resource.startManage();
+			}
+			else if(flag.equals("2") && input.equals("1")) {
+				project.startDisplay();
+			}
+			else if(flag.equals("2") && input.equals("2")) {
+				resource.startDisplay();
+			}
+			else if(input.toLowerCase().equals("q")) {
+				System.out.println("Quit selected");
+			}
+			else {
+				System.out.println("Invalid option selected");
+			}
+		}
+		else if(input.equals("3")) {
+			System.out.println("\t<<<Calculate Menu>>>");
+			project.startCalculate();
+		}
+		else if(input.equals("4")) {
+			System.out.println("\t<<<Find Resource Menu>>>");
+			resource.startFindResource();
+		}
+		else if(input.toLowerCase().equals("q")) {
+			System.out.println("Quit slected");
+		}
+		else {
+			System.out.println("Invalid option");
+		}
 		
 		getScanner().close();
 	}

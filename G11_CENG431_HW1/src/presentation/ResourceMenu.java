@@ -21,4 +21,8 @@ public class ResourceMenu extends Menu {
 		System.out.println("Resource startDisplay");
 		System.out.println(takeInput());
 	}
+	
+	public void startFindResource() {
+		System.out.println("Resource startFindResource");
+	}
 }
