@@ -11,7 +11,6 @@ public class ProjectMenu extends Menu {
 		
 		setMediator(mediator);
 		setScanner(input);
-		
 	}
 	
 	public void startManage() {
@@ -44,7 +43,7 @@ public class ProjectMenu extends Menu {
 		else if(input.equals("3")) {
 			//update project
 			//updateProject();
-			System.out.println("<<<Project Update Menu>>>");
+			System.out.println("\t<<<Project Update Menu>>>");
 			System.out.println("1-Activity\n2-Resource\nq:to quit");
 			
 			input = takeInput();
@@ -100,18 +99,85 @@ public class ProjectMenu extends Menu {
 		//addActivity();
 		//removeActivity();
 		//??? I am not sure how to handle updating a activity option
-		System.out.println("Project updateActivity");
+		System.out.println("\t<<<Update Activity Menu>>>");
+		System.out.println("1-Add\n2-Remove\n3-Update\nq:to quit");
+		
+		String input = takeInput();
+		
+		if(input.equals("1")) {
+			//addActivity()
+			System.out.print("Activity Name:");
+			String aName = takeInput();
+			
+			System.out.print("Activity Description:");
+			String aDescription = takeInput();
+			
+			addActivity(aName, aDescription);
+		}
+		else if(input.equals("2")) {
+			//removeActivity()
+			System.out.print("Activity Name:");
+			String aName = takeInput();
+			
+			System.out.println("/t<<<Remove Activity or Task Menu>>>");
+			System.out.println("1-Activity\n2-Task\nq:to quit");
+			input = takeInput();
+			
+			if(input.equals("1")) {
+				removeActivity(aName);
+			}
+			else if(input.equals("2")) {
+				System.out.print("Task Name:");
+				String tName = takeInput();
+				
+				removeTask(aName, tName);
+			}
+			else if(input.toLowerCase().equals("q")) {
+				
+			}
+			else {
+				
+			}
+		}
+		else if(input.equals("3")) {
+			System.out.println("UpdateActivity");
+			//updateActivity ???
+			//adding task to activity more than one ???
+		}
+		else if(input.toLowerCase().equals("q")) {
+			System.out.println("Quit is selected");
+		}
+		else {
+			System.out.println("Invalid");
+		}
+
 	}
 	
-	public void addActivity(String aDescription) {
+	public void addActivity(String aName, String aDescription) {
 		//signature not final
+		//Each activity should have at least one task.
+		System.out.print("Task Name:");
+		String tName = takeInput();
+		
+		System.out.print("Task Description:");
+		String tDescription = takeInput();
+		
+		System.out.print("Task start date:");
+		String tStartDate = takeInput();
+		
+		System.out.print("Task hour:");
+		String tHours = takeInput();
+		
+		//Mediator activity creation ???
+		addTask(tName, tDescription, tStartDate, tHours);
+		
 	}
 	
 	public void removeActivity(String aName) {
 		//signature not final
 	}
 	
-	public void removeTask(String tName) {
+	public void removeTask(String aName, String tName) {
 		//signature not final
 	}
 	
@@ -120,8 +186,9 @@ public class ProjectMenu extends Menu {
 		System.out.println("Project updateResource");
 	}
 	
-	public void addTask() {
+	public void addTask(String tName, String tDescription, String tStartDate, String tHours) {
 		//signature not final
+		//Mediator Task creation for latest project latest activity ???
 	}
 	
 }
