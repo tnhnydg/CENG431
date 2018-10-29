@@ -53,9 +53,7 @@ public class ProjectMenu extends Menu {
 		}
 	}
 	
-	public void startDisplay() {
-		System.out.println("\t<<<Project Display Menu>>>");
-		
+	public void startDisplay() {	
 		System.out.print("Project Name:");
 		String pName = takeInput();
 		
@@ -63,8 +61,48 @@ public class ProjectMenu extends Menu {
 	}
 	
 	public void startCalculate() {
-		System.out.println("Project startCalculate");
+		System.out.println("<<<Calculate Menu>>>");
+		System.out.println("1-Project\n2-Activity\n3-Task\nq:to quit");
+		String input = takeInput();
 		
+		if(input.equals("1")) {
+			//project calculate
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
+			projectCalculate(pName);
+		}
+		else if(input.equals("2")) {
+			//activity calculate
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
+			System.out.print("Activity Name:");
+			String aName = takeInput();
+			
+			activityCalculate(pName, aName);
+		}
+		else if(input.equals("3")) {
+			//task calculate
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
+			System.out.print("Activity Name:"); 
+			String aName = takeInput();
+			
+			System.out.print("Task Name:");
+			String tName = takeInput();
+			
+			taskCalculate(pName, aName, tName);
+		}
+		else if(input.toLowerCase().equals("q")) {
+			System.out.println("Quit is selected");
+		}
+		else {
+			System.out.println("Invalid option");
+		}
+		
+		//Mediator calculate call ???
 	}
 	
 	public void addProject(String pName, String pDescription, String pDate) {
@@ -260,4 +298,15 @@ public class ProjectMenu extends Menu {
 		System.out.println("Project removeResource");
 	}
 	
+	public void projectCalculate(String pName) {
+		System.out.println("projectCalculate");
+	}
+	
+	public void activityCalculate(String pName, String aName) {
+		System.out.println("activityCalculate");
+	}
+	
+	public void taskCalculate(String pName, String aName, String tName) {
+		System.out.println("taskCalculate");
+	}
 }

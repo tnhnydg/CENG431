@@ -93,7 +93,6 @@ public class MainMenu extends Menu {
 			}
 		}
 		else if(input.equals("3")) {
-			System.out.println("\t<<<Calculate Menu>>>");
 			project.startCalculate();
 		}
 		else if(input.equals("4")) {
