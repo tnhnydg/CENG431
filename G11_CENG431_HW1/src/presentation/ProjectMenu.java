@@ -67,6 +67,7 @@ public class ProjectMenu extends Menu {
 		System.out.println("Project addProject");
 		//signature not final
 		//where we handle the date
+		//addActivity
 	}
 	
 	public void removeProject(String pName) {
@@ -104,21 +105,27 @@ public class ProjectMenu extends Menu {
 		//??? I am not sure how to handle updating a activity option
 		System.out.println("\t<<<Update Activity Menu>>>");
 		System.out.println("1-Add\n2-Remove\n3-Update\nq:to quit");
-		
+		//think method
 		String input = takeInput();
 		
 		if(input.equals("1")) {
 			//addActivity()
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
 			System.out.print("Activity Name:");
 			String aName = takeInput();
 			
 			System.out.print("Activity Description:");
 			String aDescription = takeInput();
 			
-			addActivity(aName, aDescription);
+			addActivity(pName, aName, aDescription);
 		}
 		else if(input.equals("2")) {
 			//removeActivity()
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
 			System.out.print("Activity Name:");
 			String aName = takeInput();
 			
@@ -127,13 +134,14 @@ public class ProjectMenu extends Menu {
 			input = takeInput();
 			
 			if(input.equals("1")) {
-				removeActivity(aName);
+				removeActivity(pName, aName);
 			}
 			else if(input.equals("2")) {
 				System.out.print("Task Name:");
 				String tName = takeInput();
 				
-				removeTask(aName, tName);
+				removeTask(pName, aName, tName);
+				//pName
 			}
 			else if(input.toLowerCase().equals("q")) {
 				
@@ -156,7 +164,7 @@ public class ProjectMenu extends Menu {
 
 	}
 	
-	public void addActivity(String aName, String aDescription) {
+	public void addActivity(String pName, String aName, String aDescription) {
 		System.out.println("Project addActivity");
 		//signature not final
 		//Each activity should have at least one task.
@@ -173,26 +181,43 @@ public class ProjectMenu extends Menu {
 		String tHours = takeInput();
 		
 		//Mediator activity creation ???
-		addTask(tName, tDescription, tStartDate, tHours);
+		addTask(pName, aName, tName, tDescription, tStartDate, tHours);
+		//pName, aName add
 		
 	}
 	
-	public void removeActivity(String aName) {
+	public void removeActivity(String pName, String aName) {
 		//signature not final
 		System.out.println("Project removeActivity");
 	}
 	
-	public void removeTask(String aName, String tName) {
+	public void removeTask(String pName, String aName, String tName) {
 		//signature not final
 		System.out.println("Project removeTask");
 	}
 	
 	public void updateResource() {
 		//signature not final
-		System.out.println("Project updateResource");
+		System.out.println("\t<<Update Project Resource Menu>>>");
+		System.out.println("1-Add\n2-Remove\nq:to quit");
+		String input = takeInput();
+		
+		if(input.equals("1")) {
+			
+		}
+		else if(input.equals("2")) {
+			
+		}
+		else if(input.toLowerCase().equals("q")) {
+			
+		}
+		else {
+			
+			
+		}
 	}
 	
-	public void addTask(String tName, String tDescription, String tStartDate, String tHours) {
+	public void addTask(String pName, String aName, String tName, String tDescription, String tStartDate, String tHours) {
 		//signature not final
 		//Mediator Task creation for latest project latest activity ???
 		System.out.println("Project addTask");
