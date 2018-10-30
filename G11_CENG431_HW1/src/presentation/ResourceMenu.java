@@ -2,6 +2,7 @@ package presentation;
 
 import java.util.Scanner;
 
+
 import domain.IProjectPortfolioManager;
 
 public class ResourceMenu extends Menu {
@@ -138,9 +139,7 @@ public class ResourceMenu extends Menu {
 		
 		if(input.equals("1")) {
 			System.out.println("Auto");
-			
-			//Generate rId ???
-			//call mediator method ???
+			getMediator().addEmployeeResource(eName, eDescription);
 		}
 		else if(input.equals("2")) {
 			System.out.println("Custom");
@@ -148,7 +147,7 @@ public class ResourceMenu extends Menu {
 			System.out.print("Resource ID:");
 			String rId = takeInput();
 			
-			//call mediator method ???
+			getMediator().addEmployeeResource(eName, eDescription, Integer.parseInt(rId));
 		}
 		else if(input.toLowerCase().equals("q")) {
 			//Quit is selected

@@ -1,11 +1,15 @@
 package domain;
 
-import java.util.List;
 
 public class Employee extends Person {
 
-	public Employee() {
+	public Employee(String eName, String eDescription) {
 		
+	}
+	
+	public Employee(String eName, String eDescription, int rId) {
+		
+		//generateId
 	}
 	
 	@Override
