@@ -7,6 +7,7 @@ import java.util.List;
 public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	private List<Project> allProjects;
+	private List<IResource> resources;
 	
 	public ProjectPortfolioManager() {
 		allProjects = new ArrayList<Project>();
@@ -24,5 +25,13 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		
 	public void addToList(Project project) {
 		allProjects.add(project);
+	}
+	
+	public void setResources(List<IResource> resources) {
+		this.resources = resources;
+	}
+	
+	public List<IResource> getResource() {
+		return this.resources;
 	}
 }
