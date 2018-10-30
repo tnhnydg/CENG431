@@ -8,14 +8,20 @@ public class Project {
 
 	private String name;
 	private String description;
-	private Date startDate;
+	private String startDate;
 	private List<Activity> activityList;
 	private ProjectPortfolioManager mediator;
 	
-	public Project(String pName, String description, Date startDate) {
+	public Project(String pName, String description, String startDate) {
 		setName(pName);
 		setDescription(description);
 		setStartDate(startDate);
+	}
+	
+	public void addActivity(Project project,int aNumber,String aDescription,String aStartDate,String aDeliverable) {
+		Activity activity = new Activity(aNumber,aDescription,aStartDate,aDeliverable);
+		project.getActivityList().add(activity);
+		//activity.addTask(activity,tdescription,tstarDate,thours);
 	}
 	
 	public List<Activity> getActivityList() {
@@ -42,10 +48,10 @@ public class Project {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 }

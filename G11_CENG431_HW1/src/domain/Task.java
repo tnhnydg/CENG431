@@ -5,16 +5,20 @@ import java.util.Date;
 public class Task {
 
 	private int number;
-	private String desription;
-	private Date startDate;
+	private String description;
+	private String startDate;
 	private int hours;
 	private int resourceId;
 	private ProjectPortfolioManager mediator;
+	
+	public Task(String description,String startDate,int hours) {}
+	
+	
 	public String getDesription() {
-		return desription;
+		return description;
 	}
 	public void setDesription(String desription) {
-		this.desription = desription;
+		this.description = desription;
 	}
 	public int getHours() {
 		return hours;
@@ -28,10 +32,10 @@ public class Task {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 	public ProjectPortfolioManager getMediator() {

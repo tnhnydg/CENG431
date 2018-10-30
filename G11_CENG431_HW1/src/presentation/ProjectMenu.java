@@ -29,7 +29,7 @@ public class ProjectMenu extends Menu {
 			String pDescription = takeInput();
 			
 			System.out.print("Project Date(DD:MM:YYYY):");
-			Date pDate = new Date();//takeInput(); handle date
+			String pDate = takeInput(); 
 			
 			addProject(pName, pDescription, pDate);	
 		}
@@ -106,9 +106,10 @@ public class ProjectMenu extends Menu {
 		//Mediator calculate call ???
 	}
 	
-	public void addProject(String pName, String pDescription, Date pDate) {
+	public void addProject(String pName, String pDescription, String pDate) {
 		System.out.println("Project addProject");
 		getMediator().addProject(pName,pDescription,pDate);
+		addActivity(pName);
 		//signature not final
 		//where we handle the date
 		//addActivity
@@ -157,13 +158,8 @@ public class ProjectMenu extends Menu {
 			System.out.print("Project Name:");
 			String pName = takeInput();
 			
-			System.out.print("Activity Name:");
-			String aName = takeInput();
 			
-			System.out.print("Activity Description:");
-			String aDescription = takeInput();
-			
-			addActivity(pName, aName, aDescription);
+			addActivity(pName);
 		}
 		else if(input.equals("2")) {
 			//removeActivity()
@@ -208,7 +204,7 @@ public class ProjectMenu extends Menu {
 				String aDescription = takeInput();
 				
 				System.out.print("Activity Start Date:");
-				Date aStartDate = new Date();//handle date
+				String aStartDate = takeInput();
 				
 				System.out.print("Activity Deliverable:");
 				String aDeliverable = takeInput();
@@ -232,28 +228,35 @@ public class ProjectMenu extends Menu {
 
 	}
 	
-	public void updateActivityInfo(String pName,String aNumber,String description,Date startDate,String deliverable) {
+	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {
 		getMediator().updateActivityInfo(pName,aNumber,description,startDate,deliverable);
 	}
 	
-	public void addActivity(String pName, String aName, String aDescription) {
+	public void addActivity(String pName) {
 		System.out.println("Project addActivity");
+		
+		System.out.print("Activity Number:");
+		String aNumberr = takeInput();
+		int aNumber = Integer.parseInt(aNumberr);
+		
+		System.out.print("Activity Description:");
+		String aDescription = takeInput();
+		
+		System.out.print("Activity Description:");
+		String aStartDate = takeInput();
+		
+		System.out.print("Activity Description:");
+		String aDeliverable = takeInput();
+		
+		getMediator().addActivity(pName,aNumber,aDescription,aStartDate,aDeliverable);
+		addTask(pName,aNumber);
 		//signature not final
 		//Each activity should have at least one task.
-		System.out.print("Task Name:");
-		String tName = takeInput();
 		
-		System.out.print("Task Description:");
-		String tDescription = takeInput();
 		
-		System.out.print("Task start date:");
-		String tStartDate = takeInput();
-		
-		System.out.print("Task hour:");
-		String tHours = takeInput();
 		
 		//Mediator activity creation ???
-		addTask(pName, aName, tName, tDescription, tStartDate, tHours);
+		//addTask(pName, aName, tName, tDescription, tStartDate, tHours);
 		//pName, aName add
 		
 	}
@@ -312,7 +315,21 @@ public class ProjectMenu extends Menu {
 		}
 	}
 	
-	public void addTask(String pName, String aName, String tName, String tDescription, String tStartDate, String tHours) {
+	public void addTask(String pName, int aNumber) {
+		System.out.print("Task Number:");
+		String tNumber = takeInput();
+		
+		System.out.print("Task Description:");
+		String tDescription = takeInput();
+		
+		System.out.print("Task start date:");
+		String tStartDate = takeInput();
+		
+		System.out.print("Task hour:");
+		String tHourss = takeInput();
+		int tHours = Integer.parseInt(tHourss);
+		
+		getMediator().addTask(pName,aNumber,tNumber,tDescription,tStartDate,tHours);
 		//signature not final
 		//Mediator Task creation for latest project latest activity ???
 		System.out.println("Project addTask");
