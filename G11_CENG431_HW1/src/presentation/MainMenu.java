@@ -49,62 +49,67 @@ public class MainMenu extends Menu {
 	}
 		
 	public void start() {
-		startScreen();
-		System.out.println("1-Manage\n2-Display\n3-Calculate\n4-Find Resources(#ofRes)\nq-to quit");
 		
-		String input = takeInput();
-		
-		if(input.equals("1")) {
-			System.out.println("\t<<<Manage Menu>>>");
-			System.out.println("1-Project\n2-Resource\nq:to quit");
+		while(true) {
+			startScreen();
+			System.out.println("1-Manage\n2-Display\n3-Calculate\n4-Find Resources(#ofRes)\nq-to quit");
 			
-			input = takeInput();
+			String input = takeInput();
 			
 			if(input.equals("1")) {
-				project.startManage();
+				System.out.println("\t<<<Manage Menu>>>");
+				System.out.println("1-Project\n2-Resource\nq:to quit");
+				
+				input = takeInput();
+				
+				if(input.equals("1")) {
+					project.startManage();
+				}
+				else if(input.equals("2")) {
+					resource.startManage();
+				}
+				else if(input.toLowerCase().equals("q")) {
+					System.out.println("Quit selected");
+				}
+				else {
+					System.out.println("Invalid option selected");
+				}
 			}
 			else if(input.equals("2")) {
-				resource.startManage();
+				
+				while(true) {
+					System.out.println("\t<<<Display Menu>>>");
+					System.out.println("1-Project\n2-Resource\nq:to quit");
+					
+					input = takeInput();
+					
+					if(input.equals("1")) {
+						project.startDisplay();
+					}
+					else if(input.equals("2")) {
+						resource.startDisplay();
+					}
+					else if(input.toLowerCase().equals("q")) {
+						break;
+					}
+					else {
+						System.out.println("Invalid option selected");
+					}
+				}
+			}
+			else if(input.equals("3")) {
+				project.startCalculate();
+			}
+			else if(input.equals("4")) {
+				resource.startFindResource();
 			}
 			else if(input.toLowerCase().equals("q")) {
-				System.out.println("Quit selected");
+				break;
 			}
 			else {
-				System.out.println("Invalid option selected");
+				System.out.println("Invalid option");
 			}
 		}
-		else if(input.equals("2")) {
-			System.out.println("\t<<<Display Menu>>>");
-			System.out.println("1-Project\n2-Resource\nq:to quit");
-			
-			input = takeInput();
-			
-			if(input.equals("1")) {
-				project.startDisplay();
-			}
-			else if(input.equals("2")) {
-				resource.startDisplay();
-			}
-			else if(input.toLowerCase().equals("q")) {
-				System.out.println("Quit selected");
-			}
-			else {
-				System.out.println("Invalid option selected");
-			}
-		}
-		else if(input.equals("3")) {
-			project.startCalculate();
-		}
-		else if(input.equals("4")) {
-			resource.startFindResource();
-		}
-		else if(input.toLowerCase().equals("q")) {
-			System.out.println("Quit slected");
-		}
-		else {
-			System.out.println("Invalid option");
-		}
-		
 		getScanner().close();
 	}
 	

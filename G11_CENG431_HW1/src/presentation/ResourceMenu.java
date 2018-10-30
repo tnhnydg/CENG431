@@ -39,10 +39,11 @@ public class ResourceMenu extends Menu {
 	}
 	
 	public void startDisplay() {
-		System.out.print("Resource Name:");
-		String rName = takeInput();
+		System.out.print("Resource ID:");
+		String rId = takeInput();
 		
-		//Mediator display call???
+		System.out.println(getMediator().showResource(Integer.parseInt(rId)));
+		
 	}
 	
 	public void startFindResource() {
@@ -123,9 +124,8 @@ public class ResourceMenu extends Menu {
 		System.out.print("Resource Description:");
 		String rDescription = takeInput();
 		
-		//mediator update
-		//find rId with Mediator ???
-		//update Resource with Mediator ???
+		getMediator().updateResource(rName, rDescription, Integer.parseInt(rId));
+		
 	}
 	
 	public void addEmployee() {
