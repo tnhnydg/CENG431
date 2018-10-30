@@ -7,11 +7,19 @@ public class Activity {
 
 	private int number;
 	private String description;
-	private Date startDate;
+	private String startDate;
 	private String deliverable;
 	private ArrayList<Task> taskList;
 	private ProjectPortfolioManager mediator;
 	
+	public Activity(int aNumber, String aDescription, String aStartDate, String aDeliverable) {
+		
+	}
+	
+	public void addTask(Activity activity,String tDescription,String tStartDate,int tHours) {
+		Task task = new Task(tDescription,tStartDate,tHours);
+		activity.getTaskList().add(task);
+	}
 	
 	public ArrayList<Task> getTaskList() {
 		return taskList;
@@ -31,10 +39,10 @@ public class Activity {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 	public String getDescription() {
