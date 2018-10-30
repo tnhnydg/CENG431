@@ -139,5 +139,29 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return false;
 	}
 	
+	public boolean updateResource(String rName, String rDescription, int rId) {
+		for(int i = 0; i < getResourceList().size(); i++) {
+			if(rId == getResourceList().get(i).getId()) {
+				Person tmp = ((Person)getResourceList().get(i));
+				tmp.setName(rName);
+				tmp.setDescription(rDescription);
+				
+				System.out.println(getResourceList());
+				return true;
+			}
+		}
+		
+		
+		return false;
+	}
 
+	public String showResource(int rId) {
+		for(int i = 0; i < getResourceList().size(); i++) {
+			if(rId == getResourceList().get(i).getId()) {
+				return getResourceList().get(i).toString();	
+			}
+		}
+	
+		return null;
+	}
 }

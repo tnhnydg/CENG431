@@ -14,4 +14,6 @@ public interface IProjectPortfolioManager {
 	public boolean addConsultantResource(String cName, String cDescription, int rId);
 	public boolean addConsultantResource(String cName, String cDescription);
 	public boolean removeResource(int rId);
+	public boolean updateResource(String rName, String rDescription, int rId);
+	public String showResource(int rId);
 }
