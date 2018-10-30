@@ -14,24 +14,27 @@ public class ResourceMenu extends Menu {
 	}
 	
 	public void startManage() {
-		System.out.println("\t<<<Resource Manage Menu>>>");
-		System.out.println("1-Add\n2-Remove\n3-Update\nq:to quit");
-		String input = takeInput();
-		
-		if(input.equals("1")) {
-			addResource();
-		}
-		else if(input.equals("2")) {
-			removeResource();
-		}
-		else if(input.equals("3")) {
-			updateResource();
-		}
-		else if(input.toLowerCase().equals("q")) {
-			System.out.println("Quit is selected");
-		}
-		else {
-			System.out.println("Invalid");
+		while(true) {
+			System.out.println("\t<<<Resource Manage Menu>>>");
+			System.out.println("1-Add\n2-Remove\n3-Update\nq:to quit");
+			String input = takeInput();
+			
+			if(input.equals("1")) {
+				addResource();
+			}
+			else if(input.equals("2")) {
+				removeResource();
+			}
+			else if(input.equals("3")) {
+				updateResource();
+			}
+			else if(input.toLowerCase().equals("q")) {
+				break;
+			}
+			else {
+				System.out.println("Invalid");
+			}
+			
 		}
 	}
 	
@@ -104,6 +107,7 @@ public class ResourceMenu extends Menu {
 		String rId = takeInput();
 		
 		//Mediator code
+		getMediator().removeResource(Integer.parseInt(rId));
 	}
 	
 	public void updateResource() {

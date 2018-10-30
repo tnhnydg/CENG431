@@ -82,7 +82,8 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		employee.setMediator(this);
 		
 		getResourceList().add(employee);
-		//System.out.println(getResourceList());
+		
+		System.out.println(getResourceList());
 		
 		return true;
 	}
@@ -95,7 +96,7 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		
 		getResourceList().add(employee);
 		
-		//System.out.println(getResourceList());
+		System.out.println(getResourceList());
 		
 		return true;
 	}
@@ -124,6 +125,18 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		System.out.println(getResourceList());
 		
 		return true;
+	}
+	
+	public boolean removeResource(int rId) {
+		for(int i = 0; i < getResourceList().size(); i++) {
+			if(rId == getResourceList().get(i).getId()) {
+				getResourceList().remove(i);
+				System.out.println(getResourceList());
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 

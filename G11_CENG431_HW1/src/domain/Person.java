@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Person implements IResource {
@@ -9,8 +10,11 @@ public abstract class Person implements IResource {
 	private String description;
 	private List<Task> tasks;
 	
-	public Person() {
+	public Person(String eName, String eDescription) {
+		setTaskList(new ArrayList<Task>());
 		
+		setName(eName);
+		setDescription(eDescription);
 	}
 	
 	public String getName() {
@@ -61,5 +65,10 @@ public abstract class Person implements IResource {
 		return this.tasks;
 	}
 	
+	@Override
+	public String toString() {
+
+		return String.valueOf(getId()) + "-" + getName() + "-" + getDescription();		
+	}
 
 }
