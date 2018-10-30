@@ -4,8 +4,13 @@ import java.util.List;
 
 public class Consultant extends Person {
 	
-	public Consultant() {
+	public Consultant(String cName, String cDescription, int rId) {
 		
+	}
+	
+	public Consultant(String cName, String cDescription) {
+		
+		//generateId()
 	}
 	
 	@Override

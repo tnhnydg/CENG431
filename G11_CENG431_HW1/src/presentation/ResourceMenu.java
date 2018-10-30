@@ -175,8 +175,7 @@ public class ResourceMenu extends Menu {
 		
 		if(input.equals("1")) {
 			System.out.println("Auto");
-			//generate Resource ID ???
-			//call Mediator ???
+			getMediator().addConsultantResource(cName, cDescription);
 		}
 		else if(input.equals("2")) {
 			System.out.println("Custom");
@@ -184,7 +183,7 @@ public class ResourceMenu extends Menu {
 			System.out.print("Resource ID:");
 			String rId = takeInput();
 			
-			//call Mediator ???
+			getMediator().addConsultantResource(cName, cDescription, Integer.parseInt(rId));
 		}
 		else if(input.toLowerCase().equals("q")) {
 			System.out.println("Quit is selected");

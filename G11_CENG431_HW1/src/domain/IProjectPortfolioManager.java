@@ -8,4 +8,6 @@ public interface IProjectPortfolioManager {
 	public void updateActivityInfo(String pName,String aNumber,String description,Date startDate,String deliverable);
 	public boolean addEmployeeResource(String eName, String eDescription);
 	public boolean addEmployeeResource(String eName, String eDescription, int rId);
+	public boolean addConsultantResource(String cName, String cDescription, int rId);
+	public boolean addConsultantResource(String cName, String cDescription);
 }

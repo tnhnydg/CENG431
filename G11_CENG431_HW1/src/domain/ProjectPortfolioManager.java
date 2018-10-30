@@ -38,23 +38,53 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	
 	public boolean addEmployeeResource(String eName, String eDescription, int rId) {
 		System.out.println("addEmployeeResource");
-		IResource employee = new Employee(eName, eDescription, rId);
 		
-		//add to meadiator resource list
+		IResource employee = new Employee(eName, eDescription, rId);
+		employee.setMediator(this);
+		
 		getResourceList().add(employee);
+		//System.out.println(getResourceList());
 		
 		return true;
 	}
 	
 	public boolean addEmployeeResource(String eName, String eDescription) {
 		System.out.println("addEmployeeResource without id");
-		IResource employee = new Employee(eName, eDescription);
 		
-		//add to mediator resource list
+		IResource employee = new Employee(eName, eDescription);
+		employee.setMediator(this);
+		
 		getResourceList().add(employee);
 		
-		return false;
+		//System.out.println(getResourceList());
+		
+		return true;
 	}
 	
+	public boolean addConsultantResource(String cName, String cDescription, int rId) {
+		System.out.println("addConsultantResource with id");
+		
+		IResource consultant = new Consultant(cName, cDescription, rId);
+		consultant.setMediator(this);
+		
+		getResourceList().add(consultant);
+		
+		System.out.println(getResourceList());
+		
+		return true;
+	}
+	
+	public boolean addConsultantResource(String cName, String cDescription) {
+		System.out.println("addConsultantResource with id");
+		
+		IResource consultant = new Consultant(cName, cDescription);
+		consultant.setMediator(this);
+		
+		getResourceList().add(consultant);
+		
+		System.out.println(getResourceList());
+		
+		return true;
+	}
 	
 }
