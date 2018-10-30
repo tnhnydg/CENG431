@@ -1,5 +1,6 @@
 package presentation;
 
+import java.util.Date;
 import java.util.Scanner;
 
 import domain.IProjectPortfolioManager;
@@ -28,7 +29,7 @@ public class ProjectMenu extends Menu {
 			String pDescription = takeInput();
 			
 			System.out.print("Project Date(DD:MM:YYYY):");
-			String pDate = takeInput();
+			Date pDate = new Date();//takeInput(); handle date
 			
 			addProject(pName, pDescription, pDate);	
 		}
@@ -105,8 +106,9 @@ public class ProjectMenu extends Menu {
 		//Mediator calculate call ???
 	}
 	
-	public void addProject(String pName, String pDescription, String pDate) {
+	public void addProject(String pName, String pDescription, Date pDate) {
 		System.out.println("Project addProject");
+		getMediator().addProject(pName,pDescription,pDate);
 		//signature not final
 		//where we handle the date
 		//addActivity
@@ -193,7 +195,31 @@ public class ProjectMenu extends Menu {
 			}
 		}
 		else if(input.equals("3")) {
-			System.out.println("UpdateActivity");
+			System.out.println("\t<<<Update Activity Menu>>>");
+			System.out.println("1-Update Activity Info\n2-Update Task\nq:to quit");
+			if(input.equals("1")) {
+				System.out.print("Project Name:");
+				String pName = takeInput();
+				
+				System.out.print("Activity Number:");
+				String aNumber = takeInput();
+				
+				System.out.print("Activity Description:");
+				String aDescription = takeInput();
+				
+				System.out.print("Activity Start Date:");
+				Date aStartDate = new Date();//handle date
+				
+				System.out.print("Activity Deliverable:");
+				String aDeliverable = takeInput();
+				
+				
+				updateActivityInfo(pName,aNumber,aDescription,aStartDate,aDeliverable);
+			}
+			else if(input.equals("2")) {
+				//UpdateTask
+			}
+			
 			//updateActivity ???
 			//adding task to activity more than one ???
 		}
@@ -204,6 +230,10 @@ public class ProjectMenu extends Menu {
 			System.out.println("Invalid");
 		}
 
+	}
+	
+	public void updateActivityInfo(String pName,String aNumber,String description,Date startDate,String deliverable) {
+		getMediator().updateActivityInfo(pName,aNumber,description,startDate,deliverable);
 	}
 	
 	public void addActivity(String pName, String aName, String aDescription) {

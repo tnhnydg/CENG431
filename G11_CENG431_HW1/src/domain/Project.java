@@ -2,20 +2,26 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Project {
 
 	private String name;
 	private String description;
 	private Date startDate;
-	private ArrayList<Activity> activityList;
+	private List<Activity> activityList;
 	private ProjectPortfolioManager mediator;
 	
+	public Project(String pName, String description, Date startDate) {
+		setName(pName);
+		setDescription(description);
+		setStartDate(startDate);
+	}
 	
-	public ArrayList<Activity> getActivityList() {
+	public List<Activity> getActivityList() {
 		return activityList;
 	}
-	public void setActivityList(ArrayList<Activity> activityList) {
+	public void setActivityList(List<Activity> activityList) {
 		this.activityList = activityList;
 	}
 	public ProjectPortfolioManager getMediator() {
