@@ -7,9 +7,15 @@ import java.util.List;
 public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	private List<Project> allProjects;
+	private List<IResource> resources;
 	
 	public ProjectPortfolioManager() {
+
 		setAllProjects(new ArrayList<Project>());
+
+		allProjects = new ArrayList<Project>();
+		setResourceList(new ArrayList<IResource>());
+
 	}
 	
 	public void addProject(String pName, String pDescription, String pDate) {
@@ -60,4 +66,33 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	public List<Project> getAllProjects(){
 		return this.allProjects;
 	}
+
+	public void setResourceList(List<IResource> resources) {
+		this.resources = resources;
+	}
+	
+	public List<IResource> getResourceList() {
+		return this.resources;
+	}
+	
+	public boolean addEmployeeResource(String eName, String eDescription, int rId) {
+		System.out.println("addEmployeeResource");
+		IResource employee = new Employee(eName, eDescription, rId);
+		
+		//add to meadiator resource list
+		getResourceList().add(employee);
+		
+		return true;
+	}
+	
+	public boolean addEmployeeResource(String eName, String eDescription) {
+		System.out.println("addEmployeeResource without id");
+		IResource employee = new Employee(eName, eDescription);
+		
+		//add to mediator resource list
+		getResourceList().add(employee);
+		
+		return false;
+	}
+
 }

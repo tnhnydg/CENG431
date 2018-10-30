@@ -1,49 +1,21 @@
 package domain;
 
-import java.util.List;
 
 public class Employee extends Person {
 
-	@Override
-	public void setId(int id) {
-		// TODO Auto-generated method stub
+	public Employee(String eName, String eDescription) {
 		
 	}
-
+	
+	public Employee(String eName, String eDescription, int rId) {
+		
+		//generateId
+	}
+	
 	@Override
-	public int getId() {
-		// TODO Auto-generated method stub
+	public int generateId() {
 		return 0;
 	}
 
-	@Override
-	public void setTaskList(List<Task> taskList) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Task> getTaskList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setDescription(String decription) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setMediator(ProjectPortfolioManager mediator) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }
