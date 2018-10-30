@@ -12,7 +12,6 @@ public class Task {
 	private ProjectPortfolioManager mediator;
 	
 	public Task(String description,String startDate,int hours) {
-		setNumber(1);
 		setDescription(description);
 		setStartDate(startDate);
 		setHours(hours);

@@ -31,10 +31,10 @@ public class Activity {
 			tNumber = activity.getTaskList().get(-1).getNumber();
 		}
 		else {
-			tNumber = 1;
+			tNumber = 0;
 		}
 		
-		activity.setNumber(tNumber);
+		task.setNumber(tNumber+1);
 	}
 	
 	public ArrayList<Task> getTaskList() {
@@ -53,7 +53,7 @@ public class Activity {
 		return number;
 	}
 	public void setNumber(int aNumber) {
-		this.number = aNumber+1;
+		this.number = aNumber;
 	}
 	public String getStartDate() {
 		return startDate;

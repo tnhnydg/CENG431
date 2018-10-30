@@ -30,8 +30,9 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		}
 		project.addActivity(project,aDescription,aStartDate,aDeliverable);
 		
-		int aNumber = project.getActivityList().get(-1).getNumber();
-		
+		int size = project.getActivityList().size();
+		int aNumber = project.getActivityList().get(size - 1).getNumber();
+		//System.out.println(aNumber);
 		return aNumber;
 	}
 	
@@ -45,9 +46,9 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 				//System.out.println(project.getActivityList().get(0).getNumber());
 				
 				for(int j=0;j<project.getActivityList().size();j++) {
-					if(project.getActivityList().get(i).getNumber() == aNumber) {
+					if(project.getActivityList().get(j).getNumber() == aNumber) {
 						//System.out.println("found2");
-						activity = project.getActivityList().get(i);
+						activity = project.getActivityList().get(j);
 					}
 				}
 			}

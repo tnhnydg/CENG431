@@ -23,19 +23,19 @@ public class Project {
 		Activity activity = new Activity(aDescription,aStartDate,aDeliverable);
 		assignNumber(project,activity);
 		project.getActivityList().add(activity);
-		//activity.addTask(activity,tdescription,tstarDate,thours);
 	}
 	
 	public void assignNumber(Project project, Activity activity) {
 		int aNumber;
 		if(project.getActivityList().size() != 0) {
+			System.out.println("Here.");
 			aNumber = project.getActivityList().get(-1).getNumber();
 		}
 		else {
-			aNumber = 1;
+			aNumber = 0;
 		}
 		
-		activity.setNumber(aNumber);
+		activity.setNumber(aNumber+1);
 	}
 	
 	public List<Activity> getActivityList() {

@@ -113,9 +113,12 @@ public class ProjectMenu extends Menu {
 		//signature not final
 		//where we handle the date
 		//addActivity
-		System.out.println(getMediator().getAllProjects().get(0).getName());//projectname
-		System.out.println(getMediator().getAllProjects().get(0).getActivityList().get(0).getNumber());//actnumber
-		System.out.println(getMediator().getAllProjects().get(0).getActivityList().get(0).getTaskList().get(0).getNumber());//tasknum
+		
+		for(int i=0;i<getMediator().getAllProjects().size();i++) {
+			System.out.println(getMediator().getAllProjects().get(i).getName());//projectname
+			System.out.println(getMediator().getAllProjects().get(i).getActivityList().get(0).getNumber());//actnumber
+			System.out.println(getMediator().getAllProjects().get(i).getActivityList().get(0).getTaskList().get(0).getNumber());//tasknum
+		}
 	}
 	
 	public void removeProject(String pName) {
