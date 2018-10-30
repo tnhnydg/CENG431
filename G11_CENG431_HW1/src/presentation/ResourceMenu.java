@@ -44,12 +44,49 @@ public class ResourceMenu extends Menu {
 	}
 	
 	public void startDisplay() {
-		System.out.println("Resource startDisplay");
-		System.out.println(takeInput());
+		System.out.print("Resource Name:");
+		String rName = takeInput();
+		
+		//Mediator display call???
+
 	}
 	
 	public void startFindResource() {
-		System.out.println("Resource startFindResource");
+		System.out.println("\t<<<Find Resource Menu>>>");
+		System.out.println("1-Project\n2-Activity\n3-Task\nq:to quit");
+		String input = takeInput();
+		
+		if(input.equals("1")) {
+			//find project
+			findProject();
+		}
+		else if(input.equals("2")) {
+			//find activity
+			
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
+			findActivity(pName);
+		}
+		else if(input.equals("3")) {
+			//find task
+			
+			System.out.print("Project Name:");
+			String pName = takeInput();
+			
+			System.out.print("Activity Name:");
+			String aName = takeInput();
+			
+			findTask(pName, aName);
+		}
+		else if(input.toLowerCase().equals("q")) {
+			System.out.println("Quit is selected");
+		}
+		else {
+			//invalid
+			System.out.println("Invalid");
+		}
+		
 	}
 	
 	public void addResource() {
@@ -165,5 +202,31 @@ public class ResourceMenu extends Menu {
 		else {
 			System.out.println("Invalid");
 		}
+	}
+	
+	public void findProject() {
+		//signature not final
+		System.out.print("Project Name:");
+		String pName = takeInput();
+		
+		//Mediator code
+	}
+	
+	public void findActivity(String pName) {
+		//signature not final
+		
+		System.out.print("Activity Name:");
+		String aName = takeInput();
+		
+		//Mediator code
+	}
+	
+	public void findTask(String pName, String aName) {
+		//signature not final
+		
+		System.out.print("Task Name:");
+		String tName = takeInput();
+		
+		//Mediator code
 	}
 }

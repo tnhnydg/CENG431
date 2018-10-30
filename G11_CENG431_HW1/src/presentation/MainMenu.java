@@ -96,7 +96,6 @@ public class MainMenu extends Menu {
 			project.startCalculate();
 		}
 		else if(input.equals("4")) {
-			System.out.println("\t<<<Find Resource Menu>>>");
 			resource.startFindResource();
 		}
 		else if(input.toLowerCase().equals("q")) {
