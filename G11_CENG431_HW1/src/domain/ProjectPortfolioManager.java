@@ -20,21 +20,22 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	
 	public void addProject(String pName, String pDescription, String pDate) {
 		Project newProject = new Project(pName,pDescription,pDate);
-		
 		addToList(newProject);
 	}
 	
-	public void addActivity(String pName,int aNumber,String aDescription,String aStartDate,String aDeliverable) {
+	public int addActivity(String pName,String aDescription,String aStartDate,String aDeliverable) {
 		Project project = null;
 		for(int i=0;i<getAllProjects().size();i++) {
 			if(getAllProjects().get(i).getName() == pName) {project = getAllProjects().get(i);}
 		}
-		project.addActivity(project,aNumber,aDescription,aStartDate,aDeliverable);
+		project.addActivity(project,aDescription,aStartDate,aDeliverable);
 		
-		//return project;
+		int aNumber = project.getActivityList().get(-1).getNumber();
+		
+		return aNumber;
 	}
 	
-	public void addTask(String pName,int aNumber,String tName,String tDescription,String tStartDate,int tHours) {
+	public void addTask(String pName,int aNumber,String tDescription,String tStartDate,int tHours) {
 		Project project = null;
 		Activity activity = null;
 		for(int i=0;i<getAllProjects().size();i++) {

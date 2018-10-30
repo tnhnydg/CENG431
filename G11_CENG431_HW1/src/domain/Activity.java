@@ -12,8 +12,7 @@ public class Activity {
 	private ArrayList<Task> taskList;
 	private ProjectPortfolioManager mediator;
 	
-	public Activity(int aNumber, String aDescription, String aStartDate, String aDeliverable) {
-		setNumber(1);
+	public Activity(String aDescription, String aStartDate, String aDeliverable) {
 		setDescription(aDescription);
 		setStartDate(aStartDate);
 		setDeliverable(aDeliverable);
@@ -22,7 +21,20 @@ public class Activity {
 	
 	public void addTask(Activity activity,String tDescription,String tStartDate,int tHours) {
 		Task task = new Task(tDescription,tStartDate,tHours);
+		assignNumber(activity,task);
 		activity.getTaskList().add(task);
+	}
+	
+	public void assignNumber(Activity activity,Task task) {
+		int tNumber;
+		if(activity.getTaskList().size() != 0) {
+			tNumber = activity.getTaskList().get(-1).getNumber();
+		}
+		else {
+			tNumber = 1;
+		}
+		
+		activity.setNumber(tNumber);
 	}
 	
 	public ArrayList<Task> getTaskList() {
@@ -40,8 +52,8 @@ public class Activity {
 	public int getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setNumber(int aNumber) {
+		this.number = aNumber+1;
 	}
 	public String getStartDate() {
 		return startDate;

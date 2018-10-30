@@ -19,10 +19,23 @@ public class Project {
 		setActivityList(new ArrayList<Activity>());
 	}
 	
-	public void addActivity(Project project,int aNumber,String aDescription,String aStartDate,String aDeliverable) {
-		Activity activity = new Activity(aNumber,aDescription,aStartDate,aDeliverable);
+	public void addActivity(Project project,String aDescription,String aStartDate,String aDeliverable) {
+		Activity activity = new Activity(aDescription,aStartDate,aDeliverable);
+		assignNumber(project,activity);
 		project.getActivityList().add(activity);
 		//activity.addTask(activity,tdescription,tstarDate,thours);
+	}
+	
+	public void assignNumber(Project project, Activity activity) {
+		int aNumber;
+		if(project.getActivityList().size() != 0) {
+			aNumber = project.getActivityList().get(-1).getNumber();
+		}
+		else {
+			aNumber = 1;
+		}
+		
+		activity.setNumber(aNumber);
 	}
 	
 	public List<Activity> getActivityList() {
