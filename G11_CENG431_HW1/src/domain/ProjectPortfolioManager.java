@@ -40,15 +40,18 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		for(int i=0;i<getAllProjects().size();i++) {
 			if(getAllProjects().get(i).getName() == pName) {
 				project = getAllProjects().get(i);
+				//System.out.println(project.getDescription());
+				//System.out.println(project.getActivityList().get(0).getNumber());
 				
 				for(int j=0;j<project.getActivityList().size();j++) {
 					if(project.getActivityList().get(i).getNumber() == aNumber) {
+						//System.out.println("found2");
 						activity = project.getActivityList().get(i);
 					}
 				}
 			}
 		}
-		
+		//System.out.println(activity.getNumber());
 		activity.addTask(activity, tDescription, tStartDate, tHours);
 		
 	}

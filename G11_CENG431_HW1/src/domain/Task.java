@@ -11,14 +11,19 @@ public class Task {
 	private int resourceId;
 	private ProjectPortfolioManager mediator;
 	
-	public Task(String description,String startDate,int hours) {}
+	public Task(String description,String startDate,int hours) {
+		setNumber(1);
+		setDescription(description);
+		setStartDate(startDate);
+		setHours(hours);
+	}
 	
 	
-	public String getDesription() {
+	public String getDescription() {
 		return description;
 	}
-	public void setDesription(String desription) {
-		this.description = desription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public int getHours() {
 		return hours;

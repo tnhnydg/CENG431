@@ -16,6 +16,7 @@ public class Project {
 		setName(pName);
 		setDescription(description);
 		setStartDate(startDate);
+		setActivityList(new ArrayList<Activity>());
 	}
 	
 	public void addActivity(Project project,int aNumber,String aDescription,String aStartDate,String aDeliverable) {

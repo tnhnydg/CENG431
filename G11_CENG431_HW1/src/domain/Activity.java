@@ -13,7 +13,11 @@ public class Activity {
 	private ProjectPortfolioManager mediator;
 	
 	public Activity(int aNumber, String aDescription, String aStartDate, String aDeliverable) {
-		
+		setNumber(1);
+		setDescription(aDescription);
+		setStartDate(aStartDate);
+		setDeliverable(aDeliverable);
+		setTaskList(new ArrayList<Task>());
 	}
 	
 	public void addTask(Activity activity,String tDescription,String tStartDate,int tHours) {

@@ -113,6 +113,7 @@ public class ProjectMenu extends Menu {
 		//signature not final
 		//where we handle the date
 		//addActivity
+		//System.out.println(getMediator().getAllProjects());
 	}
 	
 	public void removeProject(String pName) {
@@ -242,10 +243,10 @@ public class ProjectMenu extends Menu {
 		System.out.print("Activity Description:");
 		String aDescription = takeInput();
 		
-		System.out.print("Activity Description:");
+		System.out.print("Activity Start Date:");
 		String aStartDate = takeInput();
 		
-		System.out.print("Activity Description:");
+		System.out.print("Activity Deliverable:");
 		String aDeliverable = takeInput();
 		
 		getMediator().addActivity(pName,aNumber,aDescription,aStartDate,aDeliverable);
