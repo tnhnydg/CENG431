@@ -19,18 +19,27 @@ import domain.Project;
 import domain.IResource;
 
 public class Data {
-
+	private Gson gson;
 	
 	public Data() {
-			
+			setGson(new Gson());
 	}
 			
 	public String saveProjects(List<Project> projectList) {
-		Gson gson = new Gson();
-		return gson.toJson(projectList);	
+		return getGson().toJson(projectList);	
+	}
+	
+	public List<Project> loadProjects(BufferedReader bfrd) {
+		Type listType = new TypeToken<ArrayList<Project>>(){}.getType();
+		return getGson().fromJson(bfrd, listType);
 	}
 	
 	public String saveResources(List<IResource> resourceList) {
+		
+		return null;
+	}
+	
+	public List<IResource> loadResources(BufferedReader bfrd) {
 		
 		return null;
 	}
@@ -46,12 +55,7 @@ public class Data {
 			System.out.println(e.getMessage());
 		} 
 	}
-	public List<Project> loadProjects(BufferedReader bfrd) {
-		Gson gson = new Gson();
-		Type listType = new TypeToken<ArrayList<Project>>(){}.getType();
-		return gson.fromJson(bfrd, listType);
-	}
-	
+
 	public BufferedReader readFile(String fileName) {
 		try {
 			return new BufferedReader(new FileReader("JSONExample.json"));
@@ -61,5 +65,12 @@ public class Data {
 		}
 		
 		return null;
+	}
+	public void setGson(Gson gson) {
+		this.gson = gson;
+	}
+	
+	public Gson getGson() {
+		return this.gson;
 	}
 }
