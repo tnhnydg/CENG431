@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import dataAccess.DataHandler;
 import presentation.MainMenu;
 
 public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	private List<Project> allProjects;
-	private List<IResource> resources;
+	private List<IResource> allPerson;
 	
 	public ProjectPortfolioManager() {
 
@@ -27,20 +26,14 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	public int addActivity(String pName,String aDescription,String aStartDate,String aDeliverable) {
 		Project project = null;
 		for(int i=0;i<getAllProjects().size();i++) {
-			//System.out.println("1: " + getAllProjects().get(i).getName());
-			//System.out.println("2: " + pName);
 			if(getAllProjects().get(i).getName().equals(pName)) {
-				//System.out.println("Mediator addactivity");
 				project = getAllProjects().get(i);
 			}
 		}
-		//System.out.println("Projects :" + getAllProjects().toString());
-		//System.out.println(project);
 		project.addActivity(project,aDescription,aStartDate,aDeliverable);
 		
 		int size = project.getActivityList().size();
 		int aNumber = project.getActivityList().get(size - 1).getNumber();
-		//System.out.println(aNumber);
 		return aNumber;
 	}
 	
@@ -50,32 +43,128 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		for(int i=0;i<getAllProjects().size();i++) {
 			if((getAllProjects().get(i).getName()).equals(pName)) {
 				project = getAllProjects().get(i);
-				//System.out.println(project.getDescription());
-				//System.out.println(project.getActivityList().get(0).getNumber());
 				
 				for(int j=0;j<project.getActivityList().size();j++) {
-					//System.out.println("A:" + project.getActivityList().get(j).getNumber());
 					if((project.getActivityList().get(j).getNumber()) == aNumber ) {
-						//System.out.println("found2");
 						activity = project.getActivityList().get(j);
 					}
 				}
 			}
 		}
-		//System.out.println("Activity : " + activity);
 		activity.addTask(activity, tDescription, tStartDate, tHours);
 		
 	}
 	
-	public void removeProject(String Pname) {
+	public void removeProject(String pName) {
 		
+		Project project = null;
+		
+		for(int i=0;i<getAllProjects().size();i++) {
+			if((getAllProjects().get(i).getName()).equals(pName)) {
+				project = getAllProjects().get(i);
+			}
+		}
+		
+		List<Task> taskList = fetchTasks(project);
+		
+		for(int i=0;i<taskList.size();i++) {
+			IResource person = findPerson(taskList.get(i).getResourceId());
+			for(int j=0;j<person.getTaskList().size();j++) {
+				if(person.getTaskList().get(j).equals(taskList.get(i))) {
+					person.getTaskList().remove(j);
+				}
+			}
+			
+		}
+		
+		for(int i=0;i<getAllProjects().size();i++) {
+			if(getAllProjects().get(i).equals(project)) {
+				getAllProjects().remove(i);
+			}
+		}
+		
+	}
+	
+	public void removeActivity(String pName,int aNumber) {
+		
+		Project project = null;
+		
+		project = findProject(pName);
+		
+		List<Task> taskList = fetchTasks(project,aNumber);
+		
+		for(int i=0;i<taskList.size();i++) {
+			IResource person = findPerson(taskList.get(i).getResourceId());
+			for(int j=0;j<person.getTaskList().size();j++) {
+				if(person.getTaskList().get(j).equals(taskList.get(i))) {
+					person.getTaskList().remove(j);
+				}
+			}
+			
+		}
+		
+		for(int i=0;i<getAllProjects().size();i++) {
+			if(getAllProjects().get(i).equals(project)) {
+				for(int j=0;j<project.getActivityList().size();j++) {
+					if(project.getActivityList().get(j).getNumber() == aNumber) {
+						project.getActivityList().remove(j);
+					}
+				}
+			}
+		}
+		
+	}
+	
+	public void removeTask(String pName, int aNumber, int tNumber) {
 		
 		
 	}
 	
-	/*public void unAssignResource() {
+	public IResource findPerson(int pId) {
 		
-	}*/
+		IResource person = null;
+		
+		for(int i=0;i<getResourceList().size();i++) {
+			if(getResourceList().get(i).getId() == pId) {
+				person = getResourceList().get(i);
+			}
+		}
+		
+		return person;
+	}	
+	
+	public List<Task> fetchTasks(Project project){//tasklist that has tasks to be removed
+		
+		List<Task> taskList = new ArrayList<Task>();
+		
+		for(int i=0;i<project.getActivityList().size();i++) {
+			for(int j=0;j<project.getActivityList().get(i).getTaskList().size();j++) {
+				taskList.add(project.getActivityList().get(i).getTaskList().get(j));
+			}
+		}
+		
+		return taskList;
+	}
+	
+	public List<Task> fetchTasks(Project project,int aNumber){
+		
+		List<Task> taskList = new ArrayList<Task>();
+		
+		for(int i=0;i<project.getActivityList().size();i++) {
+			if(project.getActivityList().get(i).getNumber() == aNumber) {
+				for(int j=0;j<project.getActivityList().get(i).getTaskList().size();j++) {
+					taskList.add(project.getActivityList().get(i).getTaskList().get(j));
+				}
+			}
+		}
+		
+		return taskList;
+	}
+	
+	public void assignResource(String pName,int aNumber,int tNumber,int rId) {
+		Project project = findProject(pName);
+		
+	}
 	
 	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {}
 		
@@ -91,44 +180,62 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return this.allProjects;
 	}
 
-	public void setResourceList(List<IResource> resources) {
-		this.resources = resources;
+	public void setResourceList(List<IResource> person) {
+		this.allPerson = person;
 	}
 	
 	public List<IResource> getResourceList() {
-		return this.resources;
+		return this.allPerson;
 	}
 	
-	public boolean addEmployeeResource(String eName, String eDescription, int rId) {		
+	public boolean addEmployeeResource(String eName, String eDescription, int rId) {
+		System.out.println("addEmployeeResource");
+		
 		IResource employee = new Employee(eName, eDescription, rId);
 		employee.setMediator(this);
+		
 		getResourceList().add(employee);
-				
+		
+		System.out.println(getResourceList());
+		
 		return true;
 	}
 	
 	public boolean addEmployeeResource(String eName, String eDescription) {
+		System.out.println("addEmployeeResource without id");
+		
 		IResource employee = new Employee(eName, eDescription);
-		System.out.println("Resource ID:" + employee.getId());
 		employee.setMediator(this);
+		
 		getResourceList().add(employee);
+		
+		System.out.println(getResourceList());
 		
 		return true;
 	}
 
 	public boolean addConsultantResource(String cName, String cDescription, int rId) {
+		System.out.println("addConsultantResource with id");
+		
 		IResource consultant = new Consultant(cName, cDescription, rId);
 		consultant.setMediator(this);
+		
 		getResourceList().add(consultant);
-	
+		
+		System.out.println(getResourceList());
+		
 		return true;
 	}
 	
-	public boolean addConsultantResource(String cName, String cDescription) {	
+	public boolean addConsultantResource(String cName, String cDescription) {
+		System.out.println("addConsultantResource with id");
+		
 		IResource consultant = new Consultant(cName, cDescription);
-		System.out.println("Resource ID:" + consultant.getId());
 		consultant.setMediator(this);
+		
 		getResourceList().add(consultant);
+		
+		System.out.println(getResourceList());
 		
 		return true;
 	}
@@ -155,7 +262,9 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 				System.out.println(getResourceList());
 				return true;
 			}
-		}	
+		}
+		
+		
 		return false;
 	}
 
@@ -165,22 +274,8 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 				return getResourceList().get(i).toString();	
 			}
 		}
-		return "Resource Not Found";
-	}
 	
-	public void start() {
-		MainMenu menu = new MainMenu(this);
-		menu.start();	
-	}
-	
-	public void saveState() {
-		//DataHandler data = new DataHandler();
-		//data.mergeJson(getAllProjects(), getResourceList());
-		
-	}
-	
-	public void loadState() {
-		
+		return null;
 	}
 	
 	public int calculateProject(String pName) {
@@ -217,5 +312,24 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void start() {
+		MainMenu menu = new MainMenu(this);
+		menu.start();
+		
+	}
+
+	@Override
+	public void saveState() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadState() {
+		// TODO Auto-generated method stub
+		
 	}
 }

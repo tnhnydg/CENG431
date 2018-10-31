@@ -20,6 +20,10 @@ public interface IProjectPortfolioManager {
 	public boolean updateResource(String rName, String rDescription, int rId);
 	public String showResource(int rId);
 	public void removeProject(String pName);
+	public void setResourceList(List<IResource> allProjects);
+	public List<IResource> getResourceList();
+	public void removeActivity(String pName,int aNumber);
+	public void removeTask(String pName, int aNumber, int tNumber);
 	public void start();
 	public void saveState();
 	public void loadState();
@@ -30,4 +34,5 @@ public interface IProjectPortfolioManager {
 	public int countTaskResource(String pName, int aId, int tId);
 	public int countActivityResource(String pName, int aId);
 	public int countProjectResource(String pName);
+
 }

@@ -1,12 +1,11 @@
 package dataAccess;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import java.lang.reflect.Type;
@@ -19,7 +18,7 @@ import domain.Project;
 import domain.Consultant;
 import domain.Employee;
 import domain.IResource;
-
+import domain.Person;
 
 public class DataHandler {
 	private Gson gson;
@@ -60,6 +59,7 @@ public class DataHandler {
 				}
 			}
 		}
+		System.out.println(resourceList);
 		return resourceList;
 	}
 	
@@ -82,6 +82,7 @@ public class DataHandler {
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
+		
 		return bfrd;
 	}
 	public void setGson(Gson gson) {
@@ -98,6 +99,8 @@ public class DataHandler {
 		jsonObject.add("projectList", saveProjects(projectList));
 		jsonObject.add("resourceList", saveResources(resourceList));
 	
+		System.out.println(jsonObject);
+	
 		return jsonObject.toString();
 	}
 	
@@ -108,35 +111,10 @@ public class DataHandler {
 		if(jsonTree.isJsonObject()) {
 			JsonObject jsonObject = jsonTree.getAsJsonObject();
 			
-			loadProjects(jsonObject.get("projectList"));	
+		System.out.println(loadProjects(jsonObject.get("projectList")));
 			loadResources(jsonObject.get("resourceList"));
 			
 		}
 		
-	}
-	
-	public String findLatestFile() {
-		 /*
-		  * Code taken from and modified for our purposes
-		  * https://stackoverflow.com/questions/285955/java-get-the-newest-file-in-a-directory
-		  * 
-		  */
-		
-		 File fl = new File("dataHistory//");
-		    File[] files = fl.listFiles(new FileFilter() {          
-		        public boolean accept(File file) {
-		            return file.isFile();
-		        }
-		    });
-		    long lastMod = Long.MIN_VALUE;
-		    File choice = null;
-		    for (File file : files) {
-		        if (file.lastModified() > lastMod) {
-		            choice = file;
-		            lastMod = file.lastModified();
-		        }
-		    }
-		    
-		    return choice.getName();
 	}
 }
