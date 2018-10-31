@@ -31,5 +31,9 @@ public interface IProjectPortfolioManager {
 	public int calculateActivity(String pName, int aId);
 	public int calculateTask(String pName, int aId, int tId);
 	public Project findProject(String pName);
+	public int countActivityResource(String pName, int aId);
+	public int countTaskResource(String pName, int aId, int tId);
+	public int countProjectResource(String pName);
+	
 
 }
