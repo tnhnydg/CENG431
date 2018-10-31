@@ -28,8 +28,7 @@ public class Project {
 	public void assignNumber(Project project, Activity activity) {
 		int aNumber;
 		if(project.getActivityList().size() != 0) {
-			System.out.println("Here.");
-			aNumber = project.getActivityList().get(-1).getNumber();
+			aNumber = project.getActivityList().get(project.getActivityList().size() - 1).getNumber();
 		}
 		else {
 			aNumber = 0;

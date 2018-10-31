@@ -12,8 +12,6 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	public ProjectPortfolioManager() {
 
 		setAllProjects(new ArrayList<Project>());
-
-		allProjects = new ArrayList<Project>();
 		setResourceList(new ArrayList<IResource>());
 
 	}
@@ -26,8 +24,15 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	public int addActivity(String pName,String aDescription,String aStartDate,String aDeliverable) {
 		Project project = null;
 		for(int i=0;i<getAllProjects().size();i++) {
-			if(getAllProjects().get(i).getName() == pName) {project = getAllProjects().get(i);}
+			System.out.println("1: " + getAllProjects().get(i).getName());
+			System.out.println("2: " + pName);
+			if(getAllProjects().get(i).getName().equals(pName)) {
+				System.out.println("Mediator addactivity");
+				project = getAllProjects().get(i);
+			}
 		}
+		System.out.println("Projects :" + getAllProjects().toString());
+		System.out.println(project);
 		project.addActivity(project,aDescription,aStartDate,aDeliverable);
 		
 		int size = project.getActivityList().size();
@@ -40,20 +45,21 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		Project project = null;
 		Activity activity = null;
 		for(int i=0;i<getAllProjects().size();i++) {
-			if(getAllProjects().get(i).getName() == pName) {
+			if((getAllProjects().get(i).getName()).equals(pName)) {
 				project = getAllProjects().get(i);
 				//System.out.println(project.getDescription());
 				//System.out.println(project.getActivityList().get(0).getNumber());
 				
 				for(int j=0;j<project.getActivityList().size();j++) {
-					if(project.getActivityList().get(j).getNumber() == aNumber) {
+					//System.out.println("A:" + project.getActivityList().get(j).getNumber());
+					if((project.getActivityList().get(j).getNumber()) == aNumber ) {
 						//System.out.println("found2");
 						activity = project.getActivityList().get(j);
 					}
 				}
 			}
 		}
-		//System.out.println(activity.getNumber());
+		System.out.println("Activity : " + activity);
 		activity.addTask(activity, tDescription, tStartDate, tHours);
 		
 	}

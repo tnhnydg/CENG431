@@ -10,7 +10,7 @@ public class Activity {
 	private String description;
 	private String startDate;
 	private String deliverable;
-	private ArrayList<Task> taskList;
+	private List<Task> taskList;
 	private ProjectPortfolioManager mediator;
 	
 	
@@ -40,10 +40,10 @@ public class Activity {
 		task.setNumber(tNumber+1);
 	}
 	
-	public ArrayList<Task> getTaskList() {
+	public List<Task> getTaskList() {
 		return taskList;
 	}
-	public void setTaskList(ArrayList<Task> taskList) {
+	public void setTaskList(List<Task> taskList) {
 		this.taskList = taskList;
 	}
 	public ProjectPortfolioManager getMediator() {
@@ -80,6 +80,12 @@ public class Activity {
 	{
 		return 0;
 	}
+	
+	/*@Override
+	public String toString() {
+		String string2 = 
+		return string2; 
+	}*/
 	
 	
 }

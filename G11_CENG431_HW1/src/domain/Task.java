@@ -15,6 +15,7 @@ public class Task {
 		setDescription(description);
 		setStartDate(startDate);
 		setHours(hours);
+		setResourceId(9); //not final
 	}
 	
 	
@@ -53,5 +54,10 @@ public class Task {
 	}
 	public void setResourceId(int resourceId) {
 		this.resourceId = resourceId;
+	}
+	
+	@Override
+	public String toString() { 
+		return "[" + this.getNumber() + "," + this.getDescription() + "," + this.getStartDate() + "," + this.getHours() + "," + this.getResourceId() + "]";
 	}
 }

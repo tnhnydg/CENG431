@@ -118,7 +118,7 @@ public class ProjectMenu extends Menu {
 			System.out.println(getMediator().getAllProjects().get(i).getName());//projectname
 			System.out.println(getMediator().getAllProjects().get(i).getActivityList().get(0).getNumber());//actnumber
 			System.out.println(getMediator().getAllProjects().get(i).getActivityList().get(0).getTaskList().get(0).getNumber());//tasknum
-		}
+		}//delete
 	}
 	
 	public void removeProject(String pName) {
