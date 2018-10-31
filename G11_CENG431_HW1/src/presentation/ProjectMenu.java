@@ -273,29 +273,34 @@ public class ProjectMenu extends Menu {
 			System.out.print("Project Name:");
 			String pName = takeInput();
 			
-			System.out.print("Activity Name:");
+			System.out.print("Activity Number:");
 			String aName = takeInput();
+			int aNumber = Integer.parseInt(aName);
 			
-			System.out.print("Task Name:");
+			System.out.print("Task Number:");
 			String tName = takeInput();
+			int tNumber = Integer.parseInt(tName);
 			
 			System.out.print("Resource Id:");
-			String rId = takeInput();
+			String rIdd = takeInput();
+			int rId = Integer.parseInt(rIdd);
 			
-			addResource(pName, aName, tName, rId);
+			addResource(pName, aNumber, tNumber, rId);
 		}
 		else if(input.equals("2")) {
 			//remove Resource from task
 			System.out.print("Project Name:");
 			String pName = takeInput();
 			
-			System.out.print("Activity Name:");
+			System.out.print("Activity Number");
 			String aName = takeInput();
+			int aNumber = Integer.parseInt(aName);
 			
-			System.out.print("Task Name:");
+			System.out.print("Task Number");
 			String tName = takeInput();
+			int tNumber = Integer.parseInt(tName);
 			
-			removeResource(pName, aName, tName);
+			removeResource(pName, aNumber, tNumber);
 			
 		}
 		else if(input.toLowerCase().equals("q")) {
@@ -327,12 +332,12 @@ public class ProjectMenu extends Menu {
 		//System.out.println("Project addTask");
 	}
 	
-	public void addResource(String pName, String aName, String tName, String rId) {
-		//signature not final
-		System.out.println("Project addResource");
+	public void addResource(String pName, int aNumber, int tNumber, int rId) {
+		
+		getMediator().assignResource(pName, aNumber, tNumber, rId);
 	}
 	
-	public void removeResource(String pName, String aName, String tName) {
+	public void removeResource(String pName, int aNumber, int tNumber) {
 		//signature not final
 		System.out.println("Project removeResource");
 	}
