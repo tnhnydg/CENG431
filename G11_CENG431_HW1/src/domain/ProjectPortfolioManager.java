@@ -98,11 +98,7 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		
 		Project project = null;
 		
-		for(int i=0;i<getAllProjects().size();i++) {
-			if((getAllProjects().get(i).getName()).equals(pName)) {
-				project = getAllProjects().get(i);
-			}
-		}
+		project = findProject(pName);
 		
 		List<Task> taskList = fetchTasks(project,aNumber);
 		
@@ -125,6 +121,46 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 				}
 			}
 		}
+		
+	}
+	
+	public void removeTask(String pName, int aNumber, int tNumber) {
+		
+		int pId = 0;
+		for(int i=0;i<getAllProjects().size();i++) {
+			if(getAllProjects().get(i).getName().equals(pName)) {
+				for(int j=0;j<getAllProjects().get(i).getActivityList().size();j++) {
+					if(getAllProjects().get(i).getActivityList().get(j).getNumber() == aNumber) {
+						for(int k=0;k<getAllProjects().get(i).getActivityList().get(j).getTaskList().size();k++) {
+							if(getAllProjects().get(i).getActivityList().get(j).getTaskList().get(k).getNumber() == tNumber) {
+								pId = getAllProjects().get(i).getActivityList().get(j).getTaskList().get(k).getResourceId();
+							}
+						}
+					}
+				}
+			}
+		}
+		IResource person = findPerson(pId);
+		for(int j=0;j<person.getTaskList().size();j++) {
+			if(person.getTaskList().get(j).getNumber() == tNumber) {
+				person.getTaskList().remove(j);
+			}
+		}
+		
+		for(int i=0;i<getAllProjects().size();i++) {
+			if(getAllProjects().get(i).getName().equals(pName)) {
+				for(int j=0;j<getAllProjects().get(i).getActivityList().size();j++) {
+					if(getAllProjects().get(i).getActivityList().get(j).getNumber() == aNumber) {
+						for(int k=0;k<getAllProjects().get(i).getActivityList().get(j).getTaskList().size();k++) {
+							if(getAllProjects().get(i).getActivityList().get(j).getTaskList().get(k).getNumber() == tNumber) {
+								getAllProjects().get(i).getActivityList().get(j).getTaskList().remove(k);
+							}
+						}
+					}
+				}
+			}
+		}
+		
 		
 	}
 	
@@ -169,9 +205,21 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return taskList;
 	}
 	
-	/*public void unAssignResource() {
+	public Project findProject(String pName) {
+		Project project = null;
+		for(int i=0;i<getAllProjects().size();i++) {
+			if((getAllProjects().get(i).getName()).equals(pName)) {
+				project = getAllProjects().get(i);
+			}
+		}
+		return project;
+	}
+	
+	
+	public void assignResource(String pName,int aNumber,int tNumber,int rId) {
+		Project project = findProject(pName);
 		
-	}*/
+	}
 	
 	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {}
 		

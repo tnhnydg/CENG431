@@ -153,7 +153,7 @@ public class ProjectMenu extends Menu {
 		//removeActivity();
 		//??? I am not sure how to handle updating a activity option
 		System.out.println("\t<<<Update Activity Menu>>>");
-		System.out.println("1-Add\n2-Remove\n3-Assign Resource To A Task\nq:to quit");
+		System.out.println("1-Add\n2-Remove\nq:to quit");
 		//think method
 		String input = takeInput();
 		
@@ -201,10 +201,11 @@ public class ProjectMenu extends Menu {
 				removeActivity(pName, aNumber);
 			}
 			else if(input.equals("2")) {
-				System.out.print("Task Name:");
-				String tName = takeInput();
+				System.out.print("Task Number:");
+				String tNumberr = takeInput();
+				int tNumber = Integer.parseInt(tNumberr);
 				
-				//removeTask(pName, aName, tName);
+				removeTask(pName, aNumber, tNumber);
 				//pName
 			}
 			else if(input.toLowerCase().equals("q")) {
@@ -213,10 +214,6 @@ public class ProjectMenu extends Menu {
 			else {
 				
 			}
-		}
-		else if(input.equals("3")) {
-			System.out.println("\t<<<Assign Resource To A Task>>>");
-			///
 		}
 		else if(input.toLowerCase().equals("q")) {
 			System.out.println("Quit is selected");
@@ -259,9 +256,10 @@ public class ProjectMenu extends Menu {
 		//System.out.println("Project removeActivity");
 	}
 	
-	public void removeTask(String pName, String aName, String tName) {
+	public void removeTask(String pName, int aNumber, int tNumber) {
+		getMediator().removeTask(pName, aNumber,tNumber);
 		//signature not final
-		System.out.println("Project removeTask");
+		//System.out.println("Project removeTask");
 	}
 	
 	public void updateResource() {

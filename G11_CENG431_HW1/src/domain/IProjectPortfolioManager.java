@@ -23,5 +23,6 @@ public interface IProjectPortfolioManager {
 	public void setResourceList(List<IResource> allProjects);
 	public List<IResource> getResourceList();
 	public void removeActivity(String pName,int aNumber);
+	public void removeTask(String pName, int aNumber, int tNumber);
 	
 }
