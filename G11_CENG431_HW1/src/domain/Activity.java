@@ -84,9 +84,9 @@ public class Activity {
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("[" + this.getNumber() + this.getDescription() + this.getStartDate() + this.getDeliverable() + this.getHours() + " : ");  
+		str.append("[" + this.getNumber() + "," + this.getDescription() + "," + this.getStartDate() + "," + this.getDeliverable() + "," + this.getHours() + " : ");  
 		for(int i=0;i<this.getTaskList().size();i++) {
-			str.append("\n\t" + this.getTaskList().get(i).toString());
+			str.append("\n\t\t" + this.getTaskList().get(i).toString());
 		}
 		
 		return str.toString(); 

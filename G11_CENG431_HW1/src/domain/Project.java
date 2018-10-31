@@ -71,7 +71,7 @@ public class Project {
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("[" + this.getName() + this.getDescription() + this.getStartDate() + " : ");  
+		str.append("[" + this.getName() + "," + this.getDescription() + "," + this.getStartDate() + " : ");  
 		for(int i=0;i<this.getActivityList().size();i++) {
 			str.append("\n\t" + this.getActivityList().get(i).toString());
 		}

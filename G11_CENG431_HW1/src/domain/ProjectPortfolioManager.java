@@ -24,15 +24,15 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	public int addActivity(String pName,String aDescription,String aStartDate,String aDeliverable) {
 		Project project = null;
 		for(int i=0;i<getAllProjects().size();i++) {
-			System.out.println("1: " + getAllProjects().get(i).getName());
-			System.out.println("2: " + pName);
+			//System.out.println("1: " + getAllProjects().get(i).getName());
+			//System.out.println("2: " + pName);
 			if(getAllProjects().get(i).getName().equals(pName)) {
-				System.out.println("Mediator addactivity");
+				//System.out.println("Mediator addactivity");
 				project = getAllProjects().get(i);
 			}
 		}
-		System.out.println("Projects :" + getAllProjects().toString());
-		System.out.println(project);
+		//System.out.println("Projects :" + getAllProjects().toString());
+		//System.out.println(project);
 		project.addActivity(project,aDescription,aStartDate,aDeliverable);
 		
 		int size = project.getActivityList().size();
@@ -59,10 +59,20 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 				}
 			}
 		}
-		System.out.println("Activity : " + activity);
+		//System.out.println("Activity : " + activity);
 		activity.addTask(activity, tDescription, tStartDate, tHours);
 		
 	}
+	
+	public void removeProject(String Pname) {
+		
+		
+		
+	}
+	
+	/*public void unAssignResource() {
+		
+	}*/
 	
 	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {}
 		
