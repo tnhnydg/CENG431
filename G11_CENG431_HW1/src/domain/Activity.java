@@ -2,7 +2,9 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Activity {
 
@@ -101,6 +103,18 @@ public class Activity {
 			}
 		}
 		return null;
+	}
+	
+	public Set<Integer> countActivityResouce() {
+		Set<Integer> rId = new HashSet<Integer>();
+		for(int i = 0; i < getTaskList().size(); i++) {	
+			rId.add(getTaskList().get(i).countTaskResource());
+		}
+		return rId;
+	}
+	
+	public int countTaskResource(int tId) {
+		return findTask(tId).countTaskResource();
 	}
 	
 	@Override

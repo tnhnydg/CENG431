@@ -8,8 +8,8 @@ public class Task {
 	private String description;
 	private String startDate;
 	private int hours;
-	private int resourceId;
-	private ProjectPortfolioManager mediator;
+	private int resourceId; //We assumed it always has a resource
+
 	
 	public Task(String description,String startDate,int hours) {
 		setDescription(description);
@@ -17,7 +17,6 @@ public class Task {
 		setHours(hours);
 		setResourceId(9); //not final
 	}
-	
 	
 	public String getDescription() {
 		return description;
@@ -43,12 +42,7 @@ public class Task {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	public ProjectPortfolioManager getMediator() {
-		return mediator;
-	}
-	public void setMediator(ProjectPortfolioManager mediator) {
-		this.mediator = mediator;
-	}
+	
 	public int getResourceId() {
 		return resourceId;
 	}
@@ -58,6 +52,10 @@ public class Task {
 	
 	public int calculateTask() {
 		return getHours();
+	}
+	
+	public int countTaskResource() {
+		return getResourceId();
 	}
 	
 	@Override

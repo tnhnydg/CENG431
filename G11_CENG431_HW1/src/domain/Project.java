@@ -1,7 +1,9 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Project {
 
@@ -80,7 +82,7 @@ public class Project {
 	}
 	
 	public int calculateTask(int aId, int tId) {
-		return findActivity(aId).findTask(tId).calculateTask();
+		return findActivity(aId).calculateTask(tId);
 	}
 	
 	public Activity findActivity(int aId) {
@@ -91,6 +93,23 @@ public class Project {
 			}
 		}
 		return null;
+	}
+	public int countProjectResource() {
+		Set<Integer> projectResource = new HashSet<Integer>();
+		for(int i = 0; i < getActivityList().size(); i++) {
+			Activity tmp = getActivityList().get(i);
+			projectResource.addAll(tmp.countActivityResouce());
+		}
+		return projectResource.size();
+	}
+	
+	public int countActivityResource(int aId) {
+		return findActivity(aId).countActivityResouce().size();
+	}
+	
+	public int countTaskResource(int aId, int tId) {
+		//findActivity(aId).countTaskResource(tId)
+		return 1;
 	}
 	
 	@Override

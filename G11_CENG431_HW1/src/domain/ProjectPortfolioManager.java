@@ -197,6 +197,18 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return findProject(pName).calculateTask(aId, tId);
 	}
 	
+	public int countProjectResource(String pName) {
+		return findProject(pName).countProjectResource();
+	}
+	
+	public int countActivityResource(String pName, int aId) {
+		return findProject(pName).countActivityResource(aId);
+	}
+	
+	public int countTaskResource(String pName, int aId, int tId) {
+		return findProject(pName).countTaskResource(aId, tId);
+	}
+	
 	public Project findProject(String pName) {
 		for(int i = 0; i < getAllProjects().size(); i++) {
 			Project tmp = getAllProjects().get(i);
