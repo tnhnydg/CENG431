@@ -65,7 +65,7 @@ public class Data {
 	
 	public void writeFile(String fileName, String data) {
 		try {
-			PrintWriter pw = new PrintWriter("JSONExample.json");
+			PrintWriter pw = new PrintWriter(fileName);
 			pw.write(data); 
 	          
 	        pw.flush(); 
@@ -78,7 +78,7 @@ public class Data {
 	public BufferedReader readFile(String fileName) {
 		BufferedReader bfrd = null;
 		try {
-			bfrd = new BufferedReader(new FileReader("JSONExample.json"));
+			bfrd = new BufferedReader(new FileReader("dataHistory//" + fileName));
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		}

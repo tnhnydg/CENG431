@@ -99,12 +99,12 @@ public class App {
 		resourceList.add(emp);
 		resourceList.add(csnt);
 				
-		data.writeFile("sa", data.mergeJson(projectList, resourceList));
+		data.writeFile("JSONExample.json", data.mergeJson(projectList, resourceList));
 		
 		List<Project> projectListLoad = null;
 		List<IResource> resourceListLoad = null;
 		
-		data.splitJson(data.readFile("a"), projectListLoad, resourceListLoad);
+		data.splitJson(data.readFile("JSONExample.json"), projectListLoad, resourceListLoad);
 		
 		
 		MainMenu menu = new MainMenu(mediator);
