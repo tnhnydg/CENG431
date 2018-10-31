@@ -80,6 +80,28 @@ public class Activity {
 	{
 		return 0;
 	}
+	public int calculateActivity() {
+		int totalHours = 0;
+		for(int i = 0; i < getTaskList().size(); i++) {
+			totalHours += getTaskList().get(i).calculateTask();
+		}
+		System.out.println("Activity total hour:" + totalHours);
+		return totalHours;
+	}
+	
+	public int calculateTask(int tId) {
+		return findTask(tId).calculateTask();
+	}
+	
+	public Task findTask(int tId) {
+		for(int i = 0; i < getTaskList().size(); i++) {
+			Task tmp = getTaskList().get(i);
+			if(tmp.getNumber() == tId) {
+				return tmp;
+			}
+		}
+		return null;
+	}
 	
 	@Override
 	public String toString() {

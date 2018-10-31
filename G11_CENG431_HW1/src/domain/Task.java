@@ -56,6 +56,10 @@ public class Task {
 		this.resourceId = resourceId;
 	}
 	
+	public int calculateTask() {
+		return getHours();
+	}
+	
 	@Override
 	public String toString() { 
 		return "[" + this.getNumber() + "," + this.getDescription() + "," + this.getStartDate() + "," + this.getHours() + "," + this.getResourceId() + "]";
