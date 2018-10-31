@@ -15,8 +15,10 @@ import com.google.gson.*;
 
 
 import domain.Project;
-
+import domain.Consultant;
+import domain.Employee;
 import domain.IResource;
+import domain.Person;
 
 public class Data {
 	private Gson gson;
@@ -25,8 +27,8 @@ public class Data {
 			setGson(new Gson());
 	}
 			
-	public String saveProjects(List<Project> projectList) {
-		return getGson().toJson(projectList);	
+	public JsonElement saveProjects(List<Project> projectList) {
+		return getGson().toJsonTree(projectList);	
 	}
 	
 	public List<Project> loadProjects(BufferedReader bfrd) {
@@ -34,13 +36,32 @@ public class Data {
 		return getGson().fromJson(bfrd, listType);
 	}
 	
-	public String saveResources(List<IResource> resourceList) {
-		return getGson().toJson(resourceList);
+	public JsonElement saveResources(List<IResource> resourceList) {
+		return getGson().toJsonTree(resourceList);
 	}
-	
-	public List<IResource> loadResources(BufferedReader bfrd) {
 		
-		return null;
+	public List<IResource> loadResources(BufferedReader bfrd) {
+		List<IResource> resourceList = new ArrayList<IResource>();
+		
+		JsonParser jsonParser = new JsonParser();
+		JsonElement jsonTree = jsonParser.parse(bfrd);
+		
+		if(jsonTree.isJsonArray()) {
+			JsonArray jsonArray = jsonTree.getAsJsonArray();
+			for(int i = 0; i < jsonArray.size(); i++) {
+				JsonObject tmp = jsonArray.get(i).getAsJsonObject();
+				if(Integer.parseInt(tmp.get("id").toString()) == 5) {
+					//create consultant
+					resourceList.add(getGson().fromJson(tmp, Consultant.class));
+				}
+				else if(Integer.parseInt(tmp.get("id").toString()) == 10) {
+					//create employee
+					resourceList.add(getGson().fromJson(tmp, Employee.class));
+				}
+			}
+		}
+		System.out.println(resourceList);
+		return resourceList;
 	}
 	
 	public void writeFile(String fileName, String data) {
@@ -71,5 +92,16 @@ public class Data {
 	
 	public Gson getGson() {
 		return this.gson;
+	}
+	
+	public String mergeJson(List<Project> projectList, List<IResource> resourceList) {
+		JsonObject jsonObject = new JsonObject();
+		
+		jsonObject.add("projectList", saveProjects(projectList));
+		jsonObject.add("resourceList", saveResources(resourceList));
+	
+		System.out.println(jsonObject);
+	
+		return jsonObject.toString();
 	}
 }

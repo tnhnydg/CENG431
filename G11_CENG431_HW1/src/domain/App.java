@@ -62,6 +62,27 @@ public class App {
 		taskList.add(tsk);
 		
 		
+		List<Activity> activityList = new ArrayList<Activity>();
+		Activity act = new Activity("desc", "1.1.1", "something");
+		act.setTaskList(((ArrayList<Task>)taskList));
+		activityList.add(act);
+		activityList.add(act);
+		activityList.add(act);
+		activityList.add(act);
+		activityList.add(act);
+		
+		List<Project> projectList = new ArrayList<Project>();
+		Project prj = new Project("pName", "descr", "1.23.13");
+		prj.setActivityList(activityList);
+		
+		projectList.add(prj);
+		projectList.add(prj);
+		projectList.add(prj);
+		projectList.add(prj);
+		projectList.add(prj);
+		projectList.add(prj);
+		
+		
 		Data data = new Data();
 		
 		List<IResource> resourceList = new ArrayList<IResource>();
@@ -78,10 +99,8 @@ public class App {
 		resourceList.add(csnt);
 		resourceList.add(emp);
 		resourceList.add(csnt);
-		
-		
-		System.out.println(data.saveResources(resourceList));
-		
+				
+		data.writeFile("sa", data.mergeJson(projectList, resourceList));
 		MainMenu menu = new MainMenu(mediator);
 		menu.start();
 		
