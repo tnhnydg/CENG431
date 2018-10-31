@@ -337,6 +337,7 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		
 		data.splitJson(data.readFile(data.findLatestFile()), getAllProjects(), getResourceList());
 	
+<<<<<<< HEAD
 	}
 	
 	public void displayProject(String pName) {
@@ -354,5 +355,7 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		Project project = findProject(pName);
 		Task task = project.unassignResource(project, aNumber, tNumber, rId);
 		findPerson(rId).getTaskList().remove(task);
+=======
+>>>>>>> branch 'master' of https://github.com/feyil/CENG431.git
 	}
 }
