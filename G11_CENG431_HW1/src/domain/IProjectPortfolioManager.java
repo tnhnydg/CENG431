@@ -25,7 +25,7 @@ public interface IProjectPortfolioManager {
 	public void removeActivity(String pName,int aNumber);
 	public void removeTask(String pName, int aNumber, int tNumber);
 	public void start();
-	public void saveState();
+	public void saveState(String currentDate);
 	public void loadState();
 	public int calculateProject(String pName);
 	public int calculateActivity(String pName, int aId);

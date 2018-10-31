@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dataAccess.DataHandler;
 import presentation.MainMenu;
 
 public class ProjectPortfolioManager implements IProjectPortfolioManager {
@@ -317,21 +318,31 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	@Override
 	public void start() {
-		MainMenu menu = new MainMenu(this);
-		menu.start();
+		try {
+			loadState();
+		}
+		catch(Exception e) {
+			System.out.println("No Existing File New Creation");
+		}
 		
+		MainMenu menu = new MainMenu(this);
+		menu.start();	
 	}
 
 	@Override
-	public void saveState() {
-		// TODO Auto-generated method stub
-		
+	public void saveState(String currentDate) {
+		DataHandler data = new DataHandler();
+		String state = data.mergeJson(getAllProjects(), getResourceList());
+		data.writeFile("Project-" + currentDate, state);
 	}
 
 	@Override
 	public void loadState() {
-		// TODO Auto-generated method stub
+		DataHandler data = new DataHandler();
+		System.out.println(data.findLatestFile());
 		
+		data.splitJson(data.readFile(data.findLatestFile()), getAllProjects(), getResourceList());
+	
 	}
 	
 	public void displayProject(String pName) {
