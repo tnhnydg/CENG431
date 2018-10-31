@@ -7,7 +7,7 @@ import java.util.List;
 public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	private List<Project> allProjects;
-	private List<IResource> resources;
+	private List<IResource> allPerson;
 	
 	public ProjectPortfolioManager() {
 
@@ -64,10 +64,109 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		
 	}
 	
-	public void removeProject(String Pname) {
+	public void removeProject(String pName) {
 		
+		Project project = null;
 		
+		for(int i=0;i<getAllProjects().size();i++) {
+			if((getAllProjects().get(i).getName()).equals(pName)) {
+				project = getAllProjects().get(i);
+			}
+		}
 		
+		List<Task> taskList = fetchTasks(project);
+		
+		for(int i=0;i<taskList.size();i++) {
+			IResource person = findPerson(taskList.get(i).getResourceId());
+			for(int j=0;j<person.getTaskList().size();j++) {
+				if(person.getTaskList().get(j).equals(taskList.get(i))) {
+					person.getTaskList().remove(j);
+				}
+			}
+			
+		}
+		
+		for(int i=0;i<getAllProjects().size();i++) {
+			if(getAllProjects().get(i).equals(project)) {
+				getAllProjects().remove(i);
+			}
+		}
+		
+	}
+	
+	public void removeActivity(String pName,int aNumber) {
+		
+		Project project = null;
+		
+		for(int i=0;i<getAllProjects().size();i++) {
+			if((getAllProjects().get(i).getName()).equals(pName)) {
+				project = getAllProjects().get(i);
+			}
+		}
+		
+		List<Task> taskList = fetchTasks(project,aNumber);
+		
+		for(int i=0;i<taskList.size();i++) {
+			IResource person = findPerson(taskList.get(i).getResourceId());
+			for(int j=0;j<person.getTaskList().size();j++) {
+				if(person.getTaskList().get(j).equals(taskList.get(i))) {
+					person.getTaskList().remove(j);
+				}
+			}
+			
+		}
+		
+		for(int i=0;i<getAllProjects().size();i++) {
+			if(getAllProjects().get(i).equals(project)) {
+				for(int j=0;j<project.getActivityList().size();j++) {
+					if(project.getActivityList().get(j).getNumber() == aNumber) {
+						project.getActivityList().remove(j);
+					}
+				}
+			}
+		}
+		
+	}
+	
+	public IResource findPerson(int pId) {
+		
+		IResource person = null;
+		
+		for(int i=0;i<getResourceList().size();i++) {
+			if(getResourceList().get(i).getId() == pId) {
+				person = getResourceList().get(i);
+			}
+		}
+		
+		return person;
+	}	
+	
+	public List<Task> fetchTasks(Project project){//tasklist that has tasks to be removed
+		
+		List<Task> taskList = new ArrayList<Task>();
+		
+		for(int i=0;i<project.getActivityList().size();i++) {
+			for(int j=0;j<project.getActivityList().get(i).getTaskList().size();j++) {
+				taskList.add(project.getActivityList().get(i).getTaskList().get(j));
+			}
+		}
+		
+		return taskList;
+	}
+	
+	public List<Task> fetchTasks(Project project,int aNumber){
+		
+		List<Task> taskList = new ArrayList<Task>();
+		
+		for(int i=0;i<project.getActivityList().size();i++) {
+			if(project.getActivityList().get(i).getNumber() == aNumber) {
+				for(int j=0;j<project.getActivityList().get(i).getTaskList().size();j++) {
+					taskList.add(project.getActivityList().get(i).getTaskList().get(j));
+				}
+			}
+		}
+		
+		return taskList;
 	}
 	
 	/*public void unAssignResource() {
@@ -88,12 +187,12 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return this.allProjects;
 	}
 
-	public void setResourceList(List<IResource> resources) {
-		this.resources = resources;
+	public void setResourceList(List<IResource> person) {
+		this.allPerson = person;
 	}
 	
 	public List<IResource> getResourceList() {
-		return this.resources;
+		return this.allPerson;
 	}
 	
 	public boolean addEmployeeResource(String eName, String eDescription, int rId) {

@@ -153,7 +153,7 @@ public class ProjectMenu extends Menu {
 		//removeActivity();
 		//??? I am not sure how to handle updating a activity option
 		System.out.println("\t<<<Update Activity Menu>>>");
-		System.out.println("1-Add\n2-Remove\n3-Update\nq:to quit");
+		System.out.println("1-Add\n2-Remove\n3-Assign Resource To A Task\nq:to quit");
 		//think method
 		String input = takeInput();
 		
@@ -162,8 +162,27 @@ public class ProjectMenu extends Menu {
 			System.out.print("Project Name:");
 			String pName = takeInput();
 			
+			System.out.println("/t<<<Add Activity or Task Menu>>>");
+			System.out.println("1-Activity\n2-Task\nq:to quit");
 			
-			addActivity(pName);
+			if(input.equals("1")) {
+				addActivity(pName);
+			}
+			else if(input.equals("2")) {
+				
+				System.out.print("Activity Number:");
+				String aNumberr = takeInput();
+				int aNumber = Integer.parseInt(aNumberr);
+				
+				addTask(pName, aNumber);
+				//pName
+			}
+			else if(input.toLowerCase().equals("q")) {
+				
+			}
+			else {
+				
+			}
 		}
 		else if(input.equals("2")) {
 			//removeActivity()
@@ -171,20 +190,21 @@ public class ProjectMenu extends Menu {
 			String pName = takeInput();
 			
 			System.out.print("Activity Name:");
-			String aName = takeInput();
+			String aNamee = takeInput();
+			int aNumber = Integer.parseInt(aNamee);
 			
 			System.out.println("/t<<<Remove Activity or Task Menu>>>");
 			System.out.println("1-Activity\n2-Task\nq:to quit");
 			input = takeInput();
 			
 			if(input.equals("1")) {
-				removeActivity(pName, aName);
+				removeActivity(pName, aNumber);
 			}
 			else if(input.equals("2")) {
 				System.out.print("Task Name:");
 				String tName = takeInput();
 				
-				removeTask(pName, aName, tName);
+				//removeTask(pName, aName, tName);
 				//pName
 			}
 			else if(input.toLowerCase().equals("q")) {
@@ -195,33 +215,8 @@ public class ProjectMenu extends Menu {
 			}
 		}
 		else if(input.equals("3")) {
-			System.out.println("\t<<<Update Activity Menu>>>");
-			System.out.println("1-Update Activity Info\n2-Update Task\nq:to quit");
-			if(input.equals("1")) {
-				System.out.print("Project Name:");
-				String pName = takeInput();
-				
-				System.out.print("Activity Number:");
-				String aNumber = takeInput();
-				
-				System.out.print("Activity Description:");
-				String aDescription = takeInput();
-				
-				System.out.print("Activity Start Date:");
-				String aStartDate = takeInput();
-				
-				System.out.print("Activity Deliverable:");
-				String aDeliverable = takeInput();
-				
-				
-				updateActivityInfo(pName,aNumber,aDescription,aStartDate,aDeliverable);
-			}
-			else if(input.equals("2")) {
-				//UpdateTask
-			}
-			
-			//updateActivity ???
-			//adding task to activity more than one ???
+			System.out.println("\t<<<Assign Resource To A Task>>>");
+			///
 		}
 		else if(input.toLowerCase().equals("q")) {
 			System.out.println("Quit is selected");
@@ -230,10 +225,6 @@ public class ProjectMenu extends Menu {
 			System.out.println("Invalid");
 		}
 
-	}
-	
-	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {
-		getMediator().updateActivityInfo(pName,aNumber,description,startDate,deliverable);
 	}
 	
 	public void addActivity(String pName) {
@@ -262,9 +253,10 @@ public class ProjectMenu extends Menu {
 		
 	}
 	
-	public void removeActivity(String pName, String aName) {
+	public void removeActivity(String pName, int aNumber) {
+		getMediator().removeActivity(pName, aNumber);
 		//signature not final
-		System.out.println("Project removeActivity");
+		//System.out.println("Project removeActivity");
 	}
 	
 	public void removeTask(String pName, String aName, String tName) {
@@ -327,6 +319,7 @@ public class ProjectMenu extends Menu {
 		System.out.print("Task hour:");
 		String tHourss = takeInput();
 		int tHours = Integer.parseInt(tHourss);
+		
 		
 		getMediator().addTask(pName,aNumber,tDescription,tStartDate,tHours);
 		

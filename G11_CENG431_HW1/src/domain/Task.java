@@ -15,7 +15,7 @@ public class Task {
 		setDescription(description);
 		setStartDate(startDate);
 		setHours(hours);
-		setResourceId(9); //not final
+		setResourceId(0);
 	}
 	
 	

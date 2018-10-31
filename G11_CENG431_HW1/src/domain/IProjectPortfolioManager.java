@@ -20,4 +20,8 @@ public interface IProjectPortfolioManager {
 	public boolean updateResource(String rName, String rDescription, int rId);
 	public String showResource(int rId);
 	public void removeProject(String pName);
+	public void setResourceList(List<IResource> allProjects);
+	public List<IResource> getResourceList();
+	public void removeActivity(String pName,int aNumber);
+	
 }
