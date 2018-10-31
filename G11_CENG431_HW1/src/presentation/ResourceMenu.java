@@ -202,23 +202,30 @@ public class ResourceMenu extends Menu {
 		System.out.print("Project Name:");
 		String pName = takeInput();
 		
+		int result = getMediator().countProjectResource(pName);
+		System.out.println("Project Resource:" + result);
 		//Mediator code
 	}
 	
 	public void findActivity(String pName) {
 		//signature not final
 		
-		System.out.print("Activity Name:");
-		String aName = takeInput();
+		System.out.print("Activity ID:");
+		String aId= takeInput();
 		
+		int result = getMediator().countActivityResource(pName, Integer.parseInt(aId));
+		System.out.println("Activity Resource:" + result);
 		//Mediator code
 	}
 	
-	public void findTask(String pName, String aName) {
+	public void findTask(String pName, String aId) {
 		//signature not final
 		
-		System.out.print("Task Name:");
-		String tName = takeInput();
+		System.out.print("Task ID:");
+		String tId = takeInput();
+		
+		int result = getMediator().countTaskResource(pName, Integer.parseInt(aId), Integer.parseInt(tId));
+		System.out.println("Task Resource:" + result);
 		
 		//Mediator code
 	}

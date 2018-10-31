@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import presentation.MainMenu;
+
 public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	private List<Project> allProjects;
@@ -291,6 +293,18 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return findProject(pName).calculateTask(aId, tId);
 	}
 	
+	public int countProjectResource(String pName) {
+		return findProject(pName).countProjectResource();
+	}
+	
+	public int countActivityResource(String pName, int aId) {
+		return findProject(pName).countActivityResource(aId);
+	}
+	
+	public int countTaskResource(String pName, int aId, int tId) {
+		return findProject(pName).countTaskResource(aId, tId);
+	}
+	
 	public Project findProject(String pName) {
 		for(int i = 0; i < getAllProjects().size(); i++) {
 			Project tmp = getAllProjects().get(i);
@@ -299,5 +313,24 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void start() {
+		MainMenu menu = new MainMenu(this);
+		menu.start();
+		
+	}
+
+	@Override
+	public void saveState() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadState() {
+		// TODO Auto-generated method stub
+		
 	}
 }

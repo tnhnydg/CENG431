@@ -2,7 +2,9 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Activity {
 
@@ -11,7 +13,6 @@ public class Activity {
 	private String startDate;
 	private String deliverable;
 	private List<Task> taskList;
-	private ProjectPortfolioManager mediator;
 	
 	
 	public Activity(String aDescription, String aStartDate, String aDeliverable) {
@@ -45,12 +46,6 @@ public class Activity {
 	}
 	public void setTaskList(List<Task> taskList) {
 		this.taskList = taskList;
-	}
-	public ProjectPortfolioManager getMediator() {
-		return mediator;
-	}
-	public void setMediator(ProjectPortfolioManager mediator) {
-		this.mediator = mediator;
 	}
 	public int getNumber() {
 		return number;
@@ -102,7 +97,7 @@ public class Activity {
 		}
 		return null;
 	}
-	
+
 	public Task assignResource(Project project,int aNum,int tNum,int rId) {
 		Task task = null;
 		for(int i=0;i<this.getTaskList().size();i++) {
@@ -113,6 +108,17 @@ public class Activity {
 		task.assignResource(rId);
 		
 		return task;
+	}
+	public Set<Integer> countActivityResouce() {
+		Set<Integer> rId = new HashSet<Integer>();
+		for(int i = 0; i < getTaskList().size(); i++) {	
+			rId.add(getTaskList().get(i).countTaskResource());
+		}
+		return rId;
+	}
+	
+	public int countTaskResource(int tId) {
+		return findTask(tId).countTaskResource();
 	}
 	
 	@Override
