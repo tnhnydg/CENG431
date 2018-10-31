@@ -24,20 +24,14 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	public int addActivity(String pName,String aDescription,String aStartDate,String aDeliverable) {
 		Project project = null;
 		for(int i=0;i<getAllProjects().size();i++) {
-			//System.out.println("1: " + getAllProjects().get(i).getName());
-			//System.out.println("2: " + pName);
 			if(getAllProjects().get(i).getName().equals(pName)) {
-				//System.out.println("Mediator addactivity");
 				project = getAllProjects().get(i);
 			}
 		}
-		//System.out.println("Projects :" + getAllProjects().toString());
-		//System.out.println(project);
 		project.addActivity(project,aDescription,aStartDate,aDeliverable);
 		
 		int size = project.getActivityList().size();
 		int aNumber = project.getActivityList().get(size - 1).getNumber();
-		//System.out.println(aNumber);
 		return aNumber;
 	}
 	
@@ -47,19 +41,14 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		for(int i=0;i<getAllProjects().size();i++) {
 			if((getAllProjects().get(i).getName()).equals(pName)) {
 				project = getAllProjects().get(i);
-				//System.out.println(project.getDescription());
-				//System.out.println(project.getActivityList().get(0).getNumber());
 				
 				for(int j=0;j<project.getActivityList().size();j++) {
-					//System.out.println("A:" + project.getActivityList().get(j).getNumber());
 					if((project.getActivityList().get(j).getNumber()) == aNumber ) {
-						//System.out.println("found2");
 						activity = project.getActivityList().get(j);
 					}
 				}
 			}
 		}
-		//System.out.println("Activity : " + activity);
 		activity.addTask(activity, tDescription, tStartDate, tHours);
 		
 	}
@@ -125,41 +114,6 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	}
 	
 	public void removeTask(String pName, int aNumber, int tNumber) {
-		
-		int pId = 0;
-		for(int i=0;i<getAllProjects().size();i++) {
-			if(getAllProjects().get(i).getName().equals(pName)) {
-				for(int j=0;j<getAllProjects().get(i).getActivityList().size();j++) {
-					if(getAllProjects().get(i).getActivityList().get(j).getNumber() == aNumber) {
-						for(int k=0;k<getAllProjects().get(i).getActivityList().get(j).getTaskList().size();k++) {
-							if(getAllProjects().get(i).getActivityList().get(j).getTaskList().get(k).getNumber() == tNumber) {
-								pId = getAllProjects().get(i).getActivityList().get(j).getTaskList().get(k).getResourceId();
-							}
-						}
-					}
-				}
-			}
-		}
-		IResource person = findPerson(pId);
-		for(int j=0;j<person.getTaskList().size();j++) {
-			if(person.getTaskList().get(j).getNumber() == tNumber) {
-				person.getTaskList().remove(j);
-			}
-		}
-		
-		for(int i=0;i<getAllProjects().size();i++) {
-			if(getAllProjects().get(i).getName().equals(pName)) {
-				for(int j=0;j<getAllProjects().get(i).getActivityList().size();j++) {
-					if(getAllProjects().get(i).getActivityList().get(j).getNumber() == aNumber) {
-						for(int k=0;k<getAllProjects().get(i).getActivityList().get(j).getTaskList().size();k++) {
-							if(getAllProjects().get(i).getActivityList().get(j).getTaskList().get(k).getNumber() == tNumber) {
-								getAllProjects().get(i).getActivityList().get(j).getTaskList().remove(k);
-							}
-						}
-					}
-				}
-			}
-		}
 		
 		
 	}
