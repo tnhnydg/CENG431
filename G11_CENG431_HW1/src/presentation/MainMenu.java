@@ -104,6 +104,9 @@ public class MainMenu extends Menu {
 				resource.startFindResource();
 			}
 			else if(input.toLowerCase().equals("q")) {
+				System.out.print("Before Quit Current Date(YYYY-MM-DD):");
+				String currentDate = takeInput();
+				getMediator().saveState(currentDate);
 				break;
 			}
 			else {
