@@ -70,6 +70,10 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		
 	}
 	
+	/*public void unAssignResource() {
+		
+	}*/
+	
 	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {}
 		
 	public void addToList(Project project) {
