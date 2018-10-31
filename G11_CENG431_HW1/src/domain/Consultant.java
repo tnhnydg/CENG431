@@ -1,12 +1,12 @@
 package domain;
 
-import java.util.List;
+import java.util.Random;
 
 public class Consultant extends Person {
 	
 	public Consultant(String cName, String cDescription) {
 		super(cName, cDescription);
-		//generateId()
+		setId(generateId());
 	}
 	
 	public Consultant(String cName, String cDescription, int rId) {
@@ -16,6 +16,15 @@ public class Consultant extends Person {
 	
 	@Override
 	public int generateId() {
-		return 0;
+		Random r = new Random();
+		int low = 20000;
+		int high = 29999;
+		int result = r.nextInt(high-low) + low;
+		
+		return result;
+	}
+	
+	public String toString() {
+		return "Consultant: " + super.toString();
 	}
 }

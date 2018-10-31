@@ -68,7 +68,7 @@ public abstract class Person implements IResource {
 	@Override
 	public String toString() {
 
-		return String.valueOf(getId()) + "-" + getName() + "-" + getDescription();		
+		return "[" + "id:" + String.valueOf(getId()) + ", name:" + getName() + ", description:" + getDescription() + "]";		
 	}
 
 }

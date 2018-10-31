@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dataAccess.DataHandler;
+import presentation.MainMenu;
+
 public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	private List<Project> allProjects;
@@ -96,54 +99,36 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return this.resources;
 	}
 	
-	public boolean addEmployeeResource(String eName, String eDescription, int rId) {
-		System.out.println("addEmployeeResource");
-		
+	public boolean addEmployeeResource(String eName, String eDescription, int rId) {		
 		IResource employee = new Employee(eName, eDescription, rId);
 		employee.setMediator(this);
-		
 		getResourceList().add(employee);
-		
-		System.out.println(getResourceList());
-		
+				
 		return true;
 	}
 	
 	public boolean addEmployeeResource(String eName, String eDescription) {
-		System.out.println("addEmployeeResource without id");
-		
 		IResource employee = new Employee(eName, eDescription);
+		System.out.println("Resource ID:" + employee.getId());
 		employee.setMediator(this);
-		
 		getResourceList().add(employee);
-		
-		System.out.println(getResourceList());
 		
 		return true;
 	}
 
 	public boolean addConsultantResource(String cName, String cDescription, int rId) {
-		System.out.println("addConsultantResource with id");
-		
 		IResource consultant = new Consultant(cName, cDescription, rId);
 		consultant.setMediator(this);
-		
 		getResourceList().add(consultant);
-		
-		System.out.println(getResourceList());
-		
+	
 		return true;
 	}
 	
-	public boolean addConsultantResource(String cName, String cDescription) {
-		System.out.println("addConsultantResource with id");
-		
+	public boolean addConsultantResource(String cName, String cDescription) {	
 		IResource consultant = new Consultant(cName, cDescription);
+		System.out.println("Resource ID:" + consultant.getId());
 		consultant.setMediator(this);
-		
 		getResourceList().add(consultant);
-		
-		System.out.println(getResourceList());
 		
 		return true;
 	}
@@ -170,9 +155,7 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 				System.out.println(getResourceList());
 				return true;
 			}
-		}
-		
-		
+		}	
 		return false;
 	}
 
@@ -182,7 +165,21 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 				return getResourceList().get(i).toString();	
 			}
 		}
+		return "Resource Not Found";
+	}
 	
-		return null;
+	public void start() {
+		MainMenu menu = new MainMenu(this);
+		menu.start();	
+	}
+	
+	public void saveState() {
+		//DataHandler data = new DataHandler();
+		//data.mergeJson(getAllProjects(), getResourceList());
+		
+	}
+	
+	public void loadState() {
+		
 	}
 }

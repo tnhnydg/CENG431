@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import java.lang.reflect.Type;
@@ -20,7 +19,7 @@ import domain.Project;
 import domain.Consultant;
 import domain.Employee;
 import domain.IResource;
-import domain.Person;
+
 
 public class DataHandler {
 	private Gson gson;
@@ -61,7 +60,6 @@ public class DataHandler {
 				}
 			}
 		}
-		System.out.println(resourceList);
 		return resourceList;
 	}
 	
@@ -84,7 +82,6 @@ public class DataHandler {
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		return bfrd;
 	}
 	public void setGson(Gson gson) {
@@ -101,8 +98,6 @@ public class DataHandler {
 		jsonObject.add("projectList", saveProjects(projectList));
 		jsonObject.add("resourceList", saveResources(resourceList));
 	
-		System.out.println(jsonObject);
-	
 		return jsonObject.toString();
 	}
 	
@@ -113,7 +108,7 @@ public class DataHandler {
 		if(jsonTree.isJsonObject()) {
 			JsonObject jsonObject = jsonTree.getAsJsonObject();
 			
-		System.out.println(loadProjects(jsonObject.get("projectList")));
+			loadProjects(jsonObject.get("projectList"));	
 			loadResources(jsonObject.get("resourceList"));
 			
 		}
