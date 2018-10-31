@@ -300,7 +300,11 @@ public class ProjectMenu extends Menu {
 			String tName = takeInput();
 			int tNumber = Integer.parseInt(tName);
 			
-			removeResource(pName, aNumber, tNumber);
+			System.out.print("Resource Id:");
+			String rIdd = takeInput();
+			int rId = Integer.parseInt(rIdd);
+			
+			removeResource(pName, aNumber, tNumber, rId);
 			
 		}
 		else if(input.toLowerCase().equals("q")) {
@@ -337,10 +341,10 @@ public class ProjectMenu extends Menu {
 		getMediator().assignResource(pName, aNumber, tNumber, rId);
 	}
 	
-	public void removeResource(String pName, int aNumber, int tNumber) {
+	public void removeResource(String pName, int aNumber, int tNumber,int rId) {
 		//signature not final
 		//System.out.println("Project removeResource");
-		//getmed
+		getMediator().unassignResource(pName, aNumber, tNumber, rId);
 	}
 	
 	public void projectCalculate(String pName) {

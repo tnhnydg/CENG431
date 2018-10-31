@@ -23,6 +23,10 @@ public class Task {
 		this.setResourceId(rId);
 	}
 	
+	public void unassignResource(int rId) {
+		this.setResourceId(0);
+	}
+	
 	public String getDescription() {
 		return description;
 	}

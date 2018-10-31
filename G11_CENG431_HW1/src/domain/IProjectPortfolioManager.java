@@ -7,7 +7,7 @@ public interface IProjectPortfolioManager {
 
 
 	public void addProject(String pName, String pDescription, String pDate);
-	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable);
+	/*public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable);*/
 	public int addActivity(String pName,String aDescription,String aStartDate,String aDeliverable);
 	public void addTask(String pName,int aNumber,String tDescription,String tStartDate,int tHours);
 	public boolean addEmployeeResource(String eName, String eDescription);
@@ -36,6 +36,7 @@ public interface IProjectPortfolioManager {
 	public int countProjectResource(String pName);
 	public void assignResource(String pName,int aNumber,int tNumber,int rId);
 	public void displayProject(String pName);
+	public void unassignResource(String pName,int aNumber,int tNumber,int rId);
 	
 
 }

@@ -10,7 +10,7 @@ import presentation.MainMenu;
 public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	private List<Project> allProjects;
-	private List<IResource> allPerson;
+	private List<IResource> allResources;
 	
 	public ProjectPortfolioManager() {
 
@@ -162,13 +162,7 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return taskList;
 	}
 	
-	public void assignResource(String pName,int aNumber,int tNumber,int rId) {
-		Project project = findProject(pName);
-		Task task = project.assignResource(project,aNumber,tNumber,rId);
-		findPerson(rId).getTaskList().add(task);
-	}
-	
-	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {}
+	/*public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {}*/
 		
 	public void addToList(Project project) {
 		allProjects.add(project);
@@ -182,12 +176,12 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		return this.allProjects;
 	}
 
-	public void setResourceList(List<IResource> person) {
-		this.allPerson = person;
+	public void setResourceList(List<IResource> resources) {
+		this.allResources = resources;
 	}
 	
 	public List<IResource> getResourceList() {
-		return this.allPerson;
+		return this.allResources;
 	}
 	
 	public boolean addEmployeeResource(String eName, String eDescription, int rId) {
@@ -348,5 +342,17 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	public void displayProject(String pName) {
 		Project project = findProject(pName);
 		System.out.println(project.toString());
+	}
+	
+	public void assignResource(String pName,int aNumber,int tNumber,int rId) {
+		Project project = findProject(pName);
+		Task task = project.assignResource(project,aNumber,tNumber,rId);
+		findPerson(rId).getTaskList().add(task);
+	}
+	
+	public void unassignResource(String pName,int aNumber,int tNumber,int rId) {
+		Project project = findProject(pName);
+		Task task = project.unassignResource(project, aNumber, tNumber, rId);
+		findPerson(rId).getTaskList().remove(task);
 	}
 }

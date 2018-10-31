@@ -55,6 +55,19 @@ public class Project {
 		return task;
 	}
 	
+	public Task unassignResource(Project project,int aNum,int tNum,int rId) {
+		Activity activity = null;
+		for(int i=0;i<this.getActivityList().size();i++) {
+			if(this.getActivityList().get(i).getNumber() == aNum) {
+				activity = this.getActivityList().get(i);
+			}
+		}
+		
+		Task task = (activity.unassignResource(project,aNum,tNum,rId));
+		
+		return task;
+	}
+	
 	public List<Activity> getActivityList() {
 		return activityList;
 	}
