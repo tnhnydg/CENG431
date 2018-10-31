@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Activity {
 
@@ -9,11 +10,14 @@ public class Activity {
 	private String description;
 	private String startDate;
 	private String deliverable;
-	private ArrayList<Task> taskList;
+	private List<Task> taskList;
 	private ProjectPortfolioManager mediator;
 	
 	public Activity(int aNumber, String aDescription, String aStartDate, String aDeliverable) {
-		
+		setNumber(aNumber);
+		setDescription(aDescription);
+		setStartDate(aStartDate);
+		setDeliverable(aDeliverable);
 	}
 	
 	public void addTask(Activity activity,String tDescription,String tStartDate,int tHours) {
@@ -21,10 +25,10 @@ public class Activity {
 		activity.getTaskList().add(task);
 	}
 	
-	public ArrayList<Task> getTaskList() {
+	public List<Task> getTaskList() {
 		return taskList;
 	}
-	public void setTaskList(ArrayList<Task> taskList) {
+	public void setTaskList(List<Task> taskList) {
 		this.taskList = taskList;
 	}
 	public ProjectPortfolioManager getMediator() {
