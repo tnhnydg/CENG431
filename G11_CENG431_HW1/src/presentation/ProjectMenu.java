@@ -115,15 +115,13 @@ public class ProjectMenu extends Menu {
 		//addActivity
 		
 		for(int i=0;i<getMediator().getAllProjects().size();i++) {
-			System.out.println(getMediator().getAllProjects().get(i).getName());//projectname
-			System.out.println(getMediator().getAllProjects().get(i).getActivityList().get(0).getNumber());//actnumber
-			System.out.println(getMediator().getAllProjects().get(i).getActivityList().get(0).getTaskList().get(0).getNumber());//tasknum
+			System.out.println(getMediator().getAllProjects().get(i).toString());
 		}//delete
 	}
 	
 	public void removeProject(String pName) {
 		System.out.println("Project removeProject");
-		//signature not final
+		getMediator().removeProject(pName);
 	}
 	
 	public void updateProject() {
@@ -335,7 +333,7 @@ public class ProjectMenu extends Menu {
 		//addTask(pName,aNumber);
 		//signature not final
 		//Mediator Task creation for latest project latest activity ???
-		System.out.println("Project addTask");
+		//System.out.println("Project addTask");
 	}
 	
 	public void addResource(String pName, String aName, String tName, String rId) {

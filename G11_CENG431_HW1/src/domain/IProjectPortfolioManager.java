@@ -19,4 +19,5 @@ public interface IProjectPortfolioManager {
 	public List<Project> getAllProjects();
 	public boolean updateResource(String rName, String rDescription, int rId);
 	public String showResource(int rId);
+	public void removeProject(String pName);
 }
