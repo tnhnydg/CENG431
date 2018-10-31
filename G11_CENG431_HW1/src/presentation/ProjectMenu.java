@@ -113,6 +113,12 @@ public class ProjectMenu extends Menu {
 		//signature not final
 		//where we handle the date
 		//addActivity
+		
+		for(int i=0;i<getMediator().getAllProjects().size();i++) {
+			System.out.println(getMediator().getAllProjects().get(i).getName());//projectname
+			System.out.println(getMediator().getAllProjects().get(i).getActivityList().get(0).getNumber());//actnumber
+			System.out.println(getMediator().getAllProjects().get(i).getActivityList().get(0).getTaskList().get(0).getNumber());//tasknum
+		}
 	}
 	
 	public void removeProject(String pName) {
@@ -235,20 +241,17 @@ public class ProjectMenu extends Menu {
 	public void addActivity(String pName) {
 		System.out.println("Project addActivity");
 		
-		System.out.print("Activity Number:");
-		String aNumberr = takeInput();
-		int aNumber = Integer.parseInt(aNumberr);
-		
 		System.out.print("Activity Description:");
 		String aDescription = takeInput();
 		
-		System.out.print("Activity Description:");
+		System.out.print("Activity Start Date:");
 		String aStartDate = takeInput();
 		
-		System.out.print("Activity Description:");
+		System.out.print("Activity Deliverable:");
 		String aDeliverable = takeInput();
 		
-		getMediator().addActivity(pName,aNumber,aDescription,aStartDate,aDeliverable);
+		
+		int aNumber = getMediator().addActivity(pName,aDescription,aStartDate,aDeliverable);
 		addTask(pName,aNumber);
 		//signature not final
 		//Each activity should have at least one task.
@@ -316,8 +319,6 @@ public class ProjectMenu extends Menu {
 	}
 	
 	public void addTask(String pName, int aNumber) {
-		System.out.print("Task Number:");
-		String tNumber = takeInput();
 		
 		System.out.print("Task Description:");
 		String tDescription = takeInput();
@@ -329,7 +330,9 @@ public class ProjectMenu extends Menu {
 		String tHourss = takeInput();
 		int tHours = Integer.parseInt(tHourss);
 		
-		getMediator().addTask(pName,aNumber,tNumber,tDescription,tStartDate,tHours);
+		getMediator().addTask(pName,aNumber,tDescription,tStartDate,tHours);
+		
+		//addTask(pName,aNumber);
 		//signature not final
 		//Mediator Task creation for latest project latest activity ???
 		System.out.println("Project addTask");

@@ -12,17 +12,17 @@ public class Task {
 	private ProjectPortfolioManager mediator;
 	
 	public Task(String description,String startDate,int hours) {
-		setDesription(description);
+		setDescription(description);
 		setStartDate(startDate);
 		setHours(hours);
 	}
 	
 	
-	public String getDesription() {
+	public String getDescription() {
 		return description;
 	}
-	public void setDesription(String desription) {
-		this.description = desription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public int getHours() {
 		return hours;

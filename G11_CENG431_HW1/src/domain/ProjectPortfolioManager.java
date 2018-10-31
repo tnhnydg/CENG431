@@ -20,35 +20,40 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	
 	public void addProject(String pName, String pDescription, String pDate) {
 		Project newProject = new Project(pName,pDescription,pDate);
-		
 		addToList(newProject);
 	}
 	
-	public void addActivity(String pName,int aNumber,String aDescription,String aStartDate,String aDeliverable) {
+	public int addActivity(String pName,String aDescription,String aStartDate,String aDeliverable) {
 		Project project = null;
 		for(int i=0;i<getAllProjects().size();i++) {
 			if(getAllProjects().get(i).getName() == pName) {project = getAllProjects().get(i);}
 		}
-		project.addActivity(project,aNumber,aDescription,aStartDate,aDeliverable);
+		project.addActivity(project,aDescription,aStartDate,aDeliverable);
 		
-		//return project;
+		int size = project.getActivityList().size();
+		int aNumber = project.getActivityList().get(size - 1).getNumber();
+		//System.out.println(aNumber);
+		return aNumber;
 	}
 	
-	public void addTask(String pName,int aNumber,String tName,String tDescription,String tStartDate,int tHours) {
+	public void addTask(String pName,int aNumber,String tDescription,String tStartDate,int tHours) {
 		Project project = null;
 		Activity activity = null;
 		for(int i=0;i<getAllProjects().size();i++) {
 			if(getAllProjects().get(i).getName() == pName) {
 				project = getAllProjects().get(i);
+				//System.out.println(project.getDescription());
+				//System.out.println(project.getActivityList().get(0).getNumber());
 				
 				for(int j=0;j<project.getActivityList().size();j++) {
-					if(project.getActivityList().get(i).getNumber() == aNumber) {
-						activity = project.getActivityList().get(i);
+					if(project.getActivityList().get(j).getNumber() == aNumber) {
+						//System.out.println("found2");
+						activity = project.getActivityList().get(j);
 					}
 				}
 			}
 		}
-		
+		//System.out.println(activity.getNumber());
 		activity.addTask(activity, tDescription, tStartDate, tHours);
 		
 	}

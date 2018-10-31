@@ -10,25 +10,40 @@ public class Activity {
 	private String description;
 	private String startDate;
 	private String deliverable;
-	private List<Task> taskList;
+	private ArrayList<Task> taskList;
 	private ProjectPortfolioManager mediator;
 	
-	public Activity(int aNumber, String aDescription, String aStartDate, String aDeliverable) {
-		setNumber(aNumber);
+	
+	public Activity(String aDescription, String aStartDate, String aDeliverable) {
 		setDescription(aDescription);
 		setStartDate(aStartDate);
 		setDeliverable(aDeliverable);
+		setTaskList(new ArrayList<Task>());
+
 	}
 	
 	public void addTask(Activity activity,String tDescription,String tStartDate,int tHours) {
 		Task task = new Task(tDescription,tStartDate,tHours);
+		assignNumber(activity,task);
 		activity.getTaskList().add(task);
 	}
 	
-	public List<Task> getTaskList() {
+	public void assignNumber(Activity activity,Task task) {
+		int tNumber;
+		if(activity.getTaskList().size() != 0) {
+			tNumber = activity.getTaskList().get(-1).getNumber();
+		}
+		else {
+			tNumber = 0;
+		}
+		
+		task.setNumber(tNumber+1);
+	}
+	
+	public ArrayList<Task> getTaskList() {
 		return taskList;
 	}
-	public void setTaskList(List<Task> taskList) {
+	public void setTaskList(ArrayList<Task> taskList) {
 		this.taskList = taskList;
 	}
 	public ProjectPortfolioManager getMediator() {
@@ -40,8 +55,8 @@ public class Activity {
 	public int getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+	public void setNumber(int aNumber) {
+		this.number = aNumber;
 	}
 	public String getStartDate() {
 		return startDate;

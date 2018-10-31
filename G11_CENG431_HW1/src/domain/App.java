@@ -13,7 +13,7 @@ public class App {
 	public static void main(String[] args) throws FileNotFoundException {
 		System.out.println("Starting the program...");
 		IProjectPortfolioManager mediator = new ProjectPortfolioManager();
-		
+		/*
 		Data data = new Data();
 		//data.testWriteJSON();
 		//data.myTry();
@@ -57,7 +57,7 @@ public class App {
 		System.out.println(a);
 		
 	//	System.out.println(data.buildActivitys(activityList));
-		
+		*/
 		MainMenu menu = new MainMenu(mediator);
 		menu.start();
 		
