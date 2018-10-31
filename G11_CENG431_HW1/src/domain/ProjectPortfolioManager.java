@@ -318,9 +318,15 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	@Override
 	public void start() {
-		MainMenu menu = new MainMenu(this);
-		menu.start();
+		try {
+			loadState();
+		}
+		catch(Exception e) {
+			System.out.println("No Existing File New Creation");
+		}
 		
+		MainMenu menu = new MainMenu(this);
+		menu.start();	
 	}
 
 	@Override
@@ -333,6 +339,9 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	@Override
 	public void loadState() {
 		DataHandler data = new DataHandler();
+		System.out.println(data.findLatestFile());
+		
+		data.splitJson(data.readFile(data.findLatestFile()), getAllProjects(), getResourceList());
 	
 	}
 }
