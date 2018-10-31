@@ -67,4 +67,15 @@ public class Project {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append("[" + this.getName() + this.getDescription() + this.getStartDate() + " : ");  
+		for(int i=0;i<this.getActivityList().size();i++) {
+			str.append("\n\t" + this.getActivityList().get(i).toString());
+		}
+		
+		return str.toString(); 
+	}
 }

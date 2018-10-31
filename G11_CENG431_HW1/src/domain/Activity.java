@@ -81,11 +81,16 @@ public class Activity {
 		return 0;
 	}
 	
-	/*@Override
+	@Override
 	public String toString() {
-		String string2 = 
-		return string2; 
-	}*/
+		StringBuilder str = new StringBuilder();
+		str.append("[" + this.getNumber() + this.getDescription() + this.getStartDate() + this.getDeliverable() + this.getHours() + " : ");  
+		for(int i=0;i<this.getTaskList().size();i++) {
+			str.append("\n\t" + this.getTaskList().get(i).toString());
+		}
+		
+		return str.toString(); 
+	}
 	
 	
 }
