@@ -333,4 +333,9 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void displayProject(String pName) {
+		Project project = findProject(pName);
+		System.out.println(project.toString());
+	}
 }

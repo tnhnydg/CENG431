@@ -35,6 +35,7 @@ public interface IProjectPortfolioManager {
 	public int countTaskResource(String pName, int aId, int tId);
 	public int countProjectResource(String pName);
 	public void assignResource(String pName,int aNumber,int tNumber,int rId);
+	public void displayProject(String pName);
 	
 
 }

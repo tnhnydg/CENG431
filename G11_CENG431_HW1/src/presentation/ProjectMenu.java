@@ -58,7 +58,7 @@ public class ProjectMenu extends Menu {
 		System.out.print("Project Name:");
 		String pName = takeInput();
 		
-		//Mediator display call ???
+		getMediator().displayProject(pName);
 	}
 	
 	public void startCalculate() {
@@ -339,7 +339,8 @@ public class ProjectMenu extends Menu {
 	
 	public void removeResource(String pName, int aNumber, int tNumber) {
 		//signature not final
-		System.out.println("Project removeResource");
+		//System.out.println("Project removeResource");
+		//getmed
 	}
 	
 	public void projectCalculate(String pName) {
