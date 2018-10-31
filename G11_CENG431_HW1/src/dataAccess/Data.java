@@ -35,8 +35,7 @@ public class Data {
 	}
 	
 	public String saveResources(List<IResource> resourceList) {
-		
-		return null;
+		return getGson().toJson(resourceList);
 	}
 	
 	public List<IResource> loadResources(BufferedReader bfrd) {
@@ -57,7 +56,7 @@ public class Data {
 	}
 
 	public BufferedReader readFile(String fileName) {
-		BufferedReader bfrd;
+		BufferedReader bfrd = null;
 		try {
 			bfrd = new BufferedReader(new FileReader("JSONExample.json"));
 		} catch (FileNotFoundException e) {

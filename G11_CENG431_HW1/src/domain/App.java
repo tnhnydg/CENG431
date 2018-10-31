@@ -18,15 +18,7 @@ public class App {
 		//data.testWriteJSON();
 		//data.myTry();
 		//data.template();
-		List<Task> taskList =new ArrayList<Task>();
-		Task tsk = new Task("desc","startDate",2);
-		taskList.add(tsk);
-		Task tsk2 = new Task("desc","startDate",2);
-		taskList.add(tsk);
-		Task tsk3 = new Task("desc","startDate",2);
-		taskList.add(tsk);
-		Task tsk4 = new Task("desc","startDate",2);
-		taskList.add(tsk);
+		
 		
 		List<Activity> activityList = new ArrayList<Activity>();
 		Activity act = new Activity(5, "desc", "1.1.1", "deliv");
@@ -58,6 +50,38 @@ public class App {
 		
 	//	System.out.println(data.buildActivitys(activityList));
 		*/
+		
+		List<Task> taskList =new ArrayList<Task>();
+		Task tsk = new Task("desc","startDate",2);
+		taskList.add(tsk);
+		Task tsk2 = new Task("desc","startDate",2);
+		taskList.add(tsk);
+		Task tsk3 = new Task("desc","startDate",2);
+		taskList.add(tsk);
+		Task tsk4 = new Task("desc","startDate",2);
+		taskList.add(tsk);
+		
+		
+		Data data = new Data();
+		
+		List<IResource> resourceList = new ArrayList<IResource>();
+		IResource emp = new Employee("eName", "eDescription",10);
+		IResource csnt = new Consultant("cName", "cDescription",5);
+		emp.setTaskList(taskList);
+		csnt.setTaskList(taskList);
+		
+		
+		
+		resourceList.add(emp);
+		resourceList.add(csnt);
+		resourceList.add(emp);
+		resourceList.add(csnt);
+		resourceList.add(emp);
+		resourceList.add(csnt);
+		
+		
+		System.out.println(data.saveResources(resourceList));
+		
 		MainMenu menu = new MainMenu(mediator);
 		menu.start();
 		
