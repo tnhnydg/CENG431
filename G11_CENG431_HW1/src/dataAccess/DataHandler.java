@@ -20,10 +20,10 @@ import domain.Employee;
 import domain.IResource;
 import domain.Person;
 
-public class Data {
+public class DataHandler {
 	private Gson gson;
 	
-	public Data() {
+	public DataHandler() {
 			setGson(new Gson());
 	}
 			

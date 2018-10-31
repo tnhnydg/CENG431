@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dataAccess.Data;
+import dataAccess.DataHandler;
 import presentation.MainMenu;
 
 public class App {
@@ -83,7 +83,7 @@ public class App {
 		projectList.add(prj);
 		
 		
-		Data data = new Data();
+		DataHandler data = new DataHandler();
 		
 		List<IResource> resourceList = new ArrayList<IResource>();
 		IResource emp = new Employee("eName", "eDescription",10);
