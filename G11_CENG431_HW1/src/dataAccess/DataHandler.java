@@ -1,11 +1,13 @@
 package dataAccess;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
+import java.util.Date;
 import java.util.List;
 
 import java.lang.reflect.Type;
@@ -116,5 +118,30 @@ public class DataHandler {
 			
 		}
 		
+	}
+	
+	public String findLatestFile() {
+		 /*
+		  * Code taken from and modified for our purposes
+		  * https://stackoverflow.com/questions/285955/java-get-the-newest-file-in-a-directory
+		  * 
+		  */
+		
+		 File fl = new File("dataHistory//");
+		    File[] files = fl.listFiles(new FileFilter() {          
+		        public boolean accept(File file) {
+		            return file.isFile();
+		        }
+		    });
+		    long lastMod = Long.MIN_VALUE;
+		    File choice = null;
+		    for (File file : files) {
+		        if (file.lastModified() > lastMod) {
+		            choice = file;
+		            lastMod = file.lastModified();
+		        }
+		    }
+		    
+		    return choice.getName();
 	}
 }

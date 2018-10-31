@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,20 +99,23 @@ public class App {
 		resourceList.add(csnt);
 		resourceList.add(emp);
 		resourceList.add(csnt);
-				
-		data.writeFile("JSONExample.json", data.mergeJson(projectList, resourceList));
+		
+		data.writeFile("Projects-2018-10-31.json", data.mergeJson(projectList, resourceList));
+		
 		
 		List<Project> projectListLoad = null;
 		List<IResource> resourceListLoad = null;
 		
-		data.splitJson(data.readFile("JSONExample.json"), projectListLoad, resourceListLoad);
+		data.splitJson(data.readFile("Projects-2018-10-31.json"), projectListLoad, resourceListLoad);
 		
-		
+		data.findLatestFile();
+		System.out.println(data.findLatestFile());
 		MainMenu menu = new MainMenu(mediator);
 		menu.start();
-		
-		
+			
 	}
+	
+
 	
 
 }
