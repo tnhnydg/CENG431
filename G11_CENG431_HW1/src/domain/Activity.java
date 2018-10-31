@@ -103,6 +103,18 @@ public class Activity {
 		return null;
 	}
 	
+	public Task assignResource(Project project,int aNum,int tNum,int rId) {
+		Task task = null;
+		for(int i=0;i<this.getTaskList().size();i++) {
+			if(this.getTaskList().get(i).getNumber() == tNum) {
+				task = this.getTaskList().get(i);
+			}
+		}
+		task.assignResource(rId);
+		
+		return task;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();

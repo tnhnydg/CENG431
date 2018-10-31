@@ -37,6 +37,19 @@ public class Project {
 		activity.setNumber(aNumber+1);
 	}
 	
+	public Task assignResource(Project project,int aNum,int tNum,int rId) {
+		Activity activity = null;
+		for(int i=0;i<this.getActivityList().size();i++) {
+			if(this.getActivityList().get(i).getNumber() == aNum) {
+				activity = this.getActivityList().get(i);
+			}
+		}
+		
+		Task task = (activity.assignResource(project,aNum,tNum,rId));
+		
+		return task;
+	}
+	
 	public List<Activity> getActivityList() {
 		return activityList;
 	}

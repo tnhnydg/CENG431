@@ -18,6 +18,9 @@ public class Task {
 		setResourceId(0);
 	}
 	
+	public void assignResource(int rId) {
+		this.setResourceId(rId);
+	}
 	
 	public String getDescription() {
 		return description;

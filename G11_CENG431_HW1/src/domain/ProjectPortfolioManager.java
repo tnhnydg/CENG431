@@ -161,7 +161,8 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	
 	public void assignResource(String pName,int aNumber,int tNumber,int rId) {
 		Project project = findProject(pName);
-		
+		Task task = project.assignResource(project,aNumber,tNumber,rId);
+		findPerson(rId).getTaskList().add(task);
 	}
 	
 	public void updateActivityInfo(String pName,String aNumber,String description,String startDate,String deliverable) {}
