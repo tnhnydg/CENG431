@@ -57,14 +57,14 @@ public class Data {
 	}
 
 	public BufferedReader readFile(String fileName) {
+		BufferedReader bfrd;
 		try {
-			return new BufferedReader(new FileReader("JSONExample.json"));
+			bfrd = new BufferedReader(new FileReader("JSONExample.json"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		
-		return null;
+		return bfrd;
 	}
 	public void setGson(Gson gson) {
 		this.gson = gson;
