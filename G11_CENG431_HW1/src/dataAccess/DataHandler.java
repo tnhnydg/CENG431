@@ -65,7 +65,7 @@ public class DataHandler {
 	
 	public void writeFile(String fileName, String data) {
 		try {
-			PrintWriter pw = new PrintWriter(fileName);
+			PrintWriter pw = new PrintWriter("dataHistory//" +fileName);
 			pw.write(data); 
 	          
 	        pw.flush(); 
