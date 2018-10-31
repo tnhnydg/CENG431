@@ -21,4 +21,10 @@ public interface IProjectPortfolioManager {
 	public String showResource(int rId);
 	public void removeProject(String pName);
 	public void start();
+	public void saveState();
+	public void loadState();
+	public int calculateProject(String pName);
+	public int calculateActivity(String pName, int aId);
+	public int calculateTask(String pName, int aId, int tId);
+	public Project findProject(String pName);
 }

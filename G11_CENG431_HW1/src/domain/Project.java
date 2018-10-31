@@ -66,6 +66,32 @@ public class Project {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+	public int calculateProject() {
+		int totalProjectHours = 0;
+		for(int i = 0; i < getActivityList().size(); i++) {
+			totalProjectHours += getActivityList().get(i).calculateActivity();
+		}
+		System.out.println("Total Project Hour:" + totalProjectHours);
+		return totalProjectHours;
+	}
+	
+	public int calculateActivity(int aId) {
+		return findActivity(aId).calculateActivity();
+	}
+	
+	public int calculateTask(int aId, int tId) {
+		return findActivity(aId).findTask(tId).calculateTask();
+	}
+	
+	public Activity findActivity(int aId) {
+		for(int i = 0; i < getActivityList().size(); i++) {
+			Activity tmp = getActivityList().get(i);
+			if(tmp.getNumber() == aId) {
+				return tmp;
+			}
+		}
+		return null;
+	}
 	
 	@Override
 	public String toString() {

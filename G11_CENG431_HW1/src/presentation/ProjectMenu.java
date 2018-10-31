@@ -348,13 +348,20 @@ public class ProjectMenu extends Menu {
 	
 	public void projectCalculate(String pName) {
 		System.out.println("projectCalculate");
+		int result = getMediator().calculateProject(pName);
+		System.out.println("Calculated Project:" + result);
+		
 	}
 	
-	public void activityCalculate(String pName, String aName) {
+	public void activityCalculate(String pName, String aId) {
 		System.out.println("activityCalculate");
+		int result = getMediator().calculateActivity(pName, Integer.parseInt(aId));
+		System.out.println("Calculated Activity:" + result);
 	}
 	
-	public void taskCalculate(String pName, String aName, String tName) {
+	public void taskCalculate(String pName, String aId, String tId) {
 		System.out.println("taskCalculate");
+		int result = getMediator().calculateTask(pName, Integer.parseInt(aId), Integer.parseInt(tId));
+		System.out.println("Calculate Task:" + result);
 	}
 }

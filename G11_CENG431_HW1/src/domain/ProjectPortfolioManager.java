@@ -182,4 +182,28 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 	public void loadState() {
 		
 	}
+	
+	public int calculateProject(String pName) {
+		return findProject(pName).calculateProject();
+	}
+	
+	public int calculateActivity(String pName, int aId) {
+		//talks project
+		return findProject(pName).calculateActivity(aId);
+	}
+	
+	public int calculateTask(String pName, int aId, int tId) {
+		//talks project
+		return findProject(pName).calculateTask(aId, tId);
+	}
+	
+	public Project findProject(String pName) {
+		for(int i = 0; i < getAllProjects().size(); i++) {
+			Project tmp = getAllProjects().get(i);
+			if(tmp.getName().equals(pName)) {
+				return tmp;
+			}
+		}
+		return null;
+	}
 }
