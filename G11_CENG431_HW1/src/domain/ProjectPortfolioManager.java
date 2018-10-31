@@ -332,7 +332,7 @@ public class ProjectPortfolioManager implements IProjectPortfolioManager {
 
 	@Override
 	public void loadState() {
-		// TODO Auto-generated method stub
-		
+		DataHandler data = new DataHandler();
+	
 	}
 }
