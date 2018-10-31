@@ -92,7 +92,6 @@ public class App {
 		csnt.setTaskList(taskList);
 		
 		
-		
 		resourceList.add(emp);
 		resourceList.add(csnt);
 		resourceList.add(emp);
@@ -101,6 +100,13 @@ public class App {
 		resourceList.add(csnt);
 				
 		data.writeFile("sa", data.mergeJson(projectList, resourceList));
+		
+		List<Project> projectListLoad = null;
+		List<IResource> resourceListLoad = null;
+		
+		data.splitJson(data.readFile("a"), projectListLoad, resourceListLoad);
+		
+		
 		MainMenu menu = new MainMenu(mediator);
 		menu.start();
 		

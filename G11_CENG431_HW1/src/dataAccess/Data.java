@@ -31,20 +31,19 @@ public class Data {
 		return getGson().toJsonTree(projectList);	
 	}
 	
-	public List<Project> loadProjects(BufferedReader bfrd) {
+	public List<Project> loadProjects(JsonElement projects) {
 		Type listType = new TypeToken<ArrayList<Project>>(){}.getType();
-		return getGson().fromJson(bfrd, listType);
+		return getGson().fromJson(projects, listType);
 	}
 	
 	public JsonElement saveResources(List<IResource> resourceList) {
 		return getGson().toJsonTree(resourceList);
 	}
 		
-	public List<IResource> loadResources(BufferedReader bfrd) {
+	public List<IResource> loadResources(JsonElement resources) {
 		List<IResource> resourceList = new ArrayList<IResource>();
-		
-		JsonParser jsonParser = new JsonParser();
-		JsonElement jsonTree = jsonParser.parse(bfrd);
+
+		JsonElement jsonTree = resources;
 		
 		if(jsonTree.isJsonArray()) {
 			JsonArray jsonArray = jsonTree.getAsJsonArray();
@@ -103,5 +102,19 @@ public class Data {
 		System.out.println(jsonObject);
 	
 		return jsonObject.toString();
+	}
+	
+	public void splitJson(BufferedReader bfrd, List<Project> projectList, List<IResource> resourceList) {
+		JsonParser jsonParse = new JsonParser();
+		JsonElement jsonTree = jsonParse.parse(bfrd);
+		
+		if(jsonTree.isJsonObject()) {
+			JsonObject jsonObject = jsonTree.getAsJsonObject();
+			
+		System.out.println(loadProjects(jsonObject.get("projectList")));
+			loadResources(jsonObject.get("resourceList"));
+			
+		}
+		
 	}
 }
