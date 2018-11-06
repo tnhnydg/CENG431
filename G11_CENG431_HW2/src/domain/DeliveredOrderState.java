@@ -1,34 +1,26 @@
 package domain;
 
-import java.time.LocalDate;
+public class DeliveredOrderState implements OrderState {
 
-public class Order implements OrderState {
+	Order order;
 	
-	private int id;
-	private int trackingNumber; // String ??
-	private int customerId;
-	private String customerName;
-	private double weight;
-	private String shippingAddress;
-	private LocalDate dateShippied;
-	private LocalDate dateDelivered;
-	private double productPrice;
-	private double cargoPrice;
-	private double totalPrice;
-	private OrderState state;
+	public DeliveredOrderState(Order order) {
+		
+	}
 	
-	
-	public Order() {
-
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-
+	public Order getOrder() {
+		return this.order;
+	}
+	
 	@Override
 	public void saveOrder() {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public void submitOrder() {
@@ -36,13 +28,11 @@ public class Order implements OrderState {
 		
 	}
 
-
 	@Override
 	public void chargeCustomer() {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public void shipOrder() {
@@ -50,13 +40,11 @@ public class Order implements OrderState {
 		
 	}
 
-
 	@Override
 	public void deliverOrder() {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public void deleteOrder() {
@@ -64,20 +52,17 @@ public class Order implements OrderState {
 		
 	}
 
-
 	@Override
 	public void cancelOrder() {
 		// TODO Auto-generated method stub
 		
 	}
 
-
 	@Override
 	public void cancelPayment() {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public void error() {
