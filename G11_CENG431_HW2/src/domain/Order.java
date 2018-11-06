@@ -18,70 +18,64 @@ public class Order implements OrderState {
 	private OrderState state;
 	
 	
-	public Order() {
-
+	public Order(OrderState state) {
+		setOrderState(state);
 	}
-
+	
+	public void setOrderState(OrderState state) {
+		this.state = state;
+	}
+	
+	public OrderState getOrderState() {
+		return this.state;
+	}
 
 	@Override
 	public void saveOrder() {
-		// TODO Auto-generated method stub
-		
+		state.saveOrder();
 	}
-
 
 	@Override
 	public void submitOrder() {
-		// TODO Auto-generated method stub
-		
+		state.submitOrder();
 	}
-
-
+	
 	@Override
 	public void chargeCustomer() {
-		// TODO Auto-generated method stub
-		
+		state.chargeCustomer();
 	}
 
 
 	@Override
 	public void shipOrder() {
-		// TODO Auto-generated method stub
-		
+		state.shipOrder();
 	}
-
 
 	@Override
 	public void deliverOrder() {
-		// TODO Auto-generated method stub
-		
+		state.deliverOrder();
 	}
 
 
 	@Override
 	public void deleteOrder() {
-		// TODO Auto-generated method stub
-		
+		state.deleteOrder();
 	}
 
 
 	@Override
 	public void cancelOrder() {
-		// TODO Auto-generated method stub
-		
+		state.cancelOrder();
 	}
 
 
 	@Override
 	public void cancelPayment() {
-		// TODO Auto-generated method stub
-		
+		state.cancelPayment();
 	}
-
 
 	@Override
 	public void error() {
-		// TODO Auto-generated method stub
-		
+		state.error();
 	}
 }
