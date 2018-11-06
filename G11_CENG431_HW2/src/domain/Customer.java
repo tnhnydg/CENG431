@@ -9,8 +9,26 @@ public class Customer {
 	private String phone;
 	private String email;
 	private String password;
+	//Order attribute???
 	
 	public Customer() {
+		
+	}
+	
+	public void saveOrder() { //Order arg??? 
+		//set state of an order saved
+		//order.saveOrder()
+	}
+	
+	public void submitOrder() { //Order arg???
+		
+	}
+	
+	public void cancelOrder() {//Order arg???
+		
+	}
+	
+	public void deleteOrder() {//Order arg???
 		
 	}
 
