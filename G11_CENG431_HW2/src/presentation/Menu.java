@@ -2,7 +2,7 @@ package presentation;
 
 import java.util.Scanner;
 
-public class Menu {
+public abstract class Menu {
 	
 	private Scanner input;
 	
@@ -22,10 +22,6 @@ public class Menu {
 	public String takeInput() {
 		String line = getScanner().nextLine();
 		return line;
-	}
-	
-	public void start() {
-		
 	}
 
 }

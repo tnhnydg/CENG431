@@ -13,7 +13,7 @@ public class Shopping {
 	}
 	
 	public void placeOrder(Customer customer) {
-		Menu menu = new Menu(); // Shopping Menu
+		//Menu menu = new Menu(); // Shopping Menu
 		
 		Order order = new Order();
 		
