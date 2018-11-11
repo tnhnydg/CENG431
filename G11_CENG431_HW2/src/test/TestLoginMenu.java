@@ -10,7 +10,8 @@ public class TestLoginMenu {
 		Customer customer = login.start();
 		System.out.println(customer.getName());
 		System.out.println(customer.getId());
-
+		
+		
 	}
 
 }

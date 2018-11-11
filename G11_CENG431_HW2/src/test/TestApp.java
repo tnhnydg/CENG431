@@ -1,6 +1,7 @@
 package test;
 
 import domain.*;
+import presentation.LoginMenu;
 import dataAccess.*;
 
 public class TestApp {
@@ -11,12 +12,12 @@ public class TestApp {
 		//Starting menu works and at the end return a customer
 		//Lastly ask "Do you want to place an Order" if yes placeOrder and quit starting menu
 		//if no quit starting menu
-		 
-		Customer customer = new Customer();
-		
+		LoginMenu loginMenu = new LoginMenu();
+		Customer customer = loginMenu.start();
+		System.out.println(customer.getName());
+		 		
 		Shopping shopping = store.createShopping();
 		shopping.placeOrder(customer);
-		
 		
 	}
 

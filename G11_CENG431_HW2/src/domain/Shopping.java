@@ -9,32 +9,33 @@ public class Shopping {
 	private Store store;
 	
 	public Shopping(Store store) {
-		
+		setStore(store);
 	}
 	
 	public void placeOrder(Customer customer) {
+		setCustomer(customer);
 		//Menu menu = new Menu(); // Shopping Menu
 		
 		Order order = new Order();
 		
 		// Menu actions
-		customer.saveOrder(order);
+		getCustomer().saveOrder(order);
 		order.doAction(customer, this.store);
 		
 		// Menu actions
-		customer.submitOrder(order);
+		getCustomer().submitOrder(order);
 		order.doAction(customer, this.store);
 		
 		// Menu actions
-		this.store.chargeCustomer(order);
+		getStore().chargeCustomer(order);
 		order.doAction(customer, store);
 		
 		// Menu actions
-		this.store.shipOrder(order);
+		getStore().shipOrder(order);
 		order.doAction(customer, store);
 		
 		//Menu actions
-		this.store.deliverOrder(order);
+		getStore().deliverOrder(order);
 		order.doAction(customer, store);
 	}
 
