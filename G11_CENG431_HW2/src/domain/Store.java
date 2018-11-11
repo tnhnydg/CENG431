@@ -1,11 +1,14 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Store {
 	
-	//Customer attribute???
+	private List<Order> allOrders;
 	
 	public Store() {
-		
+		this.allOrders = new ArrayList<Order>();
 	}
 	
 	public void chargeCustomer() { //Customer param???
@@ -22,6 +25,14 @@ public class Store {
 	
 	public void deliverOrder() {
 		
+	}
+
+	public List<Order> getAllOrders() {
+		return allOrders;
+	}
+
+	public void setAllOrders(List<Order> allOrders) {
+		this.allOrders = allOrders;
 	}
 
 }

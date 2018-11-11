@@ -1,74 +1,34 @@
 package domain;
 
-public class PlacedOrderState implements OrderState {
+import java.util.Random;
 
-	Order order;
+public class PlacedOrderState extends OrderState {
+
 	
-	public PlacedOrderState(Order order) {
-		
-	}
-	
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-	
-	public Order getOrder() {
-		return this.order;
-	}
-
-	@Override
-	public void saveOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void submitOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void chargeCustomer() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void shipOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deliverOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cancelOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cancelPayment() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void error() {
-		// TODO Auto-generated method stub
+	public PlacedOrderState() {
 		
 	}
 	
+	@Override
+	public void doAction(Order order) {
+		int deliveryDistance = createDeliveryDistance();
+		calculateCargoPrice(deliveryDistance);
+		calculateProductPrice(order);
+	}
 	
+	public int createDeliveryDistance() {
+		Random r = new Random();
+		int low = 100;
+		int high = 500;
+		int result = r.nextInt(high-low) + low;
+		return result;
+	}
+	
+	public double calculateCargoPrice(int deliveryDistance) {
+		return (0.53)*deliveryDistance;
+	}
+	
+	public double calculateProductPrice(Order order) {
+		return 55*order.getWeight();
+	}
 }

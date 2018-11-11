@@ -1,15 +1,7 @@
 package domain;
 
-public interface OrderState {
-	//Not final interface open for discussions
-	public void saveOrder();
-	public void submitOrder();
-	public void chargeCustomer();
-	public void shipOrder();
-	public void deliverOrder();
-	public void deleteOrder();
-	public void cancelOrder();
-	public void cancelPayment();
-	public void error();
-	
+public abstract class OrderState {
+
+	public void doAction(Order order) {}
+	public void doAction(Order order,Customer customer,double weight) {}	
 }

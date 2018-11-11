@@ -2,7 +2,7 @@ package domain;
 
 import java.time.LocalDate;
 
-public class Order implements OrderState {
+public class Order {
 	
 	private int id;
 	private int trackingNumber; // String ??
@@ -18,8 +18,20 @@ public class Order implements OrderState {
 	private OrderState state;
 	
 	
-	public Order(OrderState state) {
-		setOrderState(state);
+	public Order() {
+		initializeState();
+	}
+	
+	public void initializeState() {
+		this.state = null;
+	}
+	
+	public void doAction() {
+		state.doAction(this);
+	}
+	
+	public void doAction(Customer customer,double weight) {
+		state.doAction(this,customer,weight);
 	}
 		
 	public void setOrderState(OrderState state) {
@@ -28,55 +40,6 @@ public class Order implements OrderState {
 	
 	public OrderState getOrderState() {
 		return this.state;
-	}
-
-	@Override
-	public void saveOrder() {
-		state.saveOrder();
-	}
-
-	@Override
-	public void submitOrder() {
-		state.submitOrder();
-	}
-	
-	@Override
-	public void chargeCustomer() {
-		state.chargeCustomer();
-	}
-
-
-	@Override
-	public void shipOrder() {
-		state.shipOrder();
-	}
-
-	@Override
-	public void deliverOrder() {
-		state.deliverOrder();
-	}
-
-
-	@Override
-	public void deleteOrder() {
-		state.deleteOrder();
-	}
-
-
-	@Override
-	public void cancelOrder() {
-		state.cancelOrder();
-	}
-
-
-	@Override
-	public void cancelPayment() {
-		state.cancelPayment();
-	}
-
-	@Override
-	public void error() {
-		state.error();
 	}
 	
 	public void setId(int id) {

@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public class Customer {
 	// Not final attributes changes are possible
 	private int id;
@@ -9,27 +11,44 @@ public class Customer {
 	private String phone;
 	private String email;
 	private String password;
+	private List<Order> orderList;
 	//Order attribute???
 	
 	public Customer() {
 		
 	}
 	
-	public void saveOrder() { //Order arg??? 
-		//set state of an order saved
-		//order.saveOrder()
-	}
-	
-	public void submitOrder() { //Order arg???
+	public void saveOrder(double weight) { 
+		Order order = new Order();
+		OrderState savedOrderState = new SavedOrderState();
+		order.setOrderState(savedOrderState);
+		addToOrderList(order);
+		order.doAction(this,weight);
 		
 	}
 	
-	public void cancelOrder() {//Order arg???
+	public void submitOrder(Order order) { 
+		OrderState placedOrderState = new PlacedOrderState();
+		order.setOrderState(placedOrderState);
+		order.doAction();
 		
 	}
 	
-	public void deleteOrder() {//Order arg???
+	public void cancelOrder() {
 		
+	}
+	
+	public void deleteOrder(Order order) {
+		OrderState cancelledOrderState = new CancelledOrderState();
+		order.setOrderState(cancelledOrderState);
+	}
+	
+	public void addToOrderList(Order order) {
+		this.orderList.add(order);
+	}
+	
+	public int getLastOrderId() {
+		return getOrderList().get(getOrderList().size()-1).getId();
 	}
 
 	public int getId() {
@@ -86,6 +105,14 @@ public class Customer {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
 	}
 
 }

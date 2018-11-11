@@ -1,72 +1,48 @@
 package domain;
 
-public class SavedOrderState implements OrderState {
+import java.util.Random;
+
+public class SavedOrderState extends OrderState {
 	
-	Order order;
 	
-	public SavedOrderState(Order order) {
+	public SavedOrderState() {
 		
-	}
-	
-	public void setOrder(Order order) {
-		this.order = order;
 	}
 	
-	public Order getOrder() {
-		return this.order;
-	}
-
 	@Override
-	public void saveOrder() {
-		// TODO Auto-generated method stub
+	public void doAction(Order order,Customer customer,double weight) {
+		setOrderId(order,customer);
+		setTrackingNumber(order);
+		setCustomerIdNameAddress(order,customer);
+		setWeight(order,weight);
 		
 	}
-
-	@Override
-	public void submitOrder() {
-		// TODO Auto-generated method stub
-		
+	
+	public void setOrderId(Order order,Customer customer) {
+		int lastOrderId = customer.getLastOrderId();
+		order.setId(lastOrderId+1);
 	}
-
-	@Override
-	public void chargeCustomer() {
-		// TODO Auto-generated method stub
-		
+	
+	public void setTrackingNumber(Order order) {
+		Random r = new Random();
+		int low = 100000;
+		int high = 999999;
+		int result = r.nextInt(high-low) + low;
+		order.setTrackingNumber(result);
 	}
-
-	@Override
-	public void shipOrder() {
-		// TODO Auto-generated method stub
-		
+	
+	public void setCustomerIdNameAddress(Order order,Customer customer) {
+		int customerId = customer.getId();
+		String customerName = customer.getName();
+		String shippingAddress = customer.getAddress();
+		order.setCustomerId(customerId);
+		order.setCustomerName(customerName);
+		order.setShippingAddress(shippingAddress);
 	}
-
-	@Override
-	public void deliverOrder() {
-		// TODO Auto-generated method stub
-		
+	
+	public void setWeight(Order order,double weight) {
+		order.setWeight(weight);
 	}
-
-	@Override
-	public void deleteOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cancelOrder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cancelPayment() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void error() {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	
 }
