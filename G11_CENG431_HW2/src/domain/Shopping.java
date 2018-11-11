@@ -1,14 +1,57 @@
 package domain;
 
+import presentation.*;
+
 public class Shopping {
 	
-	public Shopping() {
+	private Menu menu;
+	private Customer customer;
+	private Store store;
+	
+	public Shopping(Store store) {
 		
 	}
 	
 	public void placeOrder(Customer customer) {
-		// new Order(null)
-		// customer.saveOrder(Order)
+		Menu menu = new Menu(); // Shopping Menu
+		
+		Order order = new Order();
+		
+		// Menu actions
+		customer.saveOrder(order);
+		order.doAction(customer, this.store);
+		
+		// Menu actions
+		customer.submitOrder(order);
+		order.doAction(customer, this.store);
+		
+		// Menu actions
+		this.store.chargeCustomer(order);
+		order.doAction(customer, store);
+		
+		// Menu actions
+		this.store.shipOrder(order);
+		order.doAction(customer, store);
+		
+		//Menu actions
+		this.store.deliverOrder(order);
+		order.doAction(customer, store);
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 }

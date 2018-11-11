@@ -11,20 +11,25 @@ public class Store {
 		this.allOrders = new ArrayList<Order>();
 	}
 	
-	public void chargeCustomer() { //Customer param???
-		//Customer.pay(double value) ???
+	public Shopping createShopping() {
+		return new Shopping(this);
 	}
 	
-	public void cancelPayment() { //Customer param???
- 		
-	}
-	
-	public void shipOrder() {
+	public void chargeCustomer(Order order) { //Customer param???
+		order.setOrderState(new ChargedOrderState());
 		
 	}
 	
-	public void deliverOrder() {
-		
+	public void cancelPayment(Order order) { //Customer param???
+ 		order.setOrderState(new PlacedOrderState());
+	}
+	
+	public void shipOrder(Order order) {
+		order.setOrderState(new ShippedOrderState());
+	}
+	
+	public void deliverOrder(Order order) {
+		order.setOrderState(new DeliveredOrderState());
 	}
 
 	public List<Order> getAllOrders() {

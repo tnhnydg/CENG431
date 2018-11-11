@@ -26,14 +26,10 @@ public class Order {
 		this.state = null;
 	}
 	
-	public void doAction() {
-		state.doAction(this);
+	public void doAction(Customer customer, Store store) {
+		state.doAction(this, customer, store);
 	}
 	
-	public void doAction(Customer customer,double weight) {
-		state.doAction(this,customer,weight);
-	}
-		
 	public void setOrderState(OrderState state) {
 		this.state = state;
 	}

@@ -1,8 +1,14 @@
 package domain;
 
-public class CancelledOrderState extends OrderState{
+public class CancelledOrderState implements OrderState{
 	
 	public CancelledOrderState() {
+		
+	}
+
+	@Override
+	public void doAction(Order order, Customer customer, Store store) {
+		// TODO Auto-generated method stub
 		
 	}
 

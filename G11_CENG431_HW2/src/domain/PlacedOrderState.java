@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Random;
 
-public class PlacedOrderState extends OrderState {
+public class PlacedOrderState implements OrderState {
 
 	
 	public PlacedOrderState() {
@@ -10,7 +10,7 @@ public class PlacedOrderState extends OrderState {
 	}
 	
 	@Override
-	public void doAction(Order order) {
+	public void doAction(Order order, Customer customer, Store store) {
 		int deliveryDistance = createDeliveryDistance();
 		calculateCargoPrice(deliveryDistance);
 		calculateProductPrice(order);
