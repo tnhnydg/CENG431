@@ -11,13 +11,6 @@ public class Store {
 		this.allOrders = new ArrayList<Order>();
 	}
 	
-
-	public void chargeCustomer(Order order,Customer customer) { 
-		OrderState chargedOrderState = new ChargedOrderState();
-		order.setOrderState(chargedOrderState);
-		order.doAction(customer,this);
-	}
-	
 	public Shopping createShopping() {
 		return new Shopping(this);
 
@@ -25,8 +18,6 @@ public class Store {
 
 	public void chargeCustomer(Order order) { //Customer param???
 		order.setOrderState(new ChargedOrderState());
-
-		
 	}
 	
 	public void cancelPayment(Order order) { //Customer param???

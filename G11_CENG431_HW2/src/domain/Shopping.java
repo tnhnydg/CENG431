@@ -9,7 +9,7 @@ public class Shopping {
 	private Store store;
 	
 	public Shopping(Store store) {
-		
+		setStore(store);
 	}
 	
 	public void placeOrder(Customer customer) {
@@ -19,22 +19,23 @@ public class Shopping {
 		
 		// Menu actions
 		customer.saveOrder(order);
-		order.doAction(customer, this.store);
+		order.doAction(customer, store);
 		
 		// Menu actions
 		customer.submitOrder(order);
-		order.doAction(customer, this.store);
-		
-		// Menu actions
-		this.store.chargeCustomer(order);
 		order.doAction(customer, store);
 		
 		// Menu actions
-		this.store.shipOrder(order);
+		store.chargeCustomer(order);
+		//chargeCustomer();//Update savings of customer///Moved inside doaction
+		order.doAction(customer, store);
+		
+		// Menu actions
+		store.shipOrder(order);
 		order.doAction(customer, store);
 		
 		//Menu actions
-		this.store.deliverOrder(order);
+		store.deliverOrder(order);
 		order.doAction(customer, store);
 	}
 

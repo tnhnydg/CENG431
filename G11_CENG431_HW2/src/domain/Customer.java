@@ -1,5 +1,7 @@
 package domain;
 
+import java.time.LocalDate;
+
 public class Customer {
 	// Not final attributes changes are possible
 	private int id;
@@ -9,36 +11,23 @@ public class Customer {
 	private String phone;
 	private String email;
 	private String password;
-	private double orderWeight;
+	private double orderWeight; //remove if possible
+	private LocalDate currentDate; //remove if possible
 	private Order order;
 	//Order attribute???
 	
 	public Customer() {
 		
 	}
-
-	public void saveOrder(Store store) { 
-		Order order = new Order();
-		OrderState savedOrderState = new SavedOrderState();
-		order.setOrderState(savedOrderState);
-		setOrder(order);
-		order.doAction(this,store);
-	}
 		
-
-	public Order saveOrder(Order order) { 
+	public Order saveOrder(Order order) { ///Why do we return order ?
 		order.setOrderState(new SavedOrderState());
 		return order;
 
 	}
 	
-	public void submitOrder(Order order) { 
-
-		OrderState placedOrderState = new PlacedOrderState();
-		order.setOrderState(placedOrderState);
-		order.doAction(this,new Store());
-		order.setOrderState(new PlacedOrderState());		
-
+	public void submitOrder(Order order) {
+		order.setOrderState(new PlacedOrderState());
 	}
 	
 	public void cancelOrder(Order order) {
@@ -46,12 +35,7 @@ public class Customer {
 	}
 	
 	public void deleteOrder(Order order) {
-
-		OrderState cancelledOrderState = new CancelledOrderState();
-		order.setOrderState(cancelledOrderState);
-
 		order.setOrderState(new CancelledOrderState());
-
 	}
 
 	public int getId() {
@@ -125,6 +109,14 @@ public class Customer {
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public LocalDate getCurrentDate() {
+		return currentDate;
+	}
+
+	public void setCurrentDate(LocalDate currentDate) {
+		this.currentDate = currentDate;
 	}
 
 }

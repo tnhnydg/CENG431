@@ -10,20 +10,15 @@ public class PlacedOrderState implements OrderState {
 	}
 	
 	@Override
-
-
-
 	public void doAction(Order order, Customer customer, Store store) {
-
-		int deliveryDistance = createDeliveryDistance();
-		calculateCargoPrice(deliveryDistance);
+		calculateCargoPrice(createDeliveryDistance());
 		calculateProductPrice(order);
 	}
 	
 	public int createDeliveryDistance() {
 		Random r = new Random();
 		int low = 100;
-		int high = 500;
+		int high = 501;
 		int result = r.nextInt(high-low) + low;
 		return result;
 	}
