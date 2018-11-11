@@ -10,7 +10,11 @@ public class PlacedOrderState implements OrderState {
 	}
 	
 	@Override
-	public void doAction(Order order,Customer customer,Store store) {
+
+
+
+	public void doAction(Order order, Customer customer, Store store) {
+
 		int deliveryDistance = createDeliveryDistance();
 		calculateCargoPrice(deliveryDistance);
 		calculateProductPrice(order);

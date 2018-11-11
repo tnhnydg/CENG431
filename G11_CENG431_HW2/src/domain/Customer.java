@@ -16,30 +16,42 @@ public class Customer {
 	public Customer() {
 		
 	}
-	
+
 	public void saveOrder(Store store) { 
 		Order order = new Order();
 		OrderState savedOrderState = new SavedOrderState();
 		order.setOrderState(savedOrderState);
 		setOrder(order);
 		order.doAction(this,store);
+	}
 		
+
+	public Order saveOrder(Order order) { 
+		order.setOrderState(new SavedOrderState());
+		return order;
+
 	}
 	
 	public void submitOrder(Order order) { 
+
 		OrderState placedOrderState = new PlacedOrderState();
 		order.setOrderState(placedOrderState);
 		order.doAction(this,new Store());
-		
+		order.setOrderState(new PlacedOrderState());		
+
 	}
 	
-	public void cancelOrder() {
-		
+	public void cancelOrder(Order order) {
+		order.setOrderState(new CancelledOrderState());
 	}
 	
 	public void deleteOrder(Order order) {
+
 		OrderState cancelledOrderState = new CancelledOrderState();
 		order.setOrderState(cancelledOrderState);
+
+		order.setOrderState(new CancelledOrderState());
+
 	}
 
 	public int getId() {
@@ -97,6 +109,7 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 
 	public double getOrderWeight() {
 		return orderWeight;

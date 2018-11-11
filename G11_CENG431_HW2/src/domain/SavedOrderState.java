@@ -3,24 +3,34 @@ package domain;
 import java.util.Random;
 
 public class SavedOrderState implements OrderState {
-	
+
 	
 	public SavedOrderState() {
 		
 	}
-	
-	@Override
-	public void doAction(Order order,Customer customer,Store store) {
-		setOrderId(order,customer,store);
+
+	public void doAction(Order order,Customer customer, Store store) {
+		setOrderId(order,customer);
+
 		setTrackingNumber(order);
 		setCustomerIdNameAddress(order,customer);
+
 		setWeight(order,customer);
+
+		//setWeight(order,weight);
+
 		
 	}
 	
+
 	public void setOrderId(Order order,Customer customer,Store store) { 
 		int lastOrderId = store.getAllOrders().get(store.getAllOrders().size()-1).getId();
 		order.setId(lastOrderId+1);
+	}
+
+	public void setOrderId(Order order,Customer customer) {
+		
+
 	}
 	
 	public void setTrackingNumber(Order order) {

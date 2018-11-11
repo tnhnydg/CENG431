@@ -5,9 +5,10 @@ public class CancelledOrderState implements OrderState{
 	public CancelledOrderState() {
 		
 	}
-	
+
 	@Override
-	public void doAction(Order order,Customer customer,Store store) {
+	public void doAction(Order order, Customer customer, Store store) {
+		// TODO Auto-generated method stub
 		
 	}
 

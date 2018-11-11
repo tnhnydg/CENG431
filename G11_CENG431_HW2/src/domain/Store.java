@@ -11,25 +11,34 @@ public class Store {
 		this.allOrders = new ArrayList<Order>();
 	}
 	
+
 	public void chargeCustomer(Order order,Customer customer) { 
 		OrderState chargedOrderState = new ChargedOrderState();
 		order.setOrderState(chargedOrderState);
 		order.doAction(customer,this);
 	}
 	
-	public void cancelPayment(Order order) {
-		OrderState placedOrderState = new PlacedOrderState();
-		order.setOrderState(placedOrderState);
+	public Shopping createShopping() {
+		return new Shopping(this);
+
+	}
+
+	public void chargeCustomer(Order order) { //Customer param???
+		order.setOrderState(new ChargedOrderState());
+
+		
+	}
+	
+	public void cancelPayment(Order order) { //Customer param???
+ 		order.setOrderState(new PlacedOrderState());
 	}
 	
 	public void shipOrder(Order order) {
-		OrderState shippedOrderState = new ShippedOrderState();
-		order.setOrderState(shippedOrderState);
-		
+		order.setOrderState(new ShippedOrderState());
 	}
 	
-	public void deliverOrder() {
-		
+	public void deliverOrder(Order order) {
+		order.setOrderState(new DeliveredOrderState());
 	}
 
 	public List<Order> getAllOrders() {

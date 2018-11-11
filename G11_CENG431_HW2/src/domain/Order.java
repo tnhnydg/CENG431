@@ -25,11 +25,10 @@ public class Order {
 	public void initializeState() {
 		this.state = null;
 	}
-	
-	public void doAction(Customer customer,Store store) {
-		state.doAction(this,customer,store);
+	public void doAction(Customer customer, Store store) {
+		state.doAction(this, customer, store);
 	}
-		
+	
 	public void setOrderState(OrderState state) {
 		this.state = state;
 	}
