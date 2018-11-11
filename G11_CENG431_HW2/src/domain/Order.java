@@ -10,7 +10,7 @@ public class Order {
 	private String customerName;
 	private double weight;
 	private String shippingAddress;
-	private LocalDate dateShippied;
+	private LocalDate dateShipped;
 	private LocalDate dateDelivered;
 	private double productPrice;
 	private double cargoPrice;
@@ -86,11 +86,11 @@ public class Order {
 	}
 	
 	public void setDateShipped(LocalDate dateShipped) {
-		this.dateShippied = dateShipped;
+		this.dateShipped = dateShipped;
 	}
 	
 	public LocalDate getDateShipped() {
-		return this.dateShippied;
+		return this.dateShipped;
 	}
 	
 	public void setDateDelivered(LocalDate dateDelivered) {

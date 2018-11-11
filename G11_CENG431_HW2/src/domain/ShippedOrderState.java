@@ -16,14 +16,18 @@ public class ShippedOrderState implements OrderState {
 		int realShippingDuration = generateShippingDuration();
 		if(realShippingDuration - plannedShippingDuration > 7) {
 			System.out.println("Error: Not shipped.");
-			
+			order.setOrderState(new ChargedOrderState());
+			customer.setSavings(customer.getSavings()+order.getTotalPrice());//repayment
+		}
+		else {
+			order.setDateShipped(customer.getCurrentDate().plusDays(realShippingDuration));
 		}
 	}
 	
 	public int generateShippingDuration() {
 		Random r = new Random();
 		int low = 1;
-		int high = 10; // it may be 11, check
+		int high = 11;
 		int result = r.nextInt(high-low) + low;
 		return result;
 	}
