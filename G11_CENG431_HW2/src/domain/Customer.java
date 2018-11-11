@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.List;
-
 public class Customer {
 	// Not final attributes changes are possible
 	private int id;
@@ -11,26 +9,27 @@ public class Customer {
 	private String phone;
 	private String email;
 	private String password;
-	private List<Order> orderList;
+	private double orderWeight;
+	private Order order;
 	//Order attribute???
 	
 	public Customer() {
 		
 	}
 	
-	public void saveOrder(double weight) { 
+	public void saveOrder(Store store) { 
 		Order order = new Order();
 		OrderState savedOrderState = new SavedOrderState();
 		order.setOrderState(savedOrderState);
-		addToOrderList(order);
-		order.doAction(this,weight);
+		setOrder(order);
+		order.doAction(this,store);
 		
 	}
 	
 	public void submitOrder(Order order) { 
 		OrderState placedOrderState = new PlacedOrderState();
 		order.setOrderState(placedOrderState);
-		order.doAction();
+		order.doAction(this,new Store());
 		
 	}
 	
@@ -41,14 +40,6 @@ public class Customer {
 	public void deleteOrder(Order order) {
 		OrderState cancelledOrderState = new CancelledOrderState();
 		order.setOrderState(cancelledOrderState);
-	}
-	
-	public void addToOrderList(Order order) {
-		this.orderList.add(order);
-	}
-	
-	public int getLastOrderId() {
-		return getOrderList().get(getOrderList().size()-1).getId();
 	}
 
 	public int getId() {
@@ -107,12 +98,20 @@ public class Customer {
 		this.password = password;
 	}
 
-	public List<Order> getOrderList() {
-		return orderList;
+	public double getOrderWeight() {
+		return orderWeight;
 	}
 
-	public void setOrderList(List<Order> orderList) {
-		this.orderList = orderList;
+	public void setOrderWeight(double orderWeight) {
+		this.orderWeight = orderWeight;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 }

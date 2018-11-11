@@ -1,7 +1,6 @@
 package domain;
 
-public abstract class OrderState {
+public interface OrderState {
 
-	public void doAction(Order order) {}
-	public void doAction(Order order,Customer customer,double weight) {}	
+	public void doAction(Order order,Customer customer,Store store);	
 }

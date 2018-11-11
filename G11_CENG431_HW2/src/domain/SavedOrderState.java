@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Random;
 
-public class SavedOrderState extends OrderState {
+public class SavedOrderState implements OrderState {
 	
 	
 	public SavedOrderState() {
@@ -10,16 +10,16 @@ public class SavedOrderState extends OrderState {
 	}
 	
 	@Override
-	public void doAction(Order order,Customer customer,double weight) {
-		setOrderId(order,customer);
+	public void doAction(Order order,Customer customer,Store store) {
+		setOrderId(order,customer,store);
 		setTrackingNumber(order);
 		setCustomerIdNameAddress(order,customer);
-		setWeight(order,weight);
+		setWeight(order,customer);
 		
 	}
 	
-	public void setOrderId(Order order,Customer customer) {
-		int lastOrderId = customer.getLastOrderId();
+	public void setOrderId(Order order,Customer customer,Store store) { 
+		int lastOrderId = store.getAllOrders().get(store.getAllOrders().size()-1).getId();
 		order.setId(lastOrderId+1);
 	}
 	
@@ -40,8 +40,9 @@ public class SavedOrderState extends OrderState {
 		order.setShippingAddress(shippingAddress);
 	}
 	
-	public void setWeight(Order order,double weight) {
-		order.setWeight(weight);
+	public void setWeight(Order order,Customer customer) {
+		double w = customer.getOrderWeight();
+		order.setWeight(w);
 	}
 	
 	
