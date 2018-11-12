@@ -2,6 +2,8 @@ package domain;
 
 import java.util.Random;
 
+
+
 public class SavedOrderState implements OrderState {
 
 	
@@ -15,6 +17,8 @@ public class SavedOrderState implements OrderState {
 		setTrackingNumber(order);
 		setCustomerIdNameAddress(order,customer);
 		setWeight(order,customer);
+	
+		customer.submitOrder(order);
 	}
 	
 	public void setOrderId(Order order,Store store) { 

@@ -14,6 +14,8 @@ public class PlacedOrderState implements OrderState {
 		System.out.println("doAction : PlacedOrderState");
 		order.setCargoPrice(calculateCargoPrice(createDeliveryDistance()));
 		order.setProductPrice(calculateProductPrice(order));
+		
+		store.chargeCustomer(order);
 	}
 	
 	public int createDeliveryDistance() {

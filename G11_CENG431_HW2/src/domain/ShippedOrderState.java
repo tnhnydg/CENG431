@@ -22,6 +22,8 @@ public class ShippedOrderState implements OrderState {
 		}
 		else {
 			order.setDateShipped(customer.getCurrentDate().plusDays(realShippingDuration));
+			
+			store.deliverOrder(order);
 		}
 	}
 	

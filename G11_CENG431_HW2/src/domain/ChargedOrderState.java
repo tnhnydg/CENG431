@@ -15,6 +15,8 @@ public class ChargedOrderState implements OrderState {
 		}
 		else {
 			customer.setSavings(customer.getSavings()-order.getTotalPrice());
+			
+			store.shipOrder(order);
 		}
 	}
 	
