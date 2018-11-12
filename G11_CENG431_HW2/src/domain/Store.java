@@ -10,11 +10,6 @@ public class Store {
 	public Store() {
 		this.allOrders = new ArrayList<Order>();
 	}
-	
-	public Shopping createShopping() {
-		return new Shopping(this);
-
-	}
 
 	public void chargeCustomer(Order order) { //Customer param???
 		order.setOrderState(new ChargedOrderState());

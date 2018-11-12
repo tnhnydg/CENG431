@@ -8,11 +8,12 @@ public class Shopping {
 	private Customer customer;
 	private Store store;
 	
-	public Shopping(Store store) {
+	public Shopping(Store store, Customer customer) {
 		setStore(store);
+		setCustomer(customer);
 	}
 	
-	public void placeOrder(Customer customer) {
+	public void placeOrder() {
 		setCustomer(customer);
 		//Menu menu = new Menu(); // Shopping Menu
 		
