@@ -3,22 +3,29 @@ package domain;
 import presentation.*;
 
 public class Shopping {
-	
-	private Menu menu;
+
 	private Customer customer;
 	private Store store;
+	private Order order;
 	
 	public Shopping(Store store, Customer customer) {
 		setStore(store);
 		setCustomer(customer);
 	}
+	public ShoppingMenu createShoppingMenu() {
+		return new ShoppingMenu();
+	}
+	
+	public Order createOrder() {
+		return new Order();
+	}
 	
 	public void placeOrder() {
-		setCustomer(customer);
-		//Menu menu = new Menu(); // Shopping Menu
+		ShoppingMenu shoppingMenu = createShoppingMenu();
+		shoppingMenu.start();
 		
-		Order order = new Order();
-		
+		Order order = createOrder();
+	
 		// Menu actions
 		getCustomer().saveOrder(order);
 		order.doAction(customer, this.store);
