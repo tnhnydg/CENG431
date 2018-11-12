@@ -1,5 +1,7 @@
 package domain;
 
+import java.time.LocalDate;
+
 import presentation.*;
 
 public class Shopping {
@@ -32,6 +34,7 @@ public class Shopping {
 		
 		// Menu actions
 		getStore().shipOrder(order);
+		//customer.setCurrentDate(new LocalDate());
 		order.doAction(customer, store);
 		
 		//Menu actions
