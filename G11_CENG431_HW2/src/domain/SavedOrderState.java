@@ -10,6 +10,7 @@ public class SavedOrderState implements OrderState {
 	}
 
 	public void doAction(Order order,Customer customer, Store store) {
+		System.out.println("doAction : SavedOrderState");
 		setOrderId(order,store);
 		setTrackingNumber(order);
 		setCustomerIdNameAddress(order,customer);
@@ -17,8 +18,14 @@ public class SavedOrderState implements OrderState {
 	}
 	
 	public void setOrderId(Order order,Store store) { 
-		int lastOrderId = store.getAllOrders().get(store.getAllOrders().size()-1).getId();
-		order.setId(lastOrderId+1);
+		if(store.getAllOrders().size() == 0) {
+			order.setId(1);
+		}
+		else {
+			int lastOrderId = store.getAllOrders().get(store.getAllOrders().size()-1).getId();
+			order.setId(lastOrderId+1);
+		}
+		
 	}
 	
 	public void setTrackingNumber(Order order) {

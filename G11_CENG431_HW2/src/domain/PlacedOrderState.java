@@ -11,6 +11,7 @@ public class PlacedOrderState implements OrderState {
 	
 	@Override
 	public void doAction(Order order, Customer customer, Store store) {
+		System.out.println("doAction : PlacedOrderState");
 		calculateCargoPrice(createDeliveryDistance());
 		calculateProductPrice(order);
 	}

@@ -17,7 +17,7 @@ public class Customer {
 	//Order attribute???
 	
 	public Customer() {
-		
+		currentDate = LocalDate.of(2018, 11, 12);
 	}
 		
 	public Order saveOrder(Order order) { ///Why do we return order ?
