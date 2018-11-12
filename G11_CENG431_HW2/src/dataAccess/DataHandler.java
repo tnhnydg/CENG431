@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,6 +19,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+
+import domain.*;
 
 import domain.*;
 
@@ -79,6 +82,52 @@ public class DataHandler {
 		 Gson gson = new Gson();
 		 Type listType = new TypeToken<ArrayList<CustomerWrapper>>(){}.getType();
 		 return gson.toJson(cstw, listType);
+	}
+	
+	public ArrayList<OrderWrapper> getOrderWraperList(BufferedReader bfrd) {
+		Gson gson = new Gson();
+		Type listType = new TypeToken<ArrayList<OrderWrapper>>(){}.getType();
+	    return gson.fromJson(bfrd, listType);	
+	}
+	
+	public String jsonOrderWrapperList(ArrayList<OrderWrapper> orderWraperList) {
+		 Gson gson = new Gson();
+		 Type listType = new TypeToken<ArrayList<OrderWrapper>>(){}.getType();
+		 return gson.toJson(orderWraperList, listType);
+	}
+	
+	public void saveOrderList(List<Order> orderList) throws IOException {
+		ArrayList<OrderWrapper> orderWrapperList = getOrderWraperList(readFile("orders.json"));
+		for(int i = 0; i < orderList.size(); i++) {
+			Order tmp = orderList.get(i);
+			orderWrapperList.add(new OrderWrapper(tmp.getId(), tmp.getTrackingNumber(), tmp.getCustomerId(), tmp.getCustomerName(), tmp.getWeight(), tmp.getShippingAddress(), tmp.getDateShipped(), tmp.getDateDelivered(), tmp.getProductPrice(), tmp.getCargoPrice(), tmp.getTotalPrice()));
+		}
+	
+		writeFile("orders.json", jsonOrderWrapperList(orderWrapperList));
+	
+	}
+	
+	public List<Order> loadOrderList() throws IOException {
+		List<Order> orderList = new ArrayList<Order>();
+		List<OrderWrapper> orderWrapperList = getOrderWraperList(readFile("orders.json"));
+		for(int i = 0; i < orderWrapperList.size(); i++) {
+			Order order = new Order();
+			OrderWrapper tmp = orderWrapperList.get(i);
+			order.setId(tmp.getId());
+			order.setTrackingNumber(tmp.getTrackingNumber());
+			order.setCustomerId(tmp.getCustomerId());
+			order.setCustomerName(tmp.getCustomerName());
+			order.setWeight(tmp.getWeight());
+			order.setShippingAddress(tmp.getShippingAddress());
+			//order.setDateShipped(dateShipped);
+			//order.setDateDelivered(dateDelivered);
+			order.setProductPrice(tmp.getProductPrice());
+			order.setCargoPrice(tmp.getCargoPrice());
+			order.setTotalPrice(tmp.getTotalPrice());
+			
+			orderList.add(order);
+		}
+		return orderList;
 	}
 	
 	public BufferedReader readFile(String fileName) throws IOException {
