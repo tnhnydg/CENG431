@@ -35,7 +35,6 @@ public class Shopping {
 		
 		// Menu actions
 		getStore().shipOrder(order);
-		//customer.setCurrentDate(new LocalDate());
 		order.doAction(customer, store);
 		
 		//Menu actions

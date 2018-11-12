@@ -12,6 +12,7 @@ public class DeliveredOrderState implements OrderState {
 	public void doAction(Order order, Customer customer, Store store) {
 		int plannedDeliveryDuration = generateDeliveryDuration();
 		int realDeliveryDuration = generateDeliveryDuration();
+		System.out.println("rdd : " + realDeliveryDuration + " pdd : " + plannedDeliveryDuration);
 		if(realDeliveryDuration - plannedDeliveryDuration > 8) {
 			System.out.println("Error: Lost in shipping.");
 			order.setOrderState(new ChargedOrderState());

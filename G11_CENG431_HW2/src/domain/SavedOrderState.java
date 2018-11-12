@@ -10,6 +10,7 @@ public class SavedOrderState implements OrderState {
 	}
 
 	public void doAction(Order order,Customer customer, Store store) {
+		System.out.println("doAction : SavedOrderState");
 		setOrderId(order,store);
 		setTrackingNumber(order);
 		setCustomerIdNameAddress(order,customer);

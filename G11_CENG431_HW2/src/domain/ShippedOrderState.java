@@ -14,6 +14,7 @@ public class ShippedOrderState implements OrderState {
 	public void doAction(Order order,Customer customer,Store store) {
 		int plannedShippingDuration = generateShippingDuration();
 		int realShippingDuration = generateShippingDuration();
+		System.out.println("rsd : " + realShippingDuration + " psd : " + plannedShippingDuration);
 		if(realShippingDuration - plannedShippingDuration > 7) {
 			System.out.println("Error: Not shipped.");
 			order.setOrderState(new ChargedOrderState());
