@@ -16,8 +16,8 @@ public class TestApp {
 		Customer customer = loginMenu.start();
 		System.out.println(customer.getName());
 		 		
-		Shopping shopping = store.createShopping();
-		shopping.placeOrder(customer);
+		Shopping shopping = new Shopping(store, customer);
+		shopping.placeOrder();
 		
 	}
 
