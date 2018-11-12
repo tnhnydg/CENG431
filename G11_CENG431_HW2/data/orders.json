@@ -1,1 +1,1 @@
-[]
+[{"id":1,"trackingNumber":458404,"customerId":230,"customerName":"tuna","weight":10.0,"shippingAddress":"izmir","dateShipped":"2018-11-12","dateDelivered":"2018-11-12","productPrice":550.0,"cargoPrice":212.53,"totalPrice":762.53},{"id":2,"trackingNumber":315690,"customerId":230,"customerName":"tuna","weight":10.0,"shippingAddress":"izmir","dateShipped":"2018-11-12","dateDelivered":"2018-11-12","productPrice":550.0,"cargoPrice":153.70000000000002,"totalPrice":703.7}]

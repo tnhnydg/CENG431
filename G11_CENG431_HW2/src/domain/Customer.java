@@ -20,10 +20,8 @@ public class Customer {
 		currentDate = LocalDate.of(2018, 11, 12);
 	}
 		
-	public Order saveOrder(Order order) { ///Why do we return order ?
+	public void saveOrder(Order order) { 
 		order.setOrderState(new SavedOrderState());
-		return order;
-
 	}
 	
 	public void submitOrder(Order order) {

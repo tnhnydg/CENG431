@@ -9,6 +9,7 @@ public class ChargedOrderState implements OrderState {
 	
 	public void doAction(Order order,Customer customer,Store store) {
 		setTotalPriceOfOrder(order);
+		System.out.println(order.getTotalPrice());
 		if(!isAffordable(order,customer)) {
 			store.cancelPayment(order);
 		}

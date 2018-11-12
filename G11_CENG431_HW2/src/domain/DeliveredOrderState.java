@@ -1,6 +1,9 @@
 package domain;
 
+import java.io.IOException;
 import java.util.Random;
+
+import dataAccess.DataHandler;
 
 public class DeliveredOrderState implements OrderState {
 
@@ -20,6 +23,12 @@ public class DeliveredOrderState implements OrderState {
 		}
 		else {
 			order.setDateDelivered(customer.getCurrentDate().plusDays(realDeliveryDuration));
+			try {
+				saveState(store);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -29,5 +38,10 @@ public class DeliveredOrderState implements OrderState {
 		int high = 13;
 		int result = r.nextInt(high-low) + low;
 		return result;
+	}
+	
+	public void saveState(Store store) throws IOException {
+		DataHandler dataHandler = new DataHandler();
+		dataHandler.saveOrderList(store.getAllOrders());
 	}
 }

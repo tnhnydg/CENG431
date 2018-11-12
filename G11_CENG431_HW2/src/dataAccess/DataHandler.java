@@ -99,8 +99,10 @@ public class DataHandler {
 	public void saveOrderList(List<Order> orderList) throws IOException {
 		ArrayList<OrderWrapper> orderWrapperList = getOrderWraperList(readFile("orders.json"));
 		for(int i = 0; i < orderList.size(); i++) {
-			Order tmp = orderList.get(i);
-			orderWrapperList.add(new OrderWrapper(tmp.getId(), tmp.getTrackingNumber(), tmp.getCustomerId(), tmp.getCustomerName(), tmp.getWeight(), tmp.getShippingAddress(), tmp.getDateShipped(), tmp.getDateDelivered(), tmp.getProductPrice(), tmp.getCargoPrice(), tmp.getTotalPrice()));
+			if(i >= orderWrapperList.size()) {
+				Order tmp = orderList.get(i);
+				orderWrapperList.add(new OrderWrapper(tmp.getId(), tmp.getTrackingNumber(), tmp.getCustomerId(), tmp.getCustomerName(), tmp.getWeight(), tmp.getShippingAddress(), tmp.getDateShipped(), tmp.getDateDelivered(), tmp.getProductPrice(), tmp.getCargoPrice(), tmp.getTotalPrice()));
+			}
 		}
 	
 		writeFile("orders.json", jsonOrderWrapperList(orderWrapperList));

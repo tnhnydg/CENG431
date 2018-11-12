@@ -1,7 +1,9 @@
 package domain;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
+import dataAccess.DataHandler;
 import presentation.*;
 
 public class Shopping {
@@ -22,16 +24,21 @@ public class Shopping {
 		return new Order();
 	}
 	
-	public void placeOrder() {
+	public void placeOrder() throws IOException {
+		DataHandler dataHandler = new DataHandler();
+		store.setAllOrders(dataHandler.loadOrderList());
+		System.out.println(store.getAllOrders().size() + "asdsa");
+		
 		ShoppingMenu shoppingMenu = createShoppingMenu();
 		shoppingMenu.start();
-		
-		Order order = createOrder();
+
+		Order order = new Order();
 	
 		// Menu actions
 		getCustomer().saveOrder(order);
+		customer.setOrderWeight(10);
 		order.doAction(customer, this.store);
-		
+	
 		// Menu actions
 		getCustomer().submitOrder(order);
 		order.doAction(customer, this.store);
@@ -39,6 +46,8 @@ public class Shopping {
 		// Menu actions
 		getStore().chargeCustomer(order);
 		order.doAction(customer, store);
+		System.out.println(order.getOrderState() + "state");
+		System.out.println(customer.getSavings() + "savings");
 		
 		// Menu actions
 		getStore().shipOrder(order);
@@ -47,6 +56,7 @@ public class Shopping {
 		//Menu actions
 		getStore().deliverOrder(order);
 		order.doAction(customer, store);
+	
 	}
 
 	public Customer getCustomer() {

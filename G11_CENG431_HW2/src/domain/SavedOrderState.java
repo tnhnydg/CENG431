@@ -20,10 +20,12 @@ public class SavedOrderState implements OrderState {
 	public void setOrderId(Order order,Store store) { 
 		if(store.getAllOrders().size() == 0) {
 			order.setId(1);
+			store.getAllOrders().add(order);
 		}
 		else {
 			int lastOrderId = store.getAllOrders().get(store.getAllOrders().size()-1).getId();
 			order.setId(lastOrderId+1);
+			store.getAllOrders().add(order);
 		}
 		
 	}

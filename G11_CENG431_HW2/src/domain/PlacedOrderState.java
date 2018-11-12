@@ -12,8 +12,8 @@ public class PlacedOrderState implements OrderState {
 	@Override
 	public void doAction(Order order, Customer customer, Store store) {
 		System.out.println("doAction : PlacedOrderState");
-		calculateCargoPrice(createDeliveryDistance());
-		calculateProductPrice(order);
+		order.setCargoPrice(calculateCargoPrice(createDeliveryDistance()));
+		order.setProductPrice(calculateProductPrice(order));
 	}
 	
 	public int createDeliveryDistance() {
@@ -21,6 +21,7 @@ public class PlacedOrderState implements OrderState {
 		int low = 100;
 		int high = 501;
 		int result = r.nextInt(high-low) + low;
+		System.out.println("Distance:" + result);
 		return result;
 	}
 	
