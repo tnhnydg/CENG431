@@ -79,7 +79,6 @@ public class OrderWrapper {
 
 	public LocalDate getDateShipped() {
 		String date[] = this.dateShipped.split("-");
-		System.out.println(date[0] + date[1] + date[2]);
 		return LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
 	}
 
@@ -89,7 +88,6 @@ public class OrderWrapper {
 
 	public LocalDate getDateDelivered() {
 		String date[] = this.dateDelivered.split("-");
-		System.out.println(date[0] + date[1] + date[2]);
 		return LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
 	}
 

@@ -13,14 +13,12 @@ public class ChargedOrderState implements OrderState {
 	
 	public void doAction(Order order,Customer customer,Store store) {
 		setTotalPriceOfOrder(order);
-		System.out.println(order.getTotalPrice());
+		System.out.println("Total Price : " + order.getTotalPrice());
 		if(!isAffordable(order,customer)) {
 			store.cancelPayment(order);
 		}
 		else {
 			customer.setSavings(customer.getSavings()-order.getTotalPrice());
-			
-			updateCustomerFile(customer);
 			
 			store.shipOrder(order);
 		}
@@ -34,15 +32,5 @@ public class ChargedOrderState implements OrderState {
 	
 	public boolean isAffordable(Order order,Customer customer) {
 		return customer.getSavings() >= order.getTotalPrice();
-	}
-	
-	public void updateCustomerFile(Customer customer) {
-		DataHandler dataHandler = new DataHandler();
-		try {
-			dataHandler.jsonUpdateCustomer(customer);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
