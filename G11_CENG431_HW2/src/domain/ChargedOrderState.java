@@ -1,5 +1,9 @@
 package domain;
 
+import java.io.IOException;
+
+import dataAccess.DataHandler;
+
 public class ChargedOrderState implements OrderState {
 
 	
@@ -16,6 +20,8 @@ public class ChargedOrderState implements OrderState {
 		else {
 			customer.setSavings(customer.getSavings()-order.getTotalPrice());
 			
+			updateCustomerFile(customer);
+			
 			store.shipOrder(order);
 		}
 	}
@@ -28,5 +34,15 @@ public class ChargedOrderState implements OrderState {
 	
 	public boolean isAffordable(Order order,Customer customer) {
 		return customer.getSavings() >= order.getTotalPrice();
+	}
+	
+	public void updateCustomerFile(Customer customer) {
+		DataHandler dataHandler = new DataHandler();
+		try {
+			dataHandler.jsonUpdateCustomer(customer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

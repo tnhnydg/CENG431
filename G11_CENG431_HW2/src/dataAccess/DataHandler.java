@@ -84,6 +84,17 @@ public class DataHandler {
 		 return gson.toJson(cstw, listType);
 	}
 	
+	public void jsonUpdateCustomer(Customer customer) throws IOException {
+		ArrayList<CustomerWrapper> customerWrapper = getCustomerWraperList(readFile("customers.json"));
+		for(int i = 0; i < customerWrapper.size(); i++) {
+			if(customer.getEmail().equals(customerWrapper.get(i).getEmail()) && customer.getPassword().equals(customerWrapper.get(i).getPassword())) {
+				customerWrapper.get(i).setSavings(customer.getSavings());
+			}
+		}
+		
+		writeFile("customers.json", jsonCustomerWraperList(customerWrapper));
+	}
+	
 	public ArrayList<OrderWrapper> getOrderWraperList(BufferedReader bfrd) {
 		Gson gson = new Gson();
 		Type listType = new TypeToken<ArrayList<OrderWrapper>>(){}.getType();
