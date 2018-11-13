@@ -22,8 +22,8 @@ public class OrderWrapper {
 		setCustomerName(customerName);
 		setWeight(weight);
 		setShippingAddress(shippingAddress);
-		//setDateShipped(dateShipped);
-		//setDateDelivered(dateDelivered);
+		setDateShipped(dateShipped);
+		setDateDelivered(dateDelivered);
 		setProductPrice(productPrice);
 		setCargoPrice(cargoPrice);
 		setTotalPrice(totalPrice);
@@ -76,23 +76,27 @@ public class OrderWrapper {
 	public void setShippingAddress(String shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
-/*
+
 	public LocalDate getDateShipped() {
-		return dateShipped;
+		String date[] = this.dateShipped.split("-");
+		System.out.println(date[0] + date[1] + date[2]);
+		return LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
 	}
 
 	public void setDateShipped(LocalDate dateShipped) {
-		this.dateShipped = dateShipped;
+		this.dateShipped = dateShipped.toString();
 	}
 
 	public LocalDate getDateDelivered() {
-		return dateDelivered;
+		String date[] = this.dateDelivered.split("-");
+		System.out.println(date[0] + date[1] + date[2]);
+		return LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
 	}
 
 	public void setDateDelivered(LocalDate dateDelivered) {
-		this.dateDelivered = dateDelivered;
+		this.dateDelivered = dateDelivered.toString();
 	}
-*/
+
 	public double getProductPrice() {
 		return productPrice;
 	}

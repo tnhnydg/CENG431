@@ -121,8 +121,8 @@ public class DataHandler {
 			order.setCustomerName(tmp.getCustomerName());
 			order.setWeight(tmp.getWeight());
 			order.setShippingAddress(tmp.getShippingAddress());
-			//order.setDateShipped(dateShipped);
-			//order.setDateDelivered(dateDelivered);
+			order.setDateShipped(tmp.getDateShipped());
+			order.setDateDelivered(tmp.getDateDelivered());
 			order.setProductPrice(tmp.getProductPrice());
 			order.setCargoPrice(tmp.getCargoPrice());
 			order.setTotalPrice(tmp.getTotalPrice());
