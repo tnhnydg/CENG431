@@ -8,8 +8,7 @@ public class CancelledOrderState implements OrderState{
 
 	@Override
 	public void doAction(Order order, Customer customer, Store store) {
-		// TODO Auto-generated method stub
-		System.out.println("cancelled");
+		System.out.println("Cancelled");
 	}
 
 	

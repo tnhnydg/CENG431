@@ -17,7 +17,7 @@ public class DeliveredOrderState implements OrderState {
 		int plannedDeliveryDuration = generateDeliveryDuration();
 		int realDeliveryDuration = generateDeliveryDuration();
 		System.out.println("rdd : " + realDeliveryDuration + " pdd : " + plannedDeliveryDuration);
-		if(realDeliveryDuration - plannedDeliveryDuration > -10 /*8*/) {
+		if(realDeliveryDuration - plannedDeliveryDuration > 8) {
 			System.out.println("Error: Lost in shipping.");
 			order.setOrderState(new ChargedOrderState());
 			customer.setSavings(customer.getSavings()+order.getTotalPrice());//repayment
