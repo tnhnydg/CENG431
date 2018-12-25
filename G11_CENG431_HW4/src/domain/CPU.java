@@ -3,7 +3,6 @@ package domain;
 public class CPU {
 
 	private Process runningProcess;
-	//private StateObserver so;
 	
 	public CPU() {
 		

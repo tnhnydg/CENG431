@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Dispatcher {
 	private ProcessBatch pb;
-	//private StateObserver so;
 	
 	public Dispatcher(ProcessBatch pb) {
 		this.pb = pb;

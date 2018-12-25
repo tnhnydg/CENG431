@@ -8,7 +8,6 @@ public class ProcessBatch {
 	private Scheduler scheduler;
 	private List<Process> pList;
 	private List<Process> readyQueue;
-	//private List<StateObserver> soList;
 	
 	
 	public ProcessBatch(Scheduler scheduler) {
