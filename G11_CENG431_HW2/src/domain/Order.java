@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Order {
 	
 	private int id;
-	private int trackingNumber; // String ??
+	private int trackingNumber; 
 	private int customerId;
 	private String customerName;
 	private double weight;

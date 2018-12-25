@@ -1,8 +1,5 @@
 package domain;
 
-import java.io.IOException;
-
-import dataAccess.DataHandler;
 
 public class ChargedOrderState implements OrderState {
 

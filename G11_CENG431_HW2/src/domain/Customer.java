@@ -3,7 +3,7 @@ package domain;
 import java.time.LocalDate;
 
 public class Customer {
-	// Not final attributes changes are possible
+
 	private int id;
 	private String name;
 	private String address;
@@ -11,10 +11,9 @@ public class Customer {
 	private String phone;
 	private String email;
 	private String password;
-	private double orderWeight; //remove if possible
-	private LocalDate currentDate; //remove if possible
+	private double orderWeight; 
+	private LocalDate currentDate; 
 	private Order order;
-	//Order attribute???
 	
 	public Customer() {
 	}

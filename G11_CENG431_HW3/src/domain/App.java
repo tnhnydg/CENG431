@@ -1,10 +1,10 @@
-package test;
+package domain;
 
-public class TestCustomer {
+public class App {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Test Customer");
+		System.out.println("HW3");
 	}
 
 }
