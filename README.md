@@ -1,2 +1,2 @@
 # CENG431
-Building Software Systems Assignments Implemented in Java
+CENG431 Building Software Systems Homework Repository
